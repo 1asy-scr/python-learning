@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Website belajar Python dari dasar dengan praktikum Google Colab."><title>Evaluasi | Python Learning</title>
+<link rel="stylesheet" href="assets/css/style.css"></head><body>
+<header class="site-header"><div class="container nav"><a class="brand" href="index.html"><span class="brand-mark">Py</span> Python Learning</a>
+<button class="menu-toggle" aria-label="Buka menu">☰</button><nav class="nav-links"><a class="" href="index.html">Beranda</a><a class="" href="materi.html">Materi</a><a class="" href="praktikum.html">Praktikum</a><a class="" href="latihan.html">Latihan</a><a class="active" href="evaluasi.html">Evaluasi</a><a class="" href="tentang.html">Tentang</a></nav></div></header>
+<main><section class="page-hero"><div class="container"><span class="eyebrow">Cek pemahaman</span><h1>Evaluasi Dasar Python</h1><p>Pilih satu jawaban untuk setiap pertanyaan, kemudian tekan Periksa Jawaban.</p></div></section>
+<section class="content"><div class="container"><form id="quiz">
+<div class="quiz-question"><strong>1. Fungsi apa yang digunakan untuk menampilkan teks ke layar?</strong>
+<label><input type="radio" name="q1" value="a"> input()</label><label><input type="radio" name="q1" value="b"> print()</label><label><input type="radio" name="q1" value="c"> show()</label></div>
+<div class="quiz-question"><strong>2. Tipe data untuk nilai 3.14 adalah ...</strong>
+<label><input type="radio" name="q2" value="a"> int</label><label><input type="radio" name="q2" value="b"> str</label><label><input type="radio" name="q2" value="c"> float</label></div>
+<div class="quiz-question"><strong>3. Operator untuk membandingkan kesamaan dua nilai adalah ...</strong>
+<label><input type="radio" name="q3" value="a"> ==</label><label><input type="radio" name="q3" value="b"> =</label><label><input type="radio" name="q3" value="c"> !=</label></div>
+<div class="quiz-question"><strong>4. Struktur yang digunakan untuk pengulangan adalah ...</strong>
+<label><input type="radio" name="q4" value="a"> if</label><label><input type="radio" name="q4" value="b"> for</label><label><input type="radio" name="q4" value="c"> def</label></div>
+<div class="quiz-question"><strong>5. Kata kunci untuk mendefinisikan fungsi adalah ...</strong>
+<label><input type="radio" name="q5" value="a"> function</label><label><input type="radio" name="q5" value="b"> fun</label><label><input type="radio" name="q5" value="c"> def</label></div>
+<button class="btn btn-primary" type="submit">Periksa Jawaban</button><div class="result" id="result" role="status"></div></form>
+<div class="callout"><strong>Catatan pembelajaran:</strong> Kuis ini merupakan evaluasi awal sederhana di sisi browser. Untuk penilaian kelas yang menyimpan nilai setiap pengguna, diperlukan sistem backend atau integrasi layanan formulir/LMS.</div></div></section>
+<script>
+document.getElementById('quiz').addEventListener('submit',function(e){e.preventDefault();const key={q1:'b',q2:'c',q3:'a',q4:'b',q5:'c'};let score=0;for(const [q,a] of Object.entries(key)){const chosen=document.querySelector('input[name="'+q+'"]:checked');if(chosen&&chosen.value===a)score++;}const box=document.getElementById('result');box.style.display='block';box.textContent='Nilai Anda: '+score+'/5 ('+(score*20)+'). '+(score>=4?'Bagus! Pertahankan pemahaman Anda.':'Pelajari kembali materi, lalu coba lagi.');});
+</script></main>
+<footer class="site-footer"><div class="container footer-row"><div><strong>Python Learning</strong><div class="small">Belajar Python dari dasar, praktik dengan Google Colab.</div></div>
+<div class="small">© <span data-year></span> Python Learning. Materi untuk pembelajaran.</div></div></footer>
+<script src="assets/js/script.js"></script></body></html>
