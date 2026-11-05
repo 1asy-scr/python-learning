@@ -1,7 +1,7 @@
 
 // GANTI username dan repository sesuai akun GitHub Anda.
 const SITE_CONFIG = {
-  githubUsername: "USERNAME_GITHUB",
+  githubUsername: "1asy-scr",
   repository: "python-learning",
   branch: "main"
 };
