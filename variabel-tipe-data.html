@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Variabel dan Tipe Data Python | Python Learn</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <style>
+      /* Kuis interaktif */
+      .quiz-container {
+        border: 1px solid #dbe3ef;
+        border-radius: 9px;
+        padding: 22px;
+        margin-top: 20px;
+        background: #f8fbff;
+      }
+
+      .quiz-progress {
+        background: #e2e8f0;
+        height: 8px;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 22px;
+      }
+
+      .quiz-progress-bar {
+        height: 100%;
+        width: 0%;
+        background: #1764dc;
+        transition: width 0.3s;
+      }
+
+      .question {
+        background: #fff;
+        border: 1px solid #dbe3ef;
+        border-radius: 8px;
+        padding: 18px;
+        margin-bottom: 16px;
+      }
+
+      .question h4 {
+        margin: 0 0 13px;
+        color: #172554;
+      }
+
+      .question label {
+        display: block;
+        padding: 10px 12px;
+        margin: 8px 0;
+        border: 1px solid #dbe3ef;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        background: white;
+      }
+
+      .question label:hover {
+        background: #eff6ff;
+        border-color: #1764dc;
+      }
+
+      .question label input {
+        margin-right: 9px;
+        accent-color: #1764dc;
+      }
+
+      .explanation {
+        font-size: 13px;
+        margin-top: 8px;
+        color: #475569;
+      }
+
+      .explanation.correct {
+        color: #15803d;
+      }
+
+      .explanation.incorrect {
+        color: #dc2626;
+      }
+
+      .quiz-actions {
+        margin-top: 10px;
+      }
+
+      .quiz-actions button {
+        background: #1764dc;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 12px 22px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .quiz-actions button:hover {
+        background: #104bad;
+      }
+
+      .quiz-actions button.secondary {
+        background: #64748b;
+      }
+
+      .quiz-actions button.secondary:hover {
+        background: #475569;
+      }
+
+      .quiz-result {
+        display: none;
+        padding: 17px;
+        margin-top: 18px;
+        border-radius: 7px;
+        background: #eff6ff;
+        border-left: 4px solid #1764dc;
+      }
+
+      .quiz-result.warning {
+        border-left-color: #f59e0b;
+        background: #fffbe3;
+      }
+
+      @media (max-width: 700px) {
+        .quiz-container {
+          padding: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <a href="index.html" class="logo">
+        <div class="logo-icon">Py</div>
+        <h1>Python <span>Learn</span></h1>
+      </a>
+
+      <nav class="top-nav">
+        <a href="tentang.html">Tentang</a>
+        <a href="index.html">Beranda</a>
+      </nav>
+    </header>
+
+    <div class="container">
+      <!-- SIDEBAR -->
+      <aside class="sidebar" id="sidebar"></aside>
+
+      <!-- KONTEN MATERI -->
+      <main class="content">
+        <div class="breadcrumb">
+          <a href="index.html">Python Learn</a>
+          &nbsp; / &nbsp; Variabel dan Tipe Data
+        </div>
+
+        <h2>Materi 3: Variabel dan Tipe Data Python</h2>
+
+        <p>
+          Dalam pemrograman, kita sering berhadapan dengan berbagai macam
+          informasi, seperti nama, umur, alamat, nilai, dan angka hasil
+          perhitungan. Informasi tersebut perlu disimpan agar dapat digunakan
+          kembali oleh program.
+        </p>
+
+        <p>
+          Python menyediakan konsep variabel dan tipe data untuk mengelola
+          informasi tersebut. Pada materi ini, kita akan mempelajari cara
+          membuat variabel, mengenali tipe data, mengubah tipe data, serta
+          menggunakannya dalam program sederhana.
+        </p>
+
+        <!-- 1. PENGERTIAN VARIABEL -->
+        <section class="subsection">
+          <h3>1. Pengertian Variabel</h3>
+
+          <p>
+            Variabel adalah tempat untuk menyimpan data atau nilai di dalam
+            sebuah program. Variabel digunakan agar data dapat dipanggil,
+            diubah, dan diolah kembali selama program berjalan.
+          </p>
+
+          <p>
+            Dalam Python, variabel dibuat dengan memberikan nama pada suatu
+            nilai menggunakan tanda sama dengan (<code>=</code>). Tanda tersebut
+            disebut operator assignment atau operator penugasan.
+          </p>
+
+          <p><strong>Contoh:</strong></p>
+
+          <pre><code>nama = "Andi"
+umur = 17
+nilai = 90
+
+print(nama)
+print(umur)
+print(nilai)</code></pre>
+
+          <p><strong>Hasil Output:</strong></p>
+
+          <pre><code>Andi
+17
+90</code></pre>
+
+          <p><strong>Penjelasan:</strong></p>
+
+          <ul>
+            <li>
+              <code>nama</code> merupakan variabel yang menyimpan data berupa
+              teks.
+            </li>
+            <li>
+              <code>umur</code> merupakan variabel yang menyimpan data berupa
+              angka.
+            </li>
+            <li>
+              <code>nilai</code> merupakan variabel yang menyimpan angka 90.
+            </li>
+            <li>
+              <code>=</code> merupakan operator assignment untuk memberikan
+              nilai pada variabel.
+            </li>
+            <li>
+              <code>print()</code> digunakan untuk menampilkan nilai variabel.
+            </li>
+          </ul>
+
+          <h4>Ilustrasi Variabel</h4>
+
+          <p>
+            Variabel dapat diibaratkan seperti wadah yang digunakan untuk
+            menyimpan suatu nilai.
+          </p>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Variabel</th>
+                <th>Nilai yang Disimpan</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>nama</code></td>
+                <td>"Andi"</td>
+              </tr>
+              <tr>
+                <td><code>umur</code></td>
+                <td>17</td>
+              </tr>
+              <tr>
+                <td><code>nilai</code></td>
+                <td>90</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="info">
+            <strong>Ingat!</strong>
+            <p>
+              Setiap variabel memiliki nama dan menyimpan nilai yang dapat
+              digunakan oleh program. Nilai tersebut dapat berupa teks, angka,
+              maupun jenis data lainnya.
+            </p>
+          </div>
+        </section>
+
+        <!-- 2. ATURAN PENAMAAN -->
+        <section class="subsection">
+          <h3>2. Aturan Penamaan Variabel</h3>
+
+          <p>
+            Dalam Python, terdapat beberapa aturan yang harus diperhatikan
+            ketika membuat nama variabel.
+          </p>
+
+          <ol>
+            <li>
+              Nama variabel harus diawali dengan huruf atau garis bawah
+              (<code>_</code>).
+            </li>
+            <li>Nama variabel tidak boleh diawali dengan angka.</li>
+            <li>Nama variabel tidak boleh mengandung spasi.</li>
+            <li>
+              Nama variabel hanya boleh menggunakan huruf, angka, dan garis
+              bawah.
+            </li>
+            <li>
+              Nama variabel tidak boleh menggunakan kata kunci khusus Python
+              seperti <code>if</code>, <code>for</code>, <code>while</code>, dan
+              <code>class</code>.
+            </li>
+            <li>
+              Python membedakan huruf besar dan huruf kecil (case-sensitive).
+            </li>
+          </ol>
+
+          <h4>Contoh Penamaan Variabel yang Benar</h4>
+
+          <pre><code>nama = "Budi"
+umur = 17
+nama_lengkap = "Budi Santoso"
+_nilai = 90
+nilai2 = 85</code></pre>
+
+          <h4>Contoh Penamaan Variabel yang Salah</h4>
+
+          <pre><code># Diawali angka
+2nama = "Budi"
+
+# Mengandung spasi
+nama lengkap = "Budi"
+
+# Menggunakan kata kunci Python
+class = "XI RPL"</code></pre>
+
+          <div class="info">
+            <strong>Tips Penulisan Variabel</strong>
+            <p>
+              Gunakan nama variabel yang jelas dan mudah dipahami, misalnya
+              <code>nama_siswa</code>, <code>nilai_ujian</code>, dan
+              <code>jumlah_barang</code>.
+            </p>
+            <p>
+              Hindari penggunaan nama yang terlalu singkat jika membuat program
+              menjadi sulit dipahami.
+            </p>
+          </div>
+        </section>
+
+        <!-- 3. MENGUBAH NILAI VARIABEL -->
+        <section class="subsection">
+          <h3>3. Mengubah Nilai Variabel</h3>
+
+          <p>
+            Nilai variabel dalam Python dapat diubah kapan saja selama program
+            berjalan. Ketika nilai baru diberikan kepada variabel yang sama,
+            nilai sebelumnya akan digantikan.
+          </p>
+
+          <p><strong>Contoh:</strong></p>
+
+          <pre><code>nama = "Andi"
+print(nama)
+
+nama = "Budi"
+print(nama)</code></pre>
+
+          <p><strong>Hasil Output:</strong></p>
+
+          <pre><code>Andi
+Budi</code></pre>
+
+          <p>
+            Pada contoh tersebut, nilai variabel
+            <code>nama</code> awalnya adalah "Andi", kemudian diubah menjadi
+            "Budi".
+          </p>
+
+          <p>Variabel juga dapat digunakan dalam operasi matematika.</p>
+
+          <pre><code>angka = 10
+angka = angka + 5
+
+print(angka)</code></pre>
+
+          <p><strong>Hasil Output:</strong></p>
+
+          <pre><code>15</code></pre>
+
+          <p>
+            Python menyediakan operator penugasan singkat, misalnya
+            <code>+=</code>, <code>-=</code>, dan <code>*=</code>.
+          </p>
+
+          <pre><code>angka = 10
+angka += 5
+
+print(angka)</code></pre>
+
+          <p><strong>Hasil Output:</strong></p>
+
+          <pre><code>15</code></pre>
+
+          <p>
+            Perintah <code>angka += 5</code> memiliki arti yang sama dengan
+            <code>angka = angka + 5</code>.
+          </p>
+        </section>
+
+        <!-- 4. PENGERTIAN TIPE DATA -->
+        <section class="subsection">
+          <h3>4. Pengertian Tipe Data</h3>
+
+          <p>
+            Tipe data (data type) adalah jenis atau kategori data yang disimpan
+            dalam variabel. Setiap tipe data memiliki karakteristik dan kegunaan
+            yang berbeda.
+          </p>
+
+          <p>
+            Python menyediakan berbagai tipe data untuk mengolah informasi dalam
+            program. Empat tipe data dasar yang perlu dipahami oleh pemula
+            adalah sebagai berikut.
+          </p>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Tipe Data</th>
+                <th>Keterangan</th>
+                <th>Contoh</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>String (str)</code></td>
+                <td>Menyimpan data berupa teks.</td>
+                <td>"Belajar Python"</td>
+              </tr>
+              <tr>
+                <td><code>Integer (int)</code></td>
+                <td>Menyimpan bilangan bulat.</td>
+                <td>10, 25, 100</td>
+              </tr>
+              <tr>
+                <td><code>Float (float)</code></td>
+                <td>Menyimpan bilangan desimal.</td>
+                <td>3.14, 10.5</td>
+              </tr>
+              <tr>
+                <td><code>Boolean (bool)</code></td>
+                <td>Menyimpan nilai kebenaran.</td>
+                <td>True, False</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="info">
+            <strong>Perhatikan!</strong>
+            <p>
+              Python mengenali tipe data berdasarkan nilai yang diberikan.
+              Misalnya, nilai
+              <code>"25"</code> merupakan String karena menggunakan tanda kutip,
+              sedangkan <code>25</code> merupakan Integer.
+            </p>
+          </div>
+        </section>
+
+        <!-- 5. JENIS TIPE DATA -->
+        <section class="subsection">
+          <h3>5. Jenis-Jenis Tipe Data Python</h3>
+
+          <h4>A. String (<code>str</code>)</h4>
+
+          <p>
+            String adalah tipe data yang digunakan untuk menyimpan teks atau
+            kumpulan karakter. String ditulis menggunakan tanda kutip satu
+            (<code>'...'</code>) atau tanda kutip dua (<code>"..."</code>).
+          </p>
+
+          <p><strong>Contoh:</strong></p>
+
+          <pre><code>nama = "Andi"
+alamat = "Jakarta"
+hobi = 'Membaca'
+
+print(nama)
+print(alamat)
+print(hobi)</code></pre>
+
+          <p><strong>Hasil Output:</strong></p>
+
+          <pre><code>Andi
+Jakarta
+Membaca</code></pre>
+
+          <p>
+            String biasanya digunakan untuk menyimpan nama, alamat, kalimat, dan
+            informasi berbentuk teks lainnya.
+          </p>
+
+          <h4>B. Integer (<code>int</code>)</h4>
+
+          <p>
+            Integer merupakan tipe data yang digunakan untuk menyimpan bilangan
+            bulat, baik positif, negatif, maupun nol.
+          </p>
+
+          <p><strong>Contoh:</strong></p>
+
+          <pre><code>umur = 17
+jumlah_siswa = 30
+suhu = -5
+
+print(umur)
+print(jumlah_siswa)
+print(suhu)</code></pre>
+
+          <p><strong>Hasil Output:</strong></p>
+
+          <pre><code>17
+30
+-5</code></pre>
+
+          <p>
+            Integer dapat digunakan dalam berbagai operasi matematika seperti
+            penjumlahan, pengurangan, perkalian, dan pembagian.
+          </p>
+
+          <h4>C. Float (<code>float</code>)</h4>
+
+          <p>
+            Float merupakan tipe data yang digunakan untuk menyimpan bilangan
+            desimal. Dalam Python, tanda titik (<code>.</code>) digunakan
+            sebagai pemisah angka desimal.
+          </p>
+
+          <p><strong>Contoh:</strong></p>
+
+          <pre><code>harga = 15000.50
+jarak = 12.5
+nilai = 89.5
+
+print(harga)
+print(jarak)
+print(nilai)</code></pre>
+
+          <p><strong>Hasil Output:</strong></p>
+
+          <pre><code>15000.5
+12.5
+89.5</code></pre>
+
+          <h4>D. Boolean (<code>bool</code>)</h4>
+
+          <p>
+            Boolean merupakan tipe data yang hanya memiliki dua kemungkinan
+            nilai, yaitu <code>True</code> dan <code>False</code>.
+          </p>
+
+          <p>
+            Boolean biasanya digunakan dalam kondisi atau pengambilan keputusan
+            pada program.
+          </p>
+
+          <p><strong>Contoh:</strong></p>
+
+          <pre><code>sudah_belajar = True
+sudah_mengerjakan_tugas = False
+
+print(sudah_belajar)
+print(sudah_mengerjakan_tugas)</code></pre>
+
+          <p><strong>Hasil Output:</strong></p>
+
+          <pre><code>True
+False</code></pre>
+
+          <p><strong>Contoh Penggunaan Boolean dalam Kondisi:</strong></p>
+
+          <pre><code>nilai = 85
+lulus = nilai >= 75
+
+print(lulus)</code></pre>
+
+          <p><strong>Hasil Output:</strong></p>
+
+          <pre><code>True</code></pre>
+
+          <p>
+            Hasil tersebut menunjukkan bahwa nilai 85 lebih besar atau sama
+            dengan 75 sehingga variabel
+            <code>lulus</code> bernilai <code>True</code>.
+          </p>
+        </section>
+
+        <!-- 6. FUNGSI TYPE -->
+        <section class="subsection">
+          <h3>6. Mengenal Tipe Data dengan Fungsi type()</h3>
+
+          <p>
+            Python menyediakan fungsi bawaan
+            <code>type()</code> untuk mengetahui tipe data dari sebuah variabel.
+          </p>
+
+          <p><strong>Contoh:</strong></p>
+
+          <pre><code>nama = "Andi"
+umur = 17
+tinggi = 170.5
+aktif = True
+
+print(type(nama))
+print(type(umur))
+print(type(tinggi))
+print(type(aktif))</code></pre>
+
+          <p><strong>Hasil Output:</strong></p>
+
+          <pre><code>&lt;class 'str'&gt;
+&lt;class 'int'&gt;
+&lt;class 'float'&gt;
+&lt;class 'bool'&gt;</code></pre>
+
+          <p><strong>Penjelasan:</strong></p>
+
+          <ul>
+            <li><code>type(nama)</code> menghasilkan tipe data String.</li>
+            <li><code>type(umur)</code> menghasilkan tipe data Integer.</li>
+            <li><code>type(tinggi)</code> menghasilkan tipe data Float.</li>
+            <li><code>type(aktif)</code> menghasilkan tipe data Boolean.</li>
+          </ul>
+
+          <div class="info">
+            <strong>Coba Sendiri!</strong>
+            <p>
+              Buat variabel dengan nilai yang berbeda, kemudian gunakan
+              <code>type()</code> untuk mengetahui tipe data masing-masing
+              variabel.
+            </p>
+          </div>
+        </section>
+
+        <!-- 7. TYPE CASTING -->
+        <section class="subsection">
+          <h3>7. Konversi Tipe Data (Type Casting)</h3>
+
+          <p>
+            Type Casting adalah proses mengubah suatu nilai dari satu tipe data
+            ke tipe data lainnya. Python menyediakan beberapa fungsi untuk
+            melakukan konversi tipe data.
+          </p>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Fungsi</th>
+                <th>Kegunaan</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>str()</code></td>
+                <td>Mengubah nilai menjadi String.</td>
+              </tr>
+              <tr>
+                <td><code>int()</code></td>
+                <td>Mengubah nilai menjadi Integer.</td>
+              </tr>
+              <tr>
+                <td><code>float()</code></td>
+                <td>Mengubah nilai menjadi Float.</td>
+              </tr>
+              <tr>
+                <td><code>bool()</code></td>
+                <td>Mengubah nilai menjadi Boolean.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4>Contoh 1: Mengubah Integer menjadi String</h4>
+
+          <pre><code>umur = 17
+umur_teks = str(umur)
+
+print(umur_teks)
+print(type(umur_teks))</code></pre>
+
+          <p><strong>Hasil Output:</strong></p>
+
+          <pre><code>17
+&lt;class 'str'&gt;</code></pre>
+
+          <h4>Contoh 2: Mengubah String menjadi Integer</h4>
+
+          <pre><code>angka = "100"
+hasil = int(angka)
+
+print(hasil + 50)</code></pre>
+
+          <p><strong>Hasil Output:</strong></p>
+
+          <pre><code>150</code></pre>
+
+          <h4>Contoh 3: Mengubah Integer menjadi Float</h4>
+
+          <pre><code>angka = 10
+hasil = float(angka)
+
+print(hasil)</code></pre>
+
+          <p><strong>Hasil Output:</strong></p>
+
+          <pre><code>10.0</code></pre>
+
+          <div class="info">
+            <strong>Catatan Penting</strong>
+            <p>
+              Tidak semua nilai dapat dikonversi. Misalnya, teks
+              <code>"Halo"</code> tidak dapat langsung diubah menjadi Integer
+              menggunakan <code>int()</code> karena bukan representasi bilangan
+              bulat.
+            </p>
+          </div>
+        </section>
+
+        <!-- 8. OPERASI MATEMATIKA -->
+        <section class="subsection">
+          <h3>8. Menggabungkan Variabel dan Operasi Matematika</h3>
+
+          <p>
+            Variabel dapat digunakan untuk melakukan berbagai operasi
+            matematika. Hasil operasi juga dapat disimpan ke dalam variabel
+            lain.
+          </p>
+
+          <p><strong>Contoh:</strong></p>
+
+          <pre><code>angka1 = 20
+angka2 = 10
+
+penjumlahan = angka1 + angka2
+pengurangan = angka1 - angka2
+perkalian = angka1 * angka2
+pembagian = angka1 / angka2
+
+print("Penjumlahan:", penjumlahan)
+print("Pengurangan:", pengurangan)
+print("Perkalian:", perkalian)
+print("Pembagian:", pembagian)</code></pre>
+
+          <p><strong>Hasil Output:</strong></p>
+
+          <pre><code>Penjumlahan: 30
+Pengurangan: 10
+Perkalian: 200
+Pembagian: 2.0</code></pre>
+
+          <p>
+            Dari contoh tersebut, kita dapat melihat bahwa variabel memudahkan
+            penyimpanan angka dan hasil perhitungan sehingga dapat digunakan
+            kembali dalam program.
+          </p>
+        </section>
+
+        <!-- 9. MULTIPLE ASSIGNMENT -->
+        <section class="subsection">
+          <h3>9. Membuat Beberapa Variabel Sekaligus</h3>
+
+          <p>
+            Python memungkinkan kita membuat beberapa variabel dalam satu baris.
+            Teknik ini dikenal sebagai multiple assignment.
+          </p>
+
+          <h4>Contoh 1: Multiple Assignment</h4>
+
+          <pre><code>nama, kelas, jurusan = "Andi", "XI", "RPL"
+
+print(nama)
+print(kelas)
+print(jurusan)</code></pre>
+
+          <p><strong>Hasil Output:</strong></p>
+
+          <pre><code>Andi
+XI
+RPL</code></pre>
+
+          <h4>Contoh 2: Memberikan Nilai yang Sama</h4>
+
+          <pre><code>a = b = c = 10
+
+print(a)
+print(b)
+print(c)</code></pre>
+
+          <p><strong>Hasil Output:</strong></p>
+
+          <pre><code>10
+10
+10</code></pre>
+
+          <p>
+            Pada contoh pertama, beberapa variabel menerima nilai yang berbeda
+            dalam satu baris. Pada contoh kedua, beberapa variabel menerima
+            nilai yang sama.
+          </p>
+        </section>
+
+        <!-- 10. PRAKTIK BIODATA -->
+        <section class="subsection">
+          <h3>10. Praktik Langsung: Membuat Program Biodata</h3>
+
+          <p>
+            Setelah memahami variabel dan tipe data, sekarang kita akan mencoba
+            membuat program sederhana untuk menampilkan biodata menggunakan
+            berbagai tipe data.
+          </p>
+
+          <h4>Langkah 1: Buka Google Colab</h4>
+          <p>
+            Buat notebook baru melalui
+            <a
+              href="https://colab.research.google.com/#create=true"
+              target="_blank"
+              rel="noopener"
+              >Google Colab</a
+            >.
+          </p>
+
+          <h4>Langkah 2: Masukkan Kode Program</h4>
+
+          <pre><code># Program Biodata Siswa
+
+nama = "Andi"
+kelas = "XI RPL"
+sekolah = "SMK Teknologi"
+hobi = "Belajar Pemrograman"
+aktif = True
+
+print("==========================")
+print("       BIODATA SISWA      ")
+print("==========================")
+print("Nama    :", nama)
+print("Kelas   :", kelas)
+print("Sekolah :", sekolah)
+print("Hobi    :", hobi)
+print("Aktif   :", aktif)
+print("==========================")</code></pre>
+
+          <h4>Hasil Output:</h4>
+
+          <pre><code>==========================
+       BIODATA SISWA
+==========================
+Nama    : Andi
+Kelas   : XI RPL
+Sekolah : SMK Teknologi
+Hobi    : Belajar Pemrograman
+Aktif   : True
+==========================</code></pre>
+
+          <h4>Analisis Program</h4>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Variabel</th>
+                <th>Nilai</th>
+                <th>Tipe Data</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>nama</code></td>
+                <td>"Andi"</td>
+                <td>String</td>
+              </tr>
+              <tr>
+                <td><code>kelas</code></td>
+                <td>"XI RPL"</td>
+                <td>String</td>
+              </tr>
+              <tr>
+                <td><code>sekolah</code></td>
+                <td>"SMK Teknologi"</td>
+                <td>String</td>
+              </tr>
+              <tr>
+                <td><code>hobi</code></td>
+                <td>"Belajar Pemrograman"</td>
+                <td>String</td>
+              </tr>
+              <tr>
+                <td><code>aktif</code></td>
+                <td>True</td>
+                <td>Boolean</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>
+            Cobalah mengubah isi variabel untuk mendapatkan hasil yang berbeda.
+            Kamu juga dapat menambahkan variabel baru, misalnya umur, alamat,
+            dan tinggi badan.
+          </p>
+
+          <a
+            class="colab-button"
+            href="https://colab.research.google.com/#create=true"
+            target="_blank"
+            rel="noopener"
+          >
+            Praktik di Google Colab
+          </a>
+        </section>
+
+        <!-- 11. LATIHAN MANDIRI -->
+        <section class="subsection">
+          <h3>11. Latihan Mandiri</h3>
+
+          <p>
+            Untuk menguji pemahaman, cobalah mengerjakan beberapa latihan
+            berikut menggunakan Google Colab.
+          </p>
+
+          <h4>Latihan 1: Membuat Variabel</h4>
+
+          <p>Buatlah program yang memiliki variabel berikut:</p>
+
+          <ul>
+            <li><code>nama</code> berisi nama siswa.</li>
+            <li><code>umur</code> berisi umur siswa.</li>
+            <li><code>kelas</code> berisi kelas siswa.</li>
+            <li><code>jurusan</code> berisi jurusan siswa.</li>
+          </ul>
+
+          <p>
+            Tampilkan seluruh variabel menggunakan
+            <code>print()</code>.
+          </p>
+
+          <h4>Latihan 2: Mengenali Tipe Data</h4>
+
+          <p>Perhatikan kode berikut:</p>
+
+          <pre><code>nama = "Python"
+versi = 3
+harga = 99.5
+tersedia = True
+
+print(type(nama))
+print(type(versi))
+print(type(harga))
+print(type(tersedia))</code></pre>
+
+          <p>
+            Tentukan tipe data dari masing-masing variabel dan jelaskan
+            alasanmu.
+          </p>
+
+          <h4>Latihan 3: Konversi Tipe Data</h4>
+
+          <p>
+            Buat program untuk mengubah nilai String menjadi Integer, kemudian
+            tambahkan angka 25.
+          </p>
+
+          <pre><code>angka = "100"
+
+# Tuliskan kode konversi di sini
+
+# Tampilkan hasilnya</code></pre>
+
+          <h4>Latihan 4: Operasi Matematika</h4>
+
+          <p>
+            Buatlah dua variabel yang berisi bilangan bulat. Kemudian tampilkan
+            hasil penjumlahan, pengurangan, perkalian, dan pembagian kedua
+            bilangan tersebut.
+          </p>
+
+          <div class="info">
+            <strong>Petunjuk</strong>
+            <p>
+              Kerjakan latihan menggunakan beberapa Code Cell di Google Colab.
+              Berikan penjelasan singkat menggunakan Text Cell agar notebook
+              lebih mudah dipahami.
+            </p>
+          </div>
+        </section>
+
+        <!-- 12. KUIS -->
+        <section class="subsection">
+          <h3>12. Kuis Pemahaman</h3>
+
+          <p>
+            Uji pemahamanmu setelah mempelajari materi variabel dan tipe data
+            Python. Pilih satu jawaban yang paling tepat untuk setiap
+            pertanyaan.
+          </p>
+
+          <div class="quiz-container" id="quiz">
+            <div class="quiz-progress">
+              <div class="quiz-progress-bar" id="progress-fill"></div>
+            </div>
+
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 15px;
+                font-weight: bold;
+                color: #172554;
+              "
+            >
+              <span>Kuis Variabel dan Tipe Data</span>
+              <span id="progress-text">0/7 dijawab</span>
+            </div>
+
+            <div
+              class="question"
+              data-answer="a"
+              data-explanation="Variabel merupakan tempat untuk menyimpan data atau nilai yang dapat digunakan kembali dalam program."
+            >
+              <h4>1. Apa yang dimaksud dengan variabel dalam Python?</h4>
+              <label
+                ><input type="radio" name="q1" value="a" /> A. Tempat untuk
+                menyimpan data atau nilai</label
+              >
+              <label
+                ><input type="radio" name="q1" value="b" /> B. Perintah untuk
+                menghapus program</label
+              >
+              <label
+                ><input type="radio" name="q1" value="c" /> C. Jenis aplikasi
+                pemrograman</label
+              >
+              <label
+                ><input type="radio" name="q1" value="d" /> D. Perintah untuk
+                menghentikan program</label
+              >
+              <p class="explanation"></p>
+            </div>
+
+            <div
+              class="question"
+              data-answer="c"
+              data-explanation="String merupakan tipe data yang digunakan untuk menyimpan teks atau kumpulan karakter."
+            >
+              <h4>2. Manakah tipe data yang digunakan untuk menyimpan teks?</h4>
+              <label
+                ><input type="radio" name="q2" value="a" /> A. Integer</label
+              >
+              <label><input type="radio" name="q2" value="b" /> B. Float</label>
+              <label
+                ><input type="radio" name="q2" value="c" /> C. String</label
+              >
+              <label
+                ><input type="radio" name="q2" value="d" /> D. Boolean</label
+              >
+              <p class="explanation"></p>
+            </div>
+
+            <div
+              class="question"
+              data-answer="d"
+              data-explanation="Nilai 25.5 merupakan Float karena memiliki bagian desimal."
+            >
+              <h4>3. Apa tipe data dari nilai 25.5?</h4>
+              <label
+                ><input type="radio" name="q3" value="a" /> A. String</label
+              >
+              <label
+                ><input type="radio" name="q3" value="b" /> B. Integer</label
+              >
+              <label
+                ><input type="radio" name="q3" value="c" /> C. Boolean</label
+              >
+              <label><input type="radio" name="q3" value="d" /> D. Float</label>
+              <p class="explanation"></p>
+            </div>
+
+            <div
+              class="question"
+              data-answer="b"
+              data-explanation="Fungsi type() digunakan untuk mengetahui tipe data dari suatu nilai atau variabel."
+            >
+              <h4>4. Apa fungsi dari type() dalam Python?</h4>
+              <label
+                ><input type="radio" name="q4" value="a" /> A. Menghapus
+                variabel</label
+              >
+              <label
+                ><input type="radio" name="q4" value="b" /> B. Mengetahui tipe
+                data</label
+              >
+              <label
+                ><input type="radio" name="q4" value="c" /> C. Mengubah nama
+                variabel</label
+              >
+              <label
+                ><input type="radio" name="q4" value="d" /> D. Menjalankan
+                perulangan</label
+              >
+              <p class="explanation"></p>
+            </div>
+
+            <div
+              class="question"
+              data-answer="c"
+              data-explanation="True merupakan salah satu dari dua nilai Boolean, yaitu True dan False."
+            >
+              <h4>5. Manakah nilai yang termasuk tipe data Boolean?</h4>
+              <label
+                ><input type="radio" name="q5" value="a" /> A. "True"</label
+              >
+              <label><input type="radio" name="q5" value="b" /> B. 100</label>
+              <label><input type="radio" name="q5" value="c" /> C. True</label>
+              <label><input type="radio" name="q5" value="d" /> D. 10.5</label>
+              <p class="explanation"></p>
+            </div>
+
+            <div
+              class="question"
+              data-answer="a"
+              data-explanation="Fungsi int() digunakan untuk mengonversi nilai menjadi bilangan bulat atau Integer jika nilainya dapat dikonversi."
+            >
+              <h4>6. Apa fungsi int() dalam Python?</h4>
+              <label
+                ><input type="radio" name="q6" value="a" /> A. Mengubah nilai
+                menjadi Integer</label
+              >
+              <label
+                ><input type="radio" name="q6" value="b" /> B. Mengubah nilai
+                menjadi String</label
+              >
+              <label
+                ><input type="radio" name="q6" value="c" /> C. Mengubah nilai
+                menjadi Boolean</label
+              >
+              <label
+                ><input type="radio" name="q6" value="d" /> D. Menghapus nilai
+                variabel</label
+              >
+              <p class="explanation"></p>
+            </div>
+
+            <div
+              class="question"
+              data-answer="c"
+              data-explanation="nama_siswa diawali huruf dan menggunakan garis bawah sebagai pemisah kata sehingga merupakan nama variabel yang valid."
+            >
+              <h4>7. Manakah penulisan variabel yang benar?</h4>
+              <label
+                ><input type="radio" name="q7" value="a" /> A. 2nama =
+                'Andi'</label
+              >
+              <label
+                ><input type="radio" name="q7" value="b" /> B. nama lengkap =
+                'Andi'</label
+              >
+              <label
+                ><input type="radio" name="q7" value="c" /> C. nama_siswa =
+                'Andi'</label
+              >
+              <label
+                ><input type="radio" name="q7" value="d" /> D. class =
+                'Andi'</label
+              >
+              <p class="explanation"></p>
+            </div>
+
+            <div class="quiz-actions">
+              <button type="button" id="check-quiz" class="colab-button">
+                Periksa Jawaban
+              </button>
+
+              <button
+                type="button"
+                id="reset-quiz"
+                class="colab-button secondary"
+                style="display: none"
+              >
+                Ulangi Kuis
+              </button>
+            </div>
+
+            <div id="quiz-result" class="quiz-result" aria-live="polite"></div>
+          </div>
+        </section>
+
+        <!-- 13. KESIMPULAN -->
+        <section class="subsection">
+          <h3>13. Kesimpulan</h3>
+
+          <p>
+            Variabel dan tipe data merupakan konsep dasar yang sangat penting
+            dalam pemrograman Python. Variabel digunakan untuk menyimpan data,
+            sedangkan tipe data menentukan jenis nilai yang disimpan.
+          </p>
+
+          <p>
+            Python memiliki berbagai tipe data, di antaranya String
+            (<code>str</code>), Integer (<code>int</code>), Float
+            (<code>float</code>), dan Boolean (<code>bool</code>). Kita dapat
+            mengetahui tipe data menggunakan fungsi <code>type()</code> serta
+            mengubah tipe data menggunakan fungsi seperti <code>str()</code>,
+            <code>int()</code>, <code>float()</code>, dan <code>bool()</code>.
+          </p>
+
+          <p>
+            Dengan memahami variabel dan tipe data, kita memiliki dasar untuk
+            membuat program yang lebih kompleks. Selanjutnya, kita akan
+            mempelajari berbagai operator dalam Python untuk mengolah data dan
+            melakukan perhitungan.
+          </p>
+        </section>
+
+        <!-- TUGAS -->
+        <section class="task">
+          <h3>Tugas 3: Membuat Program Biodata dan Perhitungan</h3>
+
+          <p>
+            Buatlah sebuah notebook Google Colab yang menerapkan konsep variabel
+            dan tipe data Python.
+          </p>
+
+          <h4>Petunjuk Pengerjaan</h4>
+
+          <ol>
+            <li>Buat notebook baru di Google Colab.</li>
+            <li>
+              Berikan nama notebook:
+              <strong>Tugas 3 - Variabel dan Tipe Data - Nama Anda</strong>.
+            </li>
+            <li>
+              Buat program biodata yang memuat minimal lima variabel, meliputi
+              nama, umur, kelas, tinggi badan, dan status belajar Python.
+            </li>
+            <li>
+              Pastikan program menggunakan minimal tiga jenis tipe data yang
+              berbeda.
+            </li>
+            <li>
+              Tampilkan seluruh nilai variabel menggunakan
+              <code>print()</code>.
+            </li>
+            <li>
+              Gunakan <code>type()</code> untuk menampilkan tipe data setiap
+              variabel.
+            </li>
+            <li>
+              Buat program perhitungan sederhana menggunakan minimal dua
+              variabel angka.
+            </li>
+            <li>
+              Jalankan seluruh kode dan pastikan hasilnya terlihat dengan benar.
+            </li>
+          </ol>
+
+          <h4>Ketentuan Pengumpulan</h4>
+
+          <ul>
+            <li>Simpan notebook dengan nama file yang sesuai.</li>
+            <li>Pastikan semua Code Cell dapat dijalankan.</li>
+            <li>Unduh notebook dalam format <code>.ipynb</code>.</li>
+            <li>Kumpulkan sesuai petunjuk pengumpulan tugas pada sidebar.</li>
+          </ul>
+
+          <div class="info">
+            <strong>Perhatian</strong>
+            <p>
+              Pastikan notebook sudah memuat kode program, hasil output, dan
+              identitas diri sebelum dikumpulkan.
+            </p>
+          </div>
+        </section>
+
+        <!-- NAVIGASI MATERI -->
+        <div class="navigation" id="navigation"></div>
+
+        <footer>
+          <p>&copy; 2026 Python Learn. Belajar Python dari Dasar.</p>
+        </footer>
+      </main>
+    </div>
+
+    <!-- JAVASCRIPT KUIS -->
+    <script>
+      const quiz = document.getElementById('quiz');
+      const questions = quiz.querySelectorAll('.question');
+      const progressText = document.getElementById('progress-text');
+      const progressFill = document.getElementById('progress-fill');
+      const resultBox = document.getElementById('quiz-result');
+      const checkBtn = document.getElementById('check-quiz');
+      const resetBtn = document.getElementById('reset-quiz');
+
+      function updateProgress() {
+        let answered = 0;
+
+        questions.forEach((question) => {
+          if (question.querySelector('input:checked')) {
+            answered++;
+          }
+        });
+
+        progressText.textContent =
+          answered + '/' + questions.length + ' dijawab';
+        progressFill.style.width = (answered / questions.length) * 100 + '%';
+      }
+
+      quiz.querySelectorAll("input[type='radio']").forEach((input) => {
+        input.addEventListener('change', updateProgress);
+      });
+
+      checkBtn.addEventListener('click', function () {
+        let score = 0;
+        let answered = 0;
+
+        questions.forEach((question) => {
+          const selected = question.querySelector('input:checked');
+          const explanation = question.querySelector('.explanation');
+          const correctAnswer = question.dataset.answer;
+
+          if (selected) {
+            answered++;
+
+            if (selected.value === correctAnswer) {
+              score++;
+              explanation.textContent =
+                'Benar! ' + question.dataset.explanation;
+              explanation.className = 'explanation correct';
+            } else {
+              explanation.textContent =
+                'Belum tepat. ' + question.dataset.explanation;
+              explanation.className = 'explanation incorrect';
+            }
+          } else {
+            explanation.textContent =
+              'Belum dijawab. ' + question.dataset.explanation;
+            explanation.className = 'explanation incorrect';
+          }
+        });
+
+        resultBox.style.display = 'block';
+
+        if (answered < questions.length) {
+          resultBox.innerHTML =
+            '<strong>Peringatan!</strong><p>Silakan jawab semua pertanyaan terlebih dahulu. ' +
+            answered +
+            ' dari ' +
+            questions.length +
+            ' pertanyaan sudah dijawab.</p>';
+          resultBox.className = 'quiz-result warning';
+          return;
+        }
+
+        const finalScore = Math.round((score / questions.length) * 100);
+
+        resultBox.innerHTML =
+          '<h4>Hasil Kuis</h4>' +
+          '<p>Jawaban benar: ' +
+          score +
+          ' dari ' +
+          questions.length +
+          ' pertanyaan. Nilai: ' +
+          finalScore +
+          '/100.</p>';
+
+        resultBox.className = 'quiz-result';
+
+        checkBtn.style.display = 'none';
+        resetBtn.style.display = 'inline-block';
+
+        resultBox.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+        });
+      });
+
+      resetBtn.addEventListener('click', function () {
+        quiz.querySelectorAll("input[type='radio']").forEach((input) => {
+          input.checked = false;
+        });
+
+        questions.forEach((question) => {
+          const explanation = question.querySelector('.explanation');
+          explanation.textContent = '';
+          explanation.className = 'explanation';
+        });
+
+        resultBox.textContent = '';
+        resultBox.style.display = 'none';
+        resultBox.className = 'quiz-result';
+
+        checkBtn.style.display = 'inline-block';
+        resetBtn.style.display = 'none';
+
+        updateProgress();
+
+        window.scrollTo({
+          top: quiz.offsetTop,
+          behavior: 'smooth',
+        });
+      });
+
+      updateProgress();
+    </script>
+
+    <!-- SCRIPT NAVIGASI BERSAMA -->
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>
