@@ -76,7 +76,7 @@ function buatMenu() {
           <h3>Pengumpulan Tugas</h3>
           Silakan kumpulkan hasil pengerjaan tugas melalui tautan berikut.
 
-          <a href="https://forms.gle/BexDaqPnhvqvkYW69" id="tombol-pengumpulan">
+          <a href="https://forms.gle/BexDaqPnhvqvkYW69" id="tombol-pengumpulan" target="_blank">
               <strong>Pengumpulan Tugas 📤</strong>
           </a>
       </div>
