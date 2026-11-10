@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Materi 5: Input dan Output Python | Python Learn</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <style>
+      /* Styling disamakan persis dengan pengenalan-python.html */
+      .subsection {
+        margin-bottom: 30px;
+      }
+
+      .subsection h3 {
+        margin-top: 30px;
+      }
+
+      .table-responsive {
+        overflow-x: auto;
+        margin: 20px 0;
+      }
+
+      .content table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+        margin: 15px 0;
+      }
+
+      .content th,
+      .content td {
+        border: 1px solid #dbe3ef;
+        padding: 11px 13px;
+        text-align: left;
+      }
+
+      .content th {
+        background: #eff6ff;
+        color: #172554;
+      }
+
+      .code-output {
+        background: #f8fbff;
+        border-left: 4px solid #1764dc;
+        padding: 12px 16px;
+        border-radius: 5px;
+        margin: 10px 0 20px;
+      }
+
+      .code-output strong {
+        display: block;
+        margin-bottom: 7px;
+        color: #172554;
+      }
+
+      .code-output pre {
+        margin: 0;
+        white-space: pre-wrap;
+      }
+
+      .difficulty {
+        display: inline-block;
+        font-size: 12px;
+        padding: 4px 10px;
+        border-radius: 20px;
+        background: #dbeafe;
+        color: #1764dc;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      /* Kuis Interaktif */
+      .quiz-container {
+        border: 1px solid #dbe3ef;
+        border-radius: 9px;
+        padding: 22px;
+        margin-top: 20px;
+        background: #f8fbff;
+      }
+
+      .quiz-header {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .quiz-progress {
+        background: #e2e8f0;
+        height: 8px;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 22px;
+      }
+
+      .quiz-progress-bar {
+        height: 100%;
+        width: 0%;
+        background: #1764dc;
+        transition: width 0.3s;
+      }
+
+      .question-card {
+        background: #fff;
+        border: 1px solid #dbe3ef;
+        border-radius: 8px;
+        padding: 18px;
+        margin-bottom: 16px;
+      }
+
+      .question-card h4 {
+        margin: 0 0 13px;
+        color: #172554;
+      }
+
+      .quiz-option {
+        display: block;
+        padding: 10px 12px;
+        margin: 8px 0;
+        border: 1px solid #dbe3ef;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        background: white;
+      }
+
+      .quiz-option:hover {
+        background: #eff6ff;
+        border-color: #1764dc;
+      }
+
+      .quiz-option input {
+        margin-right: 9px;
+        accent-color: #1764dc;
+      }
+
+      .quiz-button {
+        background: #1764dc;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 12px 22px;
+        cursor: pointer;
+        font-size: 14px;
+        margin-top: 10px;
+      }
+
+      .quiz-button:hover {
+        background: #104bad;
+      }
+
+      .quiz-result {
+        display: none;
+        padding: 17px;
+        margin-top: 18px;
+        border-radius: 7px;
+        background: #eff6ff;
+        border-left: 4px solid #1764dc;
+      }
+
+      .quiz-result h4 {
+        margin-top: 0;
+      }
+
+      .quiz-feedback {
+        font-size: 13px;
+        margin-top: 8px;
+        color: #475569;
+      }
+
+      .quiz-feedback.correct {
+        color: #15803d;
+      }
+
+      .quiz-feedback.wrong {
+        color: #dc2626;
+      }
+
+      @media (max-width: 700px) {
+        .quiz-container {
+          padding: 14px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header>
+      <a href="index.html" class="logo">
+        <div class="logo-icon">Py</div>
+        <h1>Python <span>Learn</span></h1>
+      </a>
+
+      <nav class="top-nav">
+        <a href="tentang.html">Tentang</a>
+        <a href="index.html">Beranda</a>
+      </nav>
+    </header>
+
+    <div class="container">
+      <!-- SIDEBAR -->
+      <aside class="sidebar" id="sidebar"></aside>
+
+      <!-- KONTEN MATERI -->
+      <main class="content">
+        <div class="breadcrumb">
+          <a href="index.html">Python Learn</a>
+          &nbsp; / &nbsp; Input dan Output Python
+        </div>
+
+        <h2>Materi 5: Input dan Output Python</h2>
+
+        <p>
+          Dalam pemrograman, sebuah program tidak hanya perlu melakukan
+          perhitungan, tetapi juga harus mampu berkomunikasi dengan penggunanya.
+          Pada materi ini, kita akan mempelajari cara menerima data dari
+          pengguna dan menampilkan informasi menggunakan Python.
+        </p>
+
+        <div class="info">
+          <strong>Tujuan Pembelajaran</strong>
+          Setelah mempelajari materi ini, kamu diharapkan mampu:
+          <ol>
+            <li>Memahami konsep input dan output dalam Python.</li>
+            <li>
+              Menggunakan fungsi <code>print()</code> untuk menampilkan
+              informasi.
+            </li>
+            <li>
+              Menggunakan fungsi <code>input()</code> untuk menerima data.
+            </li>
+            <li>Mengubah tipe data input menggunakan fungsi konversi.</li>
+            <li>Menggunakan f-string dan mengatur tampilan output.</li>
+            <li>Membuat program sederhana yang interaktif.</li>
+          </ol>
+        </div>
+
+        <!-- BAGIAN 1 -->
+        <section class="subsection">
+          <h3>1. Pengertian Input dan Output</h3>
+
+          <p>
+            Dalam pemrograman Python, <strong>Input</strong> dan
+            <strong>Output</strong> merupakan dua hal penting yang digunakan
+            untuk berkomunikasi dengan pengguna.
+          </p>
+
+          <ul>
+            <li>
+              <strong>Input</strong> adalah proses memasukkan data ke dalam
+              program.
+            </li>
+            <li>
+              <strong>Output</strong> adalah proses menampilkan hasil dari
+              program kepada pengguna.
+            </li>
+          </ul>
+
+          <p>
+            Dengan input dan output, program tidak hanya menjalankan perintah
+            secara otomatis, tetapi juga dapat menerima informasi dari pengguna
+            dan memberikan respons berdasarkan informasi tersebut.
+          </p>
+
+          <p>Contoh sederhana proses input dan output:</p>
+
+          <ol>
+            <li>Pengguna memasukkan nama.</li>
+            <li>Program menerima nama tersebut.</li>
+            <li>
+              Program menampilkan sapaan menggunakan nama yang dimasukkan.
+            </li>
+          </ol>
+
+          <div class="info">
+            <strong>Ingat!</strong>
+            Input digunakan untuk menerima informasi, sedangkan output digunakan
+            untuk menyampaikan informasi kepada pengguna.
+          </div>
+        </section>
+
+        <!-- BAGIAN 2 -->
+        <section class="subsection">
+          <h3>2. Output Menggunakan <code>print()</code></h3>
+
+          <p>
+            Fungsi <code>print()</code> digunakan untuk menampilkan teks, angka,
+            variabel, maupun hasil perhitungan ke layar.
+          </p>
+
+          <h4>Contoh 1: Menampilkan teks</h4>
+
+          <pre><code>print("Halo, Selamat Belajar Python!")</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>Halo, Selamat Belajar Python!</pre>
+          </div>
+
+          <h4>Contoh 2: Menampilkan angka</h4>
+
+          <pre><code>print(100)
+print(25.5)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+100
+25.5</pre
+            >
+          </div>
+
+          <h4>Contoh 3: Menampilkan beberapa data</h4>
+
+          <pre><code>nama = "Andi"
+umur = 17
+
+print("Nama:", nama)
+print("Umur:", umur)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+Nama: Andi
+Umur: 17</pre
+            >
+          </div>
+
+          <h4>Contoh 4: Menampilkan hasil operasi matematika</h4>
+
+          <pre><code>print(10 + 5)
+print(20 * 3)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+15
+60</pre
+            >
+          </div>
+
+          <p>
+            Dari contoh tersebut, dapat diketahui bahwa fungsi
+            <code>print()</code> dapat menampilkan berbagai jenis informasi,
+            baik berupa teks, angka, variabel, maupun hasil operasi matematika.
+          </p>
+        </section>
+
+        <!-- BAGIAN 3 -->
+        <section class="subsection">
+          <h3>3. Input Menggunakan <code>input()</code></h3>
+
+          <p>
+            Fungsi <code>input()</code> digunakan untuk menerima data yang
+            dimasukkan oleh pengguna melalui keyboard.
+          </p>
+
+          <div class="info">
+            <strong>Catatan penting:</strong>
+            Data yang dimasukkan menggunakan <code>input()</code> secara default
+            akan dianggap sebagai tipe data string (<code>str</code>).
+          </div>
+
+          <h4>Contoh 1: Meminta nama pengguna</h4>
+
+          <pre><code>nama = input("Masukkan nama Anda: ")
+print("Halo,", nama)</code></pre>
+
+          <div class="code-output">
+            <strong>Contoh Interaksi Program:</strong>
+            <pre>
+Masukkan nama Anda: Budi
+Halo, Budi</pre
+            >
+          </div>
+
+          <h4>Contoh 2: Meminta alamat pengguna</h4>
+
+          <pre><code>alamat = input("Masukkan alamat Anda: ")
+print("Alamat Anda adalah:", alamat)</code></pre>
+
+          <div class="code-output">
+            <strong>Contoh Interaksi:</strong>
+            <pre>
+Masukkan alamat Anda: Jakarta
+Alamat Anda adalah: Jakarta</pre
+            >
+          </div>
+
+          <h4>Contoh 3: Meminta beberapa input</h4>
+
+          <pre><code>nama = input("Masukkan nama: ")
+kelas = input("Masukkan kelas: ")
+sekolah = input("Masukkan nama sekolah: ")
+
+print("Nama:", nama)
+print("Kelas:", kelas)
+print("Sekolah:", sekolah)</code></pre>
+
+          <div class="code-output">
+            <strong>Contoh Interaksi:</strong>
+            <pre>
+Masukkan nama: Siti
+Masukkan kelas: 10A
+Masukkan nama sekolah: SMA Nusantara
+
+Nama: Siti
+Kelas: 10A
+Sekolah: SMA Nusantara</pre
+            >
+          </div>
+
+          <p>
+            Perhatikan bahwa program akan menunggu pengguna memasukkan data
+            sebelum melanjutkan perintah berikutnya.
+          </p>
+        </section>
+
+        <!-- BAGIAN 4 -->
+        <section class="subsection">
+          <h3>4. Mengubah Tipe Data Input</h3>
+
+          <p>
+            Secara default, fungsi <code>input()</code> menghasilkan data
+            bertipe string. Jika ingin melakukan perhitungan matematika, kita
+            perlu mengubah tipe data input menjadi angka.
+          </p>
+
+          <p>Python menyediakan beberapa fungsi untuk mengubah tipe data:</p>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Fungsi</th>
+                  <th>Kegunaan</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>int()</code></td>
+                  <td>Mengubah data menjadi bilangan bulat.</td>
+                </tr>
+                <tr>
+                  <td><code>float()</code></td>
+                  <td>Mengubah data menjadi bilangan desimal.</td>
+                </tr>
+                <tr>
+                  <td><code>str()</code></td>
+                  <td>Mengubah data menjadi teks.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>Contoh 1: Menggunakan <code>int()</code></h4>
+
+          <pre><code>umur = int(input("Masukkan umur Anda: "))
+
+print("Umur Anda:", umur)
+print("Tahun depan umur Anda:", umur + 1)</code></pre>
+
+          <div class="code-output">
+            <strong>Contoh Interaksi:</strong>
+            <pre>
+Masukkan umur Anda: 17
+Umur Anda: 17
+Tahun depan umur Anda: 18</pre
+            >
+          </div>
+
+          <h4>Contoh 2: Menggunakan <code>float()</code></h4>
+
+          <pre><code>tinggi = float(input("Masukkan tinggi badan: "))
+
+print("Tinggi badan Anda:", tinggi)</code></pre>
+
+          <div class="code-output">
+            <strong>Contoh Interaksi:</strong>
+            <pre>
+Masukkan tinggi badan: 165.5
+Tinggi badan Anda: 165.5</pre
+            >
+          </div>
+
+          <h4>Contoh 3: Menggunakan <code>str()</code></h4>
+
+          <pre><code>nomor = 12345
+teks = str(nomor)
+
+print("Nomor:", teks)
+print("Tipe data:", type(teks))</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+Nomor: 12345
+Tipe data: &lt;class 'str'&gt;</pre
+            >
+          </div>
+
+          <h4>Catatan Penting: Perbedaan String dan Angka</h4>
+
+          <p>Perhatikan contoh berikut:</p>
+
+          <pre><code>angka = input("Masukkan angka: ")
+print(angka + angka)</code></pre>
+
+          <p>
+            Jika pengguna memasukkan angka <code>5</code>, hasilnya adalah
+            <code>55</code>, bukan <code>10</code>. Hal ini terjadi karena data
+            masih berupa string sehingga tanda <code>+</code> digunakan untuk
+            menggabungkan teks.
+          </p>
+
+          <p>Agar bisa dijumlahkan sebagai angka, gunakan:</p>
+
+          <pre><code>angka = int(input("Masukkan angka: "))
+print(angka + angka)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output (jika input adalah 5):</strong>
+            <pre>10</pre>
+          </div>
+
+          <div class="info">
+            <strong>Tips:</strong>
+            Biasakan memeriksa tipe data input sebelum melakukan operasi
+            matematika. Gunakan <code>int()</code> untuk bilangan bulat dan
+            <code>float()</code> untuk bilangan desimal.
+          </div>
+        </section>
+
+        <!-- BAGIAN 5 -->
+        <section class="subsection">
+          <h3>5. Menggabungkan Input dan Output</h3>
+
+          <p>
+            Input dan output dapat digabungkan untuk membuat program yang lebih
+            interaktif. Salah satu contohnya adalah program biodata sederhana.
+          </p>
+
+          <h4>Contoh: Program Biodata Sederhana</h4>
+
+          <pre><code>print("=== PROGRAM BIODATA ===")
+
+nama = input("Masukkan nama: ")
+umur = int(input("Masukkan umur: "))
+alamat = input("Masukkan alamat: ")
+hobi = input("Masukkan hobi: ")
+
+print("\n=== BIODATA ANDA ===")
+print("Nama   :", nama)
+print("Umur   :", umur, "tahun")
+print("Alamat :", alamat)
+print("Hobi   :", hobi)</code></pre>
+
+          <div class="code-output">
+            <strong>Contoh Hasil Program:</strong>
+            <pre>
+=== PROGRAM BIODATA ===
+Masukkan nama: Andi
+Masukkan umur: 17
+Masukkan alamat: Bandung
+Masukkan hobi: Membaca
+
+=== BIODATA ANDA ===
+Nama   : Andi
+Umur   : 17 tahun
+Alamat : Bandung
+Hobi   : Membaca</pre
+            >
+          </div>
+
+          <p>Penjelasan program:</p>
+
+          <ol>
+            <li><code>print()</code> menampilkan judul program.</li>
+            <li><code>input()</code> menerima nama, alamat, dan hobi.</li>
+            <li>
+              <code>int()</code> mengubah input umur menjadi bilangan bulat.
+            </li>
+            <li>Data disimpan dalam variabel masing-masing.</li>
+            <li><code>print()</code> menampilkan kembali biodata pengguna.</li>
+          </ol>
+        </section>
+
+        <!-- BAGIAN 6 -->
+        <section class="subsection">
+          <h3>6. Menggunakan F-String untuk Output</h3>
+
+          <p>
+            F-string adalah cara praktis untuk memasukkan nilai variabel ke
+            dalam teks.
+          </p>
+
+          <p>
+            Caranya adalah dengan menambahkan huruf <code>f</code> sebelum tanda
+            kutip dan menempatkan variabel di dalam kurung kurawal
+            <code>{}</code>.
+          </p>
+
+          <h4>Contoh 1: Menampilkan variabel</h4>
+
+          <pre><code>nama = "Andi"
+umur = 17
+
+print(f"Halo, nama saya {nama}.")
+print(f"Saya berumur {umur} tahun.")</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+Halo, nama saya Andi.
+Saya berumur 17 tahun.</pre
+            >
+          </div>
+
+          <h4>Contoh 2: F-string dengan operasi matematika</h4>
+
+          <pre><code>angka1 = 10
+angka2 = 5
+
+print(f"Hasil penjumlahan: {angka1 + angka2}")</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>Hasil penjumlahan: 15</pre>
+          </div>
+
+          <p>
+            F-string sangat berguna ketika membuat tampilan program yang
+            membutuhkan banyak variabel. Penulisan kode menjadi lebih ringkas
+            dan mudah dibaca.
+          </p>
+        </section>
+
+        <!-- BAGIAN 7 -->
+        <section class="subsection">
+          <h3>7. Mengatur Tampilan Output</h3>
+
+          <p>
+            Python menyediakan beberapa cara untuk mengatur tampilan teks yang
+            dihasilkan. Berikut beberapa teknik yang perlu kamu ketahui.
+          </p>
+
+          <h4>A. Menggunakan <code>sep</code></h4>
+
+          <p>
+            Parameter <code>sep</code> digunakan untuk mengatur pemisah
+            antar-data pada fungsi <code>print()</code>.
+          </p>
+
+          <pre><code>print("Belajar", "Python", "Mudah", sep="-")</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>Belajar-Python-Mudah</pre>
+          </div>
+
+          <h4>B. Menggunakan <code>end</code></h4>
+
+          <p>
+            Parameter <code>end</code> digunakan untuk mengatur karakter di
+            akhir output. Secara default, fungsi
+            <code>print()</code> menggunakan baris baru (<code>\n</code>).
+          </p>
+
+          <pre><code>print("Halo", end=" ")
+print("Dunia")</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>Halo Dunia</pre>
+          </div>
+
+          <h4>C. Menggunakan karakter baris baru <code>\n</code></h4>
+
+          <p>
+            Karakter <code>\n</code> digunakan untuk memindahkan teks ke baris
+            berikutnya.
+          </p>
+
+          <pre><code>print("Nama: Andi\nKelas: 10A\nHobi: Membaca")</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+Nama: Andi
+Kelas: 10A
+Hobi: Membaca</pre
+            >
+          </div>
+
+          <h4>D. Menggunakan tab <code>\t</code></h4>
+
+          <p>
+            Karakter <code>\t</code> digunakan untuk memberikan jarak tab
+            antar-teks.
+          </p>
+
+          <pre><code>print("Nama\tUmur\tKelas")
+print("Andi\t17\t10A")</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+Nama    Umur    Kelas
+Andi    17      10A</pre
+            >
+          </div>
+
+          <div class="info">
+            <strong>Rangkuman:</strong>
+            <ul>
+              <li><code>sep</code>: mengatur pemisah antar-data.</li>
+              <li><code>end</code>: mengatur karakter akhir output.</li>
+              <li><code>\n</code>: membuat baris baru.</li>
+              <li><code>\t</code>: memberikan jarak tab.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- BAGIAN 8 -->
+        <section class="subsection">
+          <h3>8. Contoh Project: Program Kalkulator Sederhana</h3>
+
+          <p>
+            Setelah memahami input dan output, sekarang kita akan membuat
+            program kalkulator sederhana yang menerima dua angka dari pengguna.
+          </p>
+
+          <p>
+            Program ini akan melakukan operasi penjumlahan, pengurangan,
+            perkalian, dan pembagian.
+          </p>
+
+          <h4>Kode Program</h4>
+
+          <pre><code># Program Kalkulator Sederhana
+
+print("=== KALKULATOR SEDERHANA ===")
+
+angka1 = float(input("Masukkan angka pertama: "))
+angka2 = float(input("Masukkan angka kedua: "))
+
+penjumlahan = angka1 + angka2
+pengurangan = angka1 - angka2
+perkalian = angka1 * angka2
+
+print("\n=== HASIL PERHITUNGAN ===")
+print(f"Penjumlahan: {penjumlahan}")
+print(f"Pengurangan: {pengurangan}")
+print(f"Perkalian: {perkalian}")
+
+if angka2 != 0:
+    pembagian = angka1 / angka2
+    print(f"Pembagian: {pembagian}")
+else:
+    print("Pembagian tidak dapat dilakukan dengan nol.")</code></pre>
+
+          <div class="code-output">
+            <strong>Contoh Hasil Program:</strong>
+            <pre>
+=== KALKULATOR SEDERHANA ===
+Masukkan angka pertama: 20
+Masukkan angka kedua: 5
+
+=== HASIL PERHITUNGAN ===
+Penjumlahan: 25.0
+Pengurangan: 15.0
+Perkalian: 100.0
+Pembagian: 4.0</pre
+            >
+          </div>
+
+          <h4>Penjelasan Program</h4>
+
+          <ol>
+            <li>
+              <code>input()</code> digunakan untuk menerima dua angka dari
+              pengguna.
+            </li>
+            <li>
+              <code>float()</code> mengubah input menjadi bilangan desimal.
+            </li>
+            <li>Variabel digunakan untuk menyimpan hasil perhitungan.</li>
+            <li><code>print()</code> menampilkan hasil perhitungan.</li>
+            <li>
+              <code>if angka2 != 0</code> memastikan pembagian tidak dilakukan
+              jika angka kedua bernilai nol.
+            </li>
+          </ol>
+
+          <div class="info">
+            <strong>Mengapa perlu menggunakan kondisi if?</strong>
+            Dalam matematika, pembagian dengan nol tidak diperbolehkan. Oleh
+            karena itu, program perlu memeriksa nilai angka kedua sebelum
+            melakukan pembagian.
+          </div>
+
+          <a
+            class="colab-button"
+            href="https://colab.research.google.com/#create=true"
+            target="_blank"
+            rel="noopener"
+          >
+            Praktikkan di Google Colab ↗
+          </a>
+        </section>
+
+        <!-- BAGIAN 9 -->
+        <section class="subsection">
+          <h3>9. Kesalahan yang Sering Terjadi</h3>
+
+          <p>
+            Berikut beberapa kesalahan yang sering dilakukan pemula ketika
+            menggunakan input dan output Python.
+          </p>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Kesalahan</th>
+                  <th>Penyebab</th>
+                  <th>Solusi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Hasil <code>5 + 5</code> menjadi <code>55</code></td>
+                  <td>Input masih berupa string.</td>
+                  <td>Gunakan <code>int()</code> atau <code>float()</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>ValueError</code></td>
+                  <td>Input tidak sesuai dengan tipe data yang diubah.</td>
+                  <td>Pastikan pengguna memasukkan angka.</td>
+                </tr>
+                <tr>
+                  <td><code>NameError</code></td>
+                  <td>Variabel belum dibuat atau salah penulisan.</td>
+                  <td>Periksa nama variabel.</td>
+                </tr>
+                <tr>
+                  <td>Output tidak sesuai</td>
+                  <td>Kesalahan penulisan kode.</td>
+                  <td>Periksa kembali perintah <code>print()</code>.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>Contoh Kesalahan: ValueError</h4>
+
+          <pre><code>umur = int(input("Masukkan umur: "))</code></pre>
+
+          <p>
+            Jika pengguna memasukkan teks seperti
+            <code>tujuh belas</code>, Python akan menghasilkan
+            <code>ValueError</code> karena teks tersebut tidak bisa langsung
+            diubah menjadi bilangan bulat.
+          </p>
+
+          <div class="info">
+            <strong>Tips menghindari kesalahan:</strong>
+            Perhatikan jenis data yang dimasukkan pengguna. Jika program
+            membutuhkan angka, pastikan input dikonversi ke tipe data numerik
+            yang sesuai.
+          </div>
+        </section>
+
+        <!-- BAGIAN 10 -->
+        <section class="subsection">
+          <h3>10. Latihan Mandiri</h3>
+
+          <p>
+            Sekarang saatnya mencoba membuat program sendiri! Kerjakan latihan
+            berikut menggunakan Google Colab.
+          </p>
+
+          <div class="info">
+            <span class="difficulty">Mudah</span>
+            <strong>Latihan 1: Program Perkenalan</strong>
+            <p>
+              Buatlah program yang meminta nama, umur, dan asal kota pengguna.
+              Kemudian tampilkan semua informasi tersebut menggunakan fungsi
+              <code>print()</code>.
+            </p>
+            <p><strong>Petunjuk:</strong></p>
+            <ul>
+              <li>Gunakan <code>input()</code> untuk menerima data.</li>
+              <li>Simpan setiap data dalam variabel.</li>
+              <li>Gunakan <code>print()</code> untuk menampilkan hasil.</li>
+            </ul>
+          </div>
+
+          <div class="info">
+            <span class="difficulty">Mudah</span>
+            <strong>Latihan 2: Menghitung Luas Persegi</strong>
+            <p>
+              Buat program yang meminta panjang sisi persegi, kemudian
+              menghitung dan menampilkan luasnya.
+            </p>
+            <p><strong>Rumus:</strong> Luas = sisi × sisi</p>
+            <p><strong>Petunjuk:</strong></p>
+            <ul>
+              <li>
+                Gunakan <code>float(input())</code> untuk menerima panjang sisi.
+              </li>
+              <li>Hitung luas menggunakan operator perkalian.</li>
+              <li>Tampilkan hasilnya menggunakan <code>print()</code>.</li>
+            </ul>
+          </div>
+
+          <div class="info">
+            <span class="difficulty">Menengah</span>
+            <strong>Latihan 3: Menghitung Rata-Rata</strong>
+            <p>
+              Buat program yang meminta tiga nilai angka, kemudian menghitung
+              dan menampilkan nilai rata-ratanya.
+            </p>
+            <p>
+              <strong>Rumus:</strong> Rata-rata = (nilai 1 + nilai 2 + nilai 3)
+              / 3
+            </p>
+            <p><strong>Petunjuk:</strong></p>
+            <ul>
+              <li>Gunakan input untuk menerima tiga nilai.</li>
+              <li>Ubah input menjadi tipe data angka.</li>
+              <li>Hitung rata-rata dari ketiga nilai tersebut.</li>
+              <li>Tampilkan hasilnya dengan f-string.</li>
+            </ul>
+          </div>
+
+          <a
+            class="colab-button"
+            href="https://colab.research.google.com/#create=true"
+            target="_blank"
+            rel="noopener"
+          >
+            Praktikkan Latihan di Google Colab ↗
+          </a>
+        </section>
+
+        <!-- BAGIAN 11 -->
+        <section class="subsection">
+          <h3>11. Kuis Pemahaman</h3>
+
+          <p>
+            Uji pemahamanmu setelah mempelajari materi Input dan Output Python.
+            Pilih satu jawaban yang paling tepat untuk setiap pertanyaan.
+          </p>
+
+          <div class="quiz-container">
+            <div class="quiz-header">
+              <strong>Kuis Input dan Output Python</strong>
+              <span id="quiz-count">0/5 dijawab</span>
+            </div>
+
+            <div class="quiz-progress">
+              <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
+            </div>
+
+            <form id="quiz-form">
+              <div class="question-card">
+                <h4>
+                  1. Fungsi apa yang digunakan untuk menampilkan output di
+                  Python?
+                </h4>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q1" value="a" />
+                  input()
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q1" value="b" />
+                  print()
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q1" value="c" />
+                  output()
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q1" value="d" />
+                  show()
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q1"></div>
+              </div>
+
+              <div class="question-card">
+                <h4>
+                  2. Fungsi apa yang digunakan untuk menerima input pengguna?
+                </h4>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q2" value="a" />
+                  scan()
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q2" value="b" />
+                  read()
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q2" value="c" />
+                  input()
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q2" value="d" />
+                  get()
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q2"></div>
+              </div>
+
+              <div class="question-card">
+                <h4>3. Apa tipe data default dari hasil input()?</h4>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q3" value="a" />
+                  int
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q3" value="b" />
+                  float
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q3" value="c" />
+                  bool
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q3" value="d" />
+                  str
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q3"></div>
+              </div>
+
+              <div class="question-card">
+                <h4>
+                  4. Fungsi apa yang digunakan untuk mengubah input menjadi
+                  bilangan bulat?
+                </h4>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q4" value="a" />
+                  str()
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q4" value="b" />
+                  int()
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q4" value="c" />
+                  float()
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q4" value="d" />
+                  bool()
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q4"></div>
+              </div>
+
+              <div class="question-card">
+                <h4>5. Apa hasil dari kode print('Halo', 'Dunia', sep='-')?</h4>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q5" value="a" />
+                  Halo Dunia
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q5" value="b" />
+                  Halo-Dunia
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q5" value="c" />
+                  HaloDunia
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q5" value="d" />
+                  Halo, Dunia
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q5"></div>
+              </div>
+
+              <button type="button" class="quiz-button" id="check-quiz">
+                Periksa Jawaban
+              </button>
+
+              <button
+                type="button"
+                class="quiz-button"
+                id="reset-quiz"
+                style="background: #64748b; display: none"
+              >
+                Ulangi Kuis
+              </button>
+            </form>
+
+            <div class="quiz-result" id="quiz-result">
+              <h4>Hasil Kuis</h4>
+              <p id="quiz-score"></p>
+              <p id="quiz-message"></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- BAGIAN 12 -->
+        <section class="subsection">
+          <h3>12. Kesimpulan</h3>
+
+          <p>
+            Pada materi ini, kita telah mempelajari berbagai konsep dasar Input
+            dan Output dalam Python. Materi tersebut merupakan dasar penting
+            untuk membuat program yang dapat berinteraksi dengan pengguna.
+          </p>
+
+          <p>Berikut rangkuman materi yang telah dipelajari:</p>
+
+          <ol>
+            <li>Pengertian input dan output dalam Python.</li>
+            <li>
+              Cara menampilkan informasi menggunakan <code>print()</code>.
+            </li>
+            <li>Cara menerima data menggunakan <code>input()</code>.</li>
+            <li>
+              Mengubah tipe data input menggunakan
+              <code>int()</code>, <code>float()</code>, dan <code>str()</code>.
+            </li>
+            <li>Menggunakan f-string untuk menampilkan variabel.</li>
+            <li>
+              Mengatur tampilan output menggunakan
+              <code>sep</code>, <code>end</code>, <code>\n</code>, dan
+              <code>\t</code>.
+            </li>
+            <li>Membuat program kalkulator sederhana.</li>
+          </ol>
+
+          <div class="info">
+            <strong>Poin Penting:</strong>
+            <code>input()</code> digunakan untuk menerima data dari pengguna,
+            sedangkan <code>print()</code> digunakan untuk menampilkan informasi
+            kepada pengguna.
+          </div>
+        </section>
+
+        <!-- TUGAS MATERI -->
+        <div class="task">
+          <h3>Tugas 5: Membuat Program Biodata Interaktif</h3>
+
+          <p>
+            Setelah mempelajari materi Input dan Output Python, sekarang buatlah
+            sebuah program biodata interaktif yang dapat menerima informasi dari
+            pengguna dan menampilkan kembali informasi tersebut dengan tampilan
+            yang rapi.
+          </p>
+
+          <p><strong>Ketentuan Tugas:</strong></p>
+
+          <ol>
+            <li>Program harus meminta nama lengkap pengguna.</li>
+            <li>Program harus meminta umur pengguna.</li>
+            <li>Program harus meminta asal kota pengguna.</li>
+            <li>Program harus meminta kelas atau program studi pengguna.</li>
+            <li>Program harus meminta hobi pengguna.</li>
+            <li>Gunakan <code>input()</code> untuk menerima data.</li>
+            <li>
+              Gunakan <code>int()</code> untuk mengubah input umur menjadi
+              bilangan bulat.
+            </li>
+            <li>
+              Gunakan f-string atau <code>print()</code> untuk menampilkan
+              biodata dengan rapi.
+            </li>
+          </ol>
+
+          <h4>Contoh Gambaran Output</h4>
+
+          <pre><code>================================
+        PROGRAM BIODATA
+================================
+Masukkan nama       : Andi
+Masukkan umur       : 17
+Masukkan asal kota  : Bandung
+Masukkan kelas      : 10A
+Masukkan hobi       : Membaca
+
+================================
+            BIODATA
+================================
+Nama       : Andi
+Umur       : 17 tahun
+Asal Kota  : Bandung
+Kelas      : 10A
+Hobi       : Membaca
+================================</code></pre>
+
+          <p><strong>Petunjuk Pengerjaan dan Pengumpulan:</strong></p>
+
+          <ol>
+            <li>Buka Google Colab dan buat notebook baru.</li>
+            <li>
+              Beri nama notebook dengan format
+              <code>Tugas5_Nama_NIM</code>.
+            </li>
+            <li>Kerjakan program sesuai ketentuan tugas.</li>
+            <li>Jalankan program dan pastikan tidak terdapat error.</li>
+            <li>Simpan notebook di Google Drive.</li>
+            <li>
+              Bagikan notebook dengan pengaturan akses yang memungkinkan
+              dosen/guru melihat hasil pekerjaan.
+            </li>
+            <li>
+              Kumpulkan tautan notebook melalui tombol
+              <strong>Pengumpulan Tugas</strong> pada sidebar website.
+            </li>
+          </ol>
+
+          <a
+            href="https://colab.research.google.com/#create=true"
+            target="_blank"
+            class="colab-button"
+            rel="noopener"
+          >
+            Mulai Mengerjakan di Google Colab ↗
+          </a>
+        </div>
+
+        <!-- NAVIGASI MATERI -->
+        <div class="navigation" id="navigation"></div>
+      </main>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>Python Learn | Media Pembelajaran Python Dasar</footer>
+
+    <script src="assets/js/script.js"></script>
+
+    <script>
+      // Kunci jawaban & penjelasan kuis diselaraskan dengan standar format kuis
+      const jawabanBenar = {
+        q1: 'b',
+        q2: 'c',
+        q3: 'd',
+        q4: 'b',
+        q5: 'b',
+      };
+
+      const penjelasan = {
+        q1: 'Fungsi print() digunakan untuk menampilkan teks, angka, variabel, dan hasil perhitungan ke layar.',
+        q2: 'Fungsi input() digunakan untuk menerima data yang dimasukkan pengguna melalui keyboard.',
+        q3: 'Hasil input() secara default bertipe string (str), meskipun pengguna memasukkan angka.',
+        q4: 'Fungsi int() digunakan untuk mengubah data menjadi tipe bilangan bulat (integer).',
+        q5: 'Parameter sep="-" mengatur tanda hubung (-) sebagai pemisah antar-data yang dicetak.',
+      };
+
+      const form = document.getElementById('quiz-form');
+      const jumlahSoal = 5;
+
+      function perbaruiProgress() {
+        let terjawab = 0;
+
+        for (let i = 1; i <= jumlahSoal; i++) {
+          if (form.querySelector(`input[name="q${i}"]:checked`)) {
+            terjawab++;
+          }
+        }
+
+        document.getElementById(
+          'quiz-count'
+        ).textContent = `${terjawab}/${jumlahSoal} dijawab`;
+
+        document.getElementById('quiz-progress-bar').style.width = `${
+          (terjawab / jumlahSoal) * 100
+        }%`;
+      }
+
+      form.addEventListener('change', perbaruiProgress);
+
+      document
+        .getElementById('check-quiz')
+        .addEventListener('click', function () {
+          let skor = 0;
+          let belumDijawab = [];
+
+          for (let i = 1; i <= jumlahSoal; i++) {
+            const pilihan = form.querySelector(`input[name="q${i}"]:checked`);
+            const feedback = document.getElementById(`feedback-q${i}`);
+
+            feedback.className = 'quiz-feedback';
+
+            if (!pilihan) {
+              belumDijawab.push(i);
+              feedback.textContent = 'Belum dijawab.';
+              feedback.classList.add('wrong');
+              continue;
+            }
+
+            if (pilihan.value === jawabanBenar[`q${i}`]) {
+              skor++;
+              feedback.textContent = 'Benar! ' + penjelasan[`q${i}`];
+              feedback.classList.add('correct');
+            } else {
+              feedback.textContent = 'Belum tepat. ' + penjelasan[`q${i}`];
+              feedback.classList.add('wrong');
+            }
+          }
+
+          if (belumDijawab.length > 0) {
+            alert(
+              'Masih ada soal yang belum dijawab: ' +
+                belumDijawab.join(', ') +
+                '. Silakan lengkapi terlebih dahulu.'
+            );
+            return;
+          }
+
+          const nilai = Math.round((skor / jumlahSoal) * 100);
+
+          document.getElementById('quiz-result').style.display = 'block';
+
+          document.getElementById(
+            'quiz-score'
+          ).textContent = `Jawaban benar: ${skor} dari ${jumlahSoal} soal. Nilai: ${nilai}/100.`;
+
+          let pesan = '';
+
+          if (nilai === 100) {
+            pesan = 'Luar biasa! Semua jawabanmu benar. Pertahankan!';
+          } else if (nilai >= 80) {
+            pesan = 'Bagus! Kamu sudah memahami materi dengan sangat baik.';
+          } else if (nilai >= 60) {
+            pesan = 'Cukup baik. Pelajari kembali bagian yang belum dikuasai.';
+          } else {
+            pesan = 'Jangan menyerah! Pelajari kembali materi dan coba lagi.';
+          }
+
+          document.getElementById('quiz-message').textContent = pesan;
+
+          document.getElementById('check-quiz').style.display = 'none';
+          document.getElementById('reset-quiz').style.display = 'inline-block';
+
+          document.getElementById('quiz-result').scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+          });
+        });
+
+      document
+        .getElementById('reset-quiz')
+        .addEventListener('click', function () {
+          form.reset();
+
+          for (let i = 1; i <= jumlahSoal; i++) {
+            const feedback = document.getElementById(`feedback-q${i}`);
+            feedback.textContent = '';
+            feedback.className = 'quiz-feedback';
+          }
+
+          document.getElementById('quiz-result').style.display = 'none';
+          document.getElementById('check-quiz').style.display = 'inline-block';
+          document.getElementById('reset-quiz').style.display = 'none';
+
+          perbaruiProgress();
+
+          window.scrollTo({
+            top: document.querySelector('.quiz-container').offsetTop,
+            behavior: 'smooth',
+          });
+        });
+
+      perbaruiProgress();
+    </script>
+  </body>
+</html>
