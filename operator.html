@@ -1,0 +1,1907 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Materi 4: Operator Python | Python Learn</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <style>
+      /* Styling disamakan persis dengan pengenalan-python.html */
+      .subsection {
+        margin-bottom: 30px;
+      }
+
+      .subsection h3 {
+        margin-top: 30px;
+      }
+
+      .table-responsive {
+        overflow-x: auto;
+        margin: 20px 0;
+      }
+
+      .content table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+        margin: 15px 0;
+      }
+
+      .content th,
+      .content td {
+        border: 1px solid #dbe3ef;
+        padding: 11px 13px;
+        text-align: left;
+      }
+
+      .content th {
+        background: #eff6ff;
+        color: #172554;
+      }
+
+      /* Kartu & Grid Khusus Operator */
+      .operator-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        margin: 20px 0;
+      }
+
+      .operator-item {
+        border: 1px solid #dbe3ef;
+        border-radius: 8px;
+        padding: 17px;
+        background: #fff;
+      }
+
+      .operator-item strong {
+        display: block;
+        color: #1764dc;
+        font-size: 17px;
+        margin-bottom: 8px;
+      }
+
+      .operator-item p {
+        margin: 0;
+        font-size: 14px;
+      }
+
+      .operator-symbol {
+        display: inline-block;
+        background: #eff6ff;
+        color: #1764dc;
+        border-radius: 6px;
+        padding: 5px 10px;
+        font-weight: bold;
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
+
+      .operator-card {
+        border: 1px solid #dbe3ef;
+        border-radius: 8px;
+        padding: 17px;
+        background: #fff;
+        margin: 18px 0;
+      }
+
+      .operator-card h3,
+      .operator-card h4 {
+        color: #1764dc;
+        margin: 0 0 8px;
+        font-size: 17px;
+      }
+
+      .code-output {
+        background: #f8fbff;
+        border-left: 4px solid #1764dc;
+        padding: 12px 16px;
+        border-radius: 5px;
+        margin: 10px 0 20px;
+      }
+
+      .code-output strong {
+        display: block;
+        margin-bottom: 7px;
+        color: #172554;
+      }
+
+      .code-output pre {
+        margin: 0;
+        white-space: pre-wrap;
+      }
+
+      .comparison-note {
+        background: #fffbe3;
+        border-left: 4px solid #f59e0b;
+        padding: 14px 16px;
+        margin: 18px 0;
+        border-radius: 5px;
+      }
+
+      /* Kuis Interaktif */
+      .quiz-container {
+        border: 1px solid #dbe3ef;
+        border-radius: 9px;
+        padding: 22px;
+        margin-top: 20px;
+        background: #f8fbff;
+      }
+
+      .quiz-header {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .quiz-progress {
+        background: #e2e8f0;
+        height: 8px;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 22px;
+      }
+
+      .quiz-progress-bar {
+        height: 100%;
+        width: 0%;
+        background: #1764dc;
+        transition: width 0.3s;
+      }
+
+      .question-card {
+        background: #fff;
+        border: 1px solid #dbe3ef;
+        border-radius: 8px;
+        padding: 18px;
+        margin-bottom: 16px;
+      }
+
+      .question-card h4 {
+        margin: 0 0 13px;
+        color: #172554;
+      }
+
+      .quiz-option {
+        display: block;
+        padding: 10px 12px;
+        margin: 8px 0;
+        border: 1px solid #dbe3ef;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        background: white;
+      }
+
+      .quiz-option:hover {
+        background: #eff6ff;
+        border-color: #1764dc;
+      }
+
+      .quiz-option input {
+        margin-right: 9px;
+        accent-color: #1764dc;
+      }
+
+      .quiz-button {
+        background: #1764dc;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 12px 22px;
+        cursor: pointer;
+        font-size: 14px;
+        margin-top: 10px;
+      }
+
+      .quiz-button:hover {
+        background: #104bad;
+      }
+
+      .quiz-result {
+        display: none;
+        padding: 17px;
+        margin-top: 18px;
+        border-radius: 7px;
+        background: #eff6ff;
+        border-left: 4px solid #1764dc;
+      }
+
+      .quiz-result h4 {
+        margin-top: 0;
+      }
+
+      .quiz-feedback {
+        font-size: 13px;
+        margin-top: 8px;
+        color: #475569;
+      }
+
+      .quiz-feedback.correct {
+        color: #15803d;
+      }
+
+      .quiz-feedback.wrong {
+        color: #dc2626;
+      }
+
+      @media (max-width: 700px) {
+        .operator-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .quiz-container {
+          padding: 14px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header>
+      <a href="index.html" class="logo">
+        <div class="logo-icon">Py</div>
+        <h1>Python <span>Learn</span></h1>
+      </a>
+
+      <nav class="top-nav">
+        <a href="tentang.html">Tentang</a>
+        <a href="index.html">Beranda</a>
+      </nav>
+    </header>
+
+    <div class="container">
+      <!-- SIDEBAR -->
+      <aside class="sidebar" id="sidebar"></aside>
+
+      <!-- KONTEN MATERI -->
+      <main class="content">
+        <div class="breadcrumb">
+          <a href="index.html">Python Learn</a>
+          &nbsp; / &nbsp; Operator Python
+        </div>
+
+        <h2>Materi 4: Operator Python</h2>
+
+        <p>
+          Operator merupakan salah satu konsep dasar dalam pemrograman Python.
+          Operator memungkinkan kita melakukan perhitungan, membandingkan nilai,
+          menggabungkan kondisi, serta mengolah berbagai jenis data. Pada materi
+          ini, kamu akan mempelajari jenis-jenis operator Python beserta contoh
+          penggunaannya.
+        </p>
+
+        <div class="info">
+          <strong>Tujuan Pembelajaran</strong>
+          Setelah mempelajari materi ini, kamu diharapkan mampu:
+          <ol>
+            <li>Menjelaskan pengertian dan fungsi operator Python.</li>
+            <li>Mengidentifikasi berbagai jenis operator Python.</li>
+            <li>
+              Menggunakan operator untuk melakukan perhitungan matematika.
+            </li>
+            <li>Menggunakan operator perbandingan dan logika.</li>
+            <li>Menerapkan operator dalam program sederhana.</li>
+          </ol>
+        </div>
+
+        <!-- BAGIAN 1 -->
+        <section class="subsection">
+          <h3>1. Apa Itu Operator Python?</h3>
+
+          <p>
+            Operator adalah simbol atau tanda khusus yang digunakan untuk
+            melakukan operasi terhadap suatu nilai atau variabel dalam program.
+          </p>
+
+          <p>Operator Python digunakan untuk berbagai keperluan, seperti:</p>
+
+          <ul>
+            <li>Melakukan perhitungan matematika.</li>
+            <li>Membandingkan dua buah nilai.</li>
+            <li>Menggabungkan beberapa kondisi.</li>
+            <li>Memberikan atau mengubah nilai variabel.</li>
+            <li>Memeriksa keanggotaan suatu data.</li>
+            <li>Membandingkan identitas objek.</li>
+          </ul>
+
+          <h4>Contoh Sederhana</h4>
+
+          <pre><code>angka1 = 10
+angka2 = 5
+hasil = angka1 + angka2
+
+print(hasil)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>15</pre>
+          </div>
+
+          <p><strong>Penjelasan:</strong></p>
+          <ul>
+            <li>
+              <code>angka1</code> dan <code>angka2</code> merupakan variabel.
+            </li>
+            <li><code>+</code> merupakan operator penjumlahan.</li>
+            <li>
+              <code>hasil</code> merupakan variabel yang menyimpan hasil
+              operasi.
+            </li>
+            <li>
+              <code>print()</code> digunakan untuk menampilkan hasil operasi.
+            </li>
+          </ul>
+        </section>
+
+        <!-- BAGIAN 2 -->
+        <section class="subsection">
+          <h3>2. Jenis-Jenis Operator Python</h3>
+
+          <p>
+            Python memiliki beberapa jenis operator yang dapat digunakan sesuai
+            kebutuhan program.
+          </p>
+
+          <div class="operator-grid">
+            <div class="operator-item">
+              <span class="operator-symbol">+ − × ÷</span>
+              <strong>1. Aritmatika</strong>
+              <p>Digunakan untuk melakukan perhitungan matematika.</p>
+            </div>
+
+            <div class="operator-item">
+              <span class="operator-symbol">== !=</span>
+              <strong>2. Perbandingan</strong>
+              <p>Digunakan untuk membandingkan dua nilai.</p>
+            </div>
+
+            <div class="operator-item">
+              <span class="operator-symbol">and / or</span>
+              <strong>3. Logika</strong>
+              <p>Digunakan untuk menggabungkan beberapa kondisi.</p>
+            </div>
+
+            <div class="operator-item">
+              <span class="operator-symbol">= +=</span>
+              <strong>4. Penugasan</strong>
+              <p>Digunakan untuk memberikan atau memperbarui nilai variabel.</p>
+            </div>
+
+            <div class="operator-item">
+              <span class="operator-symbol">in</span>
+              <strong>5. Keanggotaan</strong>
+              <p>
+                Digunakan untuk memeriksa keberadaan nilai dalam kumpulan data.
+              </p>
+            </div>
+
+            <div class="operator-item">
+              <span class="operator-symbol">is</span>
+              <strong>6. Identitas</strong>
+              <p>Digunakan untuk memeriksa identitas objek.</p>
+            </div>
+
+            <div class="operator-item">
+              <span class="operator-symbol">&amp; | ^</span>
+              <strong>7. Bitwise</strong>
+              <p>Digunakan untuk melakukan operasi terhadap bilangan biner.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- BAGIAN 3 -->
+        <section class="subsection">
+          <h3>3. Operator Aritmatika (Arithmetic Operators)</h3>
+
+          <p>
+            Operator aritmatika adalah operator yang digunakan untuk melakukan
+            perhitungan matematika, seperti penjumlahan, pengurangan, perkalian,
+            dan pembagian.
+          </p>
+
+          <h4>Daftar Operator Aritmatika</h4>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Operator</th>
+                  <th>Nama</th>
+                  <th>Contoh</th>
+                  <th>Hasil</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>+</code></td>
+                  <td>Penjumlahan</td>
+                  <td>10 + 5</td>
+                  <td>15</td>
+                </tr>
+                <tr>
+                  <td><code>-</code></td>
+                  <td>Pengurangan</td>
+                  <td>10 - 5</td>
+                  <td>5</td>
+                </tr>
+                <tr>
+                  <td><code>*</code></td>
+                  <td>Perkalian</td>
+                  <td>10 * 5</td>
+                  <td>50</td>
+                </tr>
+                <tr>
+                  <td><code>/</code></td>
+                  <td>Pembagian</td>
+                  <td>10 / 5</td>
+                  <td>2.0</td>
+                </tr>
+                <tr>
+                  <td><code>%</code></td>
+                  <td>Modulus</td>
+                  <td>10 % 3</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td><code>**</code></td>
+                  <td>Pangkat</td>
+                  <td>2 ** 3</td>
+                  <td>8</td>
+                </tr>
+                <tr>
+                  <td><code>//</code></td>
+                  <td>Pembagian bulat</td>
+                  <td>10 // 3</td>
+                  <td>3</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>Contoh Penggunaan Operator Aritmatika</h4>
+
+          <pre><code>a = 10
+b = 3
+
+print("Penjumlahan:", a + b)
+print("Pengurangan:", a - b)
+print("Perkalian:", a * b)
+print("Pembagian:", a / b)
+print("Modulus:", a % b)
+print("Pangkat:", a ** b)
+print("Pembagian Bulat:", a // b)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+Penjumlahan: 13
+Pengurangan: 7
+Perkalian: 30
+Pembagian: 3.3333333333333335
+Modulus: 1
+Pangkat: 1000
+Pembagian Bulat: 3</pre
+            >
+          </div>
+
+          <p><strong>Penjelasan operator khusus:</strong></p>
+          <ul>
+            <li>
+              <code>%</code> atau modulus digunakan untuk mendapatkan sisa hasil
+              pembagian.
+            </li>
+            <li><code>**</code> digunakan untuk menghitung perpangkatan.</li>
+            <li>
+              <code>//</code> menghasilkan hasil pembagian yang dibulatkan ke
+              bawah.
+            </li>
+          </ul>
+
+          <div class="info">
+            <strong>Contoh memahami modulus dan pembagian bulat</strong>
+            Pada operasi <code>10 % 3</code>, hasilnya adalah 1 karena 10 dibagi
+            3 menghasilkan sisa 1. Sementara itu,
+            <code>10 // 3</code> menghasilkan 3 karena hasil pembagian
+            dibulatkan ke bawah.
+          </div>
+        </section>
+
+        <!-- BAGIAN 4 -->
+        <section class="subsection">
+          <h3>4. Operator Perbandingan (Comparison Operators)</h3>
+
+          <p>
+            Operator perbandingan digunakan untuk membandingkan dua buah nilai.
+            Hasil dari operasi perbandingan adalah nilai Boolean, yaitu
+            <code>True</code> atau <code>False</code>.
+          </p>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Operator</th>
+                  <th>Keterangan</th>
+                  <th>Contoh</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>==</code></td>
+                  <td>Sama dengan</td>
+                  <td>10 == 10</td>
+                </tr>
+                <tr>
+                  <td><code>!=</code></td>
+                  <td>Tidak sama dengan</td>
+                  <td>10 != 5</td>
+                </tr>
+                <tr>
+                  <td><code>&gt;</code></td>
+                  <td>Lebih besar dari</td>
+                  <td>10 &gt; 5</td>
+                </tr>
+                <tr>
+                  <td><code>&lt;</code></td>
+                  <td>Lebih kecil dari</td>
+                  <td>5 &lt; 10</td>
+                </tr>
+                <tr>
+                  <td><code>&gt;=</code></td>
+                  <td>Lebih besar atau sama dengan</td>
+                  <td>10 &gt;= 10</td>
+                </tr>
+                <tr>
+                  <td><code>&lt;=</code></td>
+                  <td>Lebih kecil atau sama dengan</td>
+                  <td>5 &lt;= 10</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>Contoh Program</h4>
+
+          <pre><code>a = 10
+b = 5
+
+print(a == b)
+print(a != b)
+print(a > b)
+print(a < b)
+print(a >= b)
+print(a <= b)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+False
+True
+True
+False
+True
+False</pre
+            >
+          </div>
+
+          <p><strong>Penjelasan:</strong></p>
+          <ul>
+            <li>
+              <code>a == b</code> menghasilkan <code>False</code> karena 10
+              tidak sama dengan 5.
+            </li>
+            <li>
+              <code>a != b</code> menghasilkan <code>True</code> karena 10
+              berbeda dari 5.
+            </li>
+            <li>
+              <code>a &gt; b</code> menghasilkan <code>True</code> karena 10
+              lebih besar dari 5.
+            </li>
+            <li>
+              <code>a &lt; b</code> menghasilkan <code>False</code> karena 10
+              tidak lebih kecil dari 5.
+            </li>
+            <li>
+              <code>a &gt;= b</code> menghasilkan <code>True</code> karena 10
+              lebih besar atau sama dengan 5.
+            </li>
+            <li>
+              <code>a &lt;= b</code> menghasilkan <code>False</code> karena 10
+              tidak lebih kecil atau sama dengan 5.
+            </li>
+          </ul>
+        </section>
+
+        <!-- BAGIAN 5 -->
+        <section class="subsection">
+          <h3>5. Operator Logika (Logical Operators)</h3>
+
+          <p>
+            Operator logika digunakan untuk menggabungkan dua atau lebih kondisi
+            dalam suatu program. Python memiliki tiga operator logika utama,
+            yaitu <code>and</code>, <code>or</code>, dan <code>not</code>.
+          </p>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Operator</th>
+                  <th>Fungsi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>and</code></td>
+                  <td>Bernilai True jika semua kondisi bernilai True.</td>
+                </tr>
+                <tr>
+                  <td><code>or</code></td>
+                  <td>
+                    Bernilai True jika minimal satu kondisi bernilai True.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>not</code></td>
+                  <td>Membalik nilai Boolean.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>A. Operator AND</h4>
+
+          <p>
+            Operator <code>and</code> menghasilkan <code>True</code> jika kedua
+            kondisi bernilai <code>True</code>.
+          </p>
+
+          <pre><code>umur = 17
+nilai = 85
+
+hasil = umur >= 15 and nilai >= 75
+print(hasil)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>True</pre>
+          </div>
+
+          <p>
+            Kedua kondisi terpenuhi: umur lebih dari atau sama dengan 15 dan
+            nilai lebih dari atau sama dengan 75.
+          </p>
+
+          <h4>B. Operator OR</h4>
+
+          <p>
+            Operator <code>or</code> menghasilkan <code>True</code> jika
+            setidaknya salah satu kondisi bernilai <code>True</code>.
+          </p>
+
+          <pre><code>nilai = 90
+
+hasil = nilai >= 75 or nilai == 100
+print(hasil)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>True</pre>
+          </div>
+
+          <h4>C. Operator NOT</h4>
+
+          <p>
+            Operator <code>not</code> digunakan untuk membalik nilai Boolean.
+            Jika nilai awalnya <code>True</code>, hasilnya menjadi
+            <code>False</code>, begitu pula sebaliknya.
+          </p>
+
+          <pre><code>aktif = True
+print(not aktif)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>False</pre>
+          </div>
+
+          <h4>Tabel Kebenaran Operator Logika</h4>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>A</th>
+                  <th>B</th>
+                  <th>A and B</th>
+                  <th>A or B</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>True</td>
+                  <td>True</td>
+                  <td>True</td>
+                  <td>True</td>
+                </tr>
+                <tr>
+                  <td>True</td>
+                  <td>False</td>
+                  <td>False</td>
+                  <td>True</td>
+                </tr>
+                <tr>
+                  <td>False</td>
+                  <td>True</td>
+                  <td>False</td>
+                  <td>True</td>
+                </tr>
+                <tr>
+                  <td>False</td>
+                  <td>False</td>
+                  <td>False</td>
+                  <td>False</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>A</th>
+                  <th>not A</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>True</td>
+                  <td>False</td>
+                </tr>
+                <tr>
+                  <td>False</td>
+                  <td>True</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- BAGIAN 6 -->
+        <section class="subsection">
+          <h3>6. Operator Penugasan (Assignment Operators)</h3>
+
+          <p>
+            Operator penugasan digunakan untuk memberikan nilai atau memperbarui
+            nilai pada suatu variabel.
+          </p>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Operator</th>
+                  <th>Contoh</th>
+                  <th>Setara dengan</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>=</code></td>
+                  <td>x = 10</td>
+                  <td>Memberikan nilai 10</td>
+                </tr>
+                <tr>
+                  <td><code>+=</code></td>
+                  <td>x += 5</td>
+                  <td>x = x + 5</td>
+                </tr>
+                <tr>
+                  <td><code>-=</code></td>
+                  <td>x -= 5</td>
+                  <td>x = x - 5</td>
+                </tr>
+                <tr>
+                  <td><code>*=</code></td>
+                  <td>x *= 5</td>
+                  <td>x = x * 5</td>
+                </tr>
+                <tr>
+                  <td><code>/=</code></td>
+                  <td>x /= 5</td>
+                  <td>x = x / 5</td>
+                </tr>
+                <tr>
+                  <td><code>//=</code></td>
+                  <td>x //= 5</td>
+                  <td>x = x // 5</td>
+                </tr>
+                <tr>
+                  <td><code>%=</code></td>
+                  <td>x %= 5</td>
+                  <td>x = x % 5</td>
+                </tr>
+                <tr>
+                  <td><code>**=</code></td>
+                  <td>x **= 2</td>
+                  <td>x = x ** 2</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>Contoh Program</h4>
+
+          <pre><code>angka = 10
+
+angka += 5
+print(angka)
+
+angka -= 3
+print(angka)
+
+angka *= 2
+print(angka)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+15
+12
+24</pre
+            >
+          </div>
+
+          <p>
+            Nilai variabel <code>angka</code> berubah secara bertahap. Awalnya
+            10, kemudian ditambah 5 menjadi 15, dikurangi 3 menjadi 12, dan
+            dikalikan 2 menjadi 24.
+          </p>
+        </section>
+
+        <!-- BAGIAN 7 -->
+        <section class="subsection">
+          <h3>7. Operator Keanggotaan (Membership Operators)</h3>
+
+          <p>
+            Operator keanggotaan digunakan untuk memeriksa apakah suatu nilai
+            terdapat di dalam sebuah kumpulan data, seperti String, List, Tuple,
+            atau Dictionary.
+          </p>
+
+          <p>Python memiliki dua operator keanggotaan:</p>
+
+          <ul>
+            <li>
+              <code>in</code> untuk memeriksa apakah nilai terdapat dalam
+              kumpulan data.
+            </li>
+            <li>
+              <code>not in</code> untuk memeriksa apakah nilai tidak terdapat
+              dalam kumpulan data.
+            </li>
+          </ul>
+
+          <h4>Contoh Menggunakan List</h4>
+
+          <pre><code>buah = ["Apel", "Jeruk", "Mangga"]
+
+print("Apel" in buah)
+print("Anggur" in buah)
+print("Anggur" not in buah)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+True
+False
+True</pre
+            >
+          </div>
+
+          <h4>Contoh Menggunakan String</h4>
+
+          <pre><code>kalimat = "Saya belajar Python"
+
+print("Python" in kalimat)
+print("Java" not in kalimat)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+True
+True</pre
+            >
+          </div>
+
+          <p>
+            Pada contoh tersebut, Python memeriksa apakah teks tertentu terdapat
+            dalam kalimat yang disimpan pada variabel <code>kalimat</code>.
+          </p>
+        </section>
+
+        <!-- BAGIAN 8 -->
+        <section class="subsection">
+          <h3>8. Operator Identitas (Identity Operators)</h3>
+
+          <p>
+            Operator identitas digunakan untuk memeriksa apakah dua variabel
+            merujuk pada objek yang sama di dalam memori.
+          </p>
+
+          <p>Python memiliki dua operator identitas:</p>
+
+          <ul>
+            <li>
+              <code>is</code> untuk memeriksa apakah dua variabel merujuk pada
+              objek yang sama.
+            </li>
+            <li>
+              <code>is not</code> untuk memeriksa apakah dua variabel tidak
+              merujuk pada objek yang sama.
+            </li>
+          </ul>
+
+          <h4>Contoh Program</h4>
+
+          <pre><code>a = [1, 2, 3]
+b = a
+c = [1, 2, 3]
+
+print(a is b)
+print(a is c)
+print(a == c)
+print(a is not c)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+True
+False
+True
+True</pre
+            >
+          </div>
+
+          <p><strong>Penjelasan:</strong></p>
+          <ul>
+            <li>
+              <code>a is b</code> bernilai <code>True</code> karena keduanya
+              merujuk pada objek yang sama.
+            </li>
+            <li>
+              <code>a is c</code> bernilai <code>False</code> karena keduanya
+              merupakan objek yang berbeda.
+            </li>
+            <li>
+              <code>a == c</code> bernilai <code>True</code> karena isi kedua
+              List sama.
+            </li>
+            <li>
+              <code>a is not c</code> bernilai <code>True</code> karena objeknya
+              berbeda.
+            </li>
+          </ul>
+
+          <div class="comparison-note">
+            <strong>Perbedaan penting: == dan is</strong>
+            <ul>
+              <li><code>==</code> membandingkan kesamaan nilai.</li>
+              <li><code>is</code> membandingkan identitas objek.</li>
+            </ul>
+            Jangan menggunakan <code>is</code> sebagai pengganti
+            <code>==</code> untuk membandingkan nilai biasa.
+          </div>
+        </section>
+
+        <!-- BAGIAN 9 -->
+        <section class="subsection">
+          <h3>9. Operator Bitwise (Bitwise Operators)</h3>
+
+          <p>
+            Operator bitwise digunakan untuk melakukan operasi pada bilangan
+            dalam bentuk biner (binary). Operator ini bekerja pada setiap posisi
+            bit dari bilangan bulat.
+          </p>
+
+          <p>
+            Operator bitwise lebih sering digunakan dalam pemrograman tingkat
+            lanjut, tetapi penting untuk mengenal fungsi dasarnya.
+          </p>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Operator</th>
+                  <th>Nama</th>
+                  <th>Keterangan</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>&amp;</code></td>
+                  <td>AND</td>
+                  <td>Operasi AND bit</td>
+                </tr>
+                <tr>
+                  <td><code>|</code></td>
+                  <td>OR</td>
+                  <td>Operasi OR bit</td>
+                </tr>
+                <tr>
+                  <td><code>^</code></td>
+                  <td>XOR</td>
+                  <td>Operasi XOR bit</td>
+                </tr>
+                <tr>
+                  <td><code>~</code></td>
+                  <td>NOT</td>
+                  <td>Membalik bit</td>
+                </tr>
+                <tr>
+                  <td><code>&lt;&lt;</code></td>
+                  <td>Left Shift</td>
+                  <td>Menggeser bit ke kiri</td>
+                </tr>
+                <tr>
+                  <td><code>&gt;&gt;</code></td>
+                  <td>Right Shift</td>
+                  <td>Menggeser bit ke kanan</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>Contoh Program</h4>
+
+          <pre><code>a = 5
+b = 3
+
+print(a &amp; b)
+print(a | b)
+print(a ^ b)
+print(a &lt;&lt; 1)
+print(a &gt;&gt; 1)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+1
+7
+6
+10
+2</pre
+            >
+          </div>
+
+          <p><strong>Penjelasan sederhana:</strong></p>
+          <ul>
+            <li>Angka 5 dalam biner adalah <code>0101</code>.</li>
+            <li>Angka 3 dalam biner adalah <code>0011</code>.</li>
+            <li>
+              Operator bitwise melakukan operasi terhadap setiap posisi bit.
+            </li>
+          </ul>
+        </section>
+
+        <!-- BAGIAN 10 -->
+        <section class="subsection">
+          <h3>10. Prioritas Operator Python</h3>
+
+          <p>
+            Ketika terdapat beberapa operator dalam satu ekspresi, Python
+            memiliki aturan prioritas untuk menentukan operasi mana yang
+            dikerjakan terlebih dahulu.
+          </p>
+
+          <h4>Contoh</h4>
+
+          <pre><code>hasil = 10 + 5 * 2
+print(hasil)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>20</pre>
+          </div>
+
+          <p>
+            Mengapa hasilnya 20, bukan 30? Karena perkalian memiliki prioritas
+            lebih tinggi daripada penjumlahan. Dengan demikian, Python
+            menghitung <code>5 * 2</code> terlebih dahulu, kemudian menambahkan
+            hasilnya dengan 10.
+          </p>
+
+          <h4>Urutan Prioritas Umum Operator Python</h4>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Prioritas</th>
+                  <th>Operator</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1 (tertinggi)</td>
+                  <td><code>()</code></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td><code>**</code></td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td><code>+x, -x, ~x</code></td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td><code>*, /, //, %</code></td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td><code>+, -</code></td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td><code>&lt;&lt;, &gt;&gt;</code></td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td><code>&amp;, ^, |</code></td>
+                </tr>
+                <tr>
+                  <td>8</td>
+                  <td>Perbandingan, <code>in</code>, <code>is</code></td>
+                </tr>
+                <tr>
+                  <td>9</td>
+                  <td><code>not</code></td>
+                </tr>
+                <tr>
+                  <td>10</td>
+                  <td><code>and</code></td>
+                </tr>
+                <tr>
+                  <td>11 (terendah)</td>
+                  <td><code>or</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            Untuk memperjelas urutan operasi, kamu dapat menggunakan tanda
+            kurung.
+          </p>
+
+          <pre><code>hasil = (10 + 5) * 2
+print(hasil)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>30</pre>
+          </div>
+
+          <div class="info">
+            <strong>Tips</strong>
+            Gunakan tanda kurung jika ekspresi memiliki beberapa operator.
+            Selain membantu mengatur urutan perhitungan, tanda kurung juga
+            membuat kode lebih mudah dibaca.
+          </div>
+        </section>
+
+        <!-- BAGIAN 11 -->
+        <section class="subsection">
+          <h3>11. Praktik Langsung: Membuat Kalkulator Sederhana</h3>
+
+          <p>
+            Sekarang kita akan mencoba menggunakan operator Python untuk membuat
+            program kalkulator sederhana. Program ini menggunakan operator
+            aritmatika untuk menghitung dua bilangan.
+          </p>
+
+          <h4>Kode Program</h4>
+
+          <pre><code># Program Kalkulator Sederhana
+
+angka1 = 20
+angka2 = 5
+
+print("==========================")
+print("     KALKULATOR PYTHON    ")
+print("==========================")
+print("Angka pertama:", angka1)
+print("Angka kedua  :", angka2)
+print("--------------------------")
+print("Penjumlahan :", angka1 + angka2)
+print("Pengurangan :", angka1 - angka2)
+print("Perkalian   :", angka1 * angka2)
+print("Pembagian   :", angka1 / angka2)
+print("Modulus     :", angka1 % angka2)
+print("Pangkat     :", angka1 ** angka2)
+print("==========================")</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+==========================
+     KALKULATOR PYTHON
+==========================
+Angka pertama: 20
+Angka kedua  : 5
+--------------------------
+Penjumlahan : 25
+Pengurangan : 15
+Perkalian   : 100
+Pembagian   : 4.0
+Modulus     : 0
+Pangkat     : 3200000
+==========================</pre
+            >
+          </div>
+
+          <h4>Analisis Program</h4>
+
+          <p>
+            Program tersebut menggunakan beberapa operator aritmatika untuk
+            melakukan perhitungan terhadap dua variabel, yaitu
+            <code>angka1</code> dan <code>angka2</code>.
+          </p>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Operasi</th>
+                  <th>Operator</th>
+                  <th>Perhitungan</th>
+                  <th>Hasil</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Penjumlahan</td>
+                  <td>+</td>
+                  <td>20 + 5</td>
+                  <td>25</td>
+                </tr>
+                <tr>
+                  <td>Pengurangan</td>
+                  <td>-</td>
+                  <td>20 - 5</td>
+                  <td>15</td>
+                </tr>
+                <tr>
+                  <td>Perkalian</td>
+                  <td>*</td>
+                  <td>20 * 5</td>
+                  <td>100</td>
+                </tr>
+                <tr>
+                  <td>Pembagian</td>
+                  <td>/</td>
+                  <td>20 / 5</td>
+                  <td>4.0</td>
+                </tr>
+                <tr>
+                  <td>Modulus</td>
+                  <td>%</td>
+                  <td>20 % 5</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>Pangkat</td>
+                  <td>**</td>
+                  <td>20 ** 5</td>
+                  <td>3200000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            Cobalah mengubah nilai <code>angka1</code> dan
+            <code>angka2</code> untuk melihat bagaimana hasil perhitungannya
+            berubah.
+          </p>
+
+          <a
+            class="colab-button"
+            href="https://colab.research.google.com/#create=true"
+            target="_blank"
+            rel="noopener"
+          >
+            Praktikkan di Google Colab ↗
+          </a>
+        </section>
+
+        <!-- BAGIAN 12 -->
+        <section class="subsection">
+          <h3>12. Latihan Mandiri</h3>
+
+          <p>
+            Setelah mempelajari berbagai jenis operator Python, cobalah
+            mengerjakan latihan berikut. Kerjakan latihan menggunakan Google
+            Colab.
+          </p>
+
+          <div class="operator-card">
+            <h4>Latihan 1: Operator Aritmatika</h4>
+            <p>Buatlah program dengan dua variabel berikut:</p>
+
+            <pre><code>a = 15
+b = 4</code></pre>
+
+            <p>
+              Tampilkan hasil penjumlahan, pengurangan, perkalian, pembagian,
+              modulus, dan pangkat dari kedua variabel tersebut.
+            </p>
+          </div>
+
+          <div class="operator-card">
+            <h4>Latihan 2: Operator Perbandingan</h4>
+            <p>Perhatikan kode berikut:</p>
+
+            <pre><code>nilai1 = 80
+nilai2 = 75
+
+print(nilai1 > nilai2)
+print(nilai1 == nilai2)
+print(nilai1 != nilai2)</code></pre>
+
+            <p>
+              Tentukan hasil dari ketiga operasi perbandingan tersebut. Jelaskan
+              alasan dari setiap hasilnya.
+            </p>
+          </div>
+
+          <div class="operator-card">
+            <h4>Latihan 3: Operator Logika</h4>
+            <p>Buatlah program dengan ketentuan berikut:</p>
+            <ul>
+              <li><code>umur = 17</code></li>
+              <li><code>nilai = 85</code></li>
+              <li>
+                Periksa apakah umur lebih dari atau sama dengan 15 dan nilai
+                lebih dari atau sama dengan 75.
+              </li>
+              <li>Tampilkan hasilnya menggunakan <code>print()</code>.</li>
+            </ul>
+          </div>
+
+          <div class="operator-card">
+            <h4>Latihan 4: Operator Penugasan</h4>
+            <p>Perhatikan kode berikut:</p>
+
+            <pre><code>angka = 20
+angka += 10
+angka -= 5
+angka *= 2
+
+print(angka)</code></pre>
+
+            <p>
+              Tentukan hasil akhir variabel <code>angka</code>. Jelaskan
+              perubahan nilainya pada setiap baris program.
+            </p>
+          </div>
+        </section>
+
+        <!-- BAGIAN 13 -->
+        <section class="subsection">
+          <h3>13. Kuis Pemahaman</h3>
+
+          <p>
+            Uji pemahamanmu setelah mempelajari materi Operator Python. Pilih
+            satu jawaban yang paling tepat untuk setiap pertanyaan.
+          </p>
+
+          <div class="quiz-container">
+            <div class="quiz-header">
+              <strong>Kuis Operator Python</strong>
+              <span id="quiz-count">0/8 dijawab</span>
+            </div>
+
+            <div class="quiz-progress">
+              <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
+            </div>
+
+            <form id="quiz-form">
+              <div class="question-card">
+                <h4>1. Apa fungsi operator dalam Python?</h4>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q1" value="a" />
+                  Menghapus variabel
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q1" value="b" />
+                  Melakukan operasi terhadap nilai atau variabel
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q1" value="c" />
+                  Menginstal Python
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q1" value="d" />
+                  Membuat folder
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q1"></div>
+              </div>
+
+              <div class="question-card">
+                <h4>2. Apa hasil dari operasi 10 % 3?</h4>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q2" value="a" />
+                  3
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q2" value="b" />
+                  0
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q2" value="c" />
+                  1
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q2" value="d" />
+                  10
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q2"></div>
+              </div>
+
+              <div class="question-card">
+                <h4>
+                  3. Operator apa yang digunakan untuk membandingkan apakah dua
+                  nilai sama?
+                </h4>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q3" value="a" />
+                  =
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q3" value="b" />
+                  ==
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q3" value="c" />
+                  !=
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q3" value="d" />
+                  &lt;=
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q3"></div>
+              </div>
+
+              <div class="question-card">
+                <h4>4. Apa hasil dari True and False?</h4>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q4" value="a" />
+                  True
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q4" value="b" />
+                  False
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q4" value="c" />
+                  1
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q4" value="d" />
+                  0
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q4"></div>
+              </div>
+
+              <div class="question-card">
+                <h4>5. Apa fungsi operator +=?</h4>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q5" value="a" />
+                  Mengurangi nilai variabel
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q5" value="b" />
+                  Mengalikan nilai variabel
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q5" value="c" />
+                  Menambahkan nilai ke variabel
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q5" value="d" />
+                  Menghapus variabel
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q5"></div>
+              </div>
+
+              <div class="question-card">
+                <h4>
+                  6. Operator apa yang digunakan untuk memeriksa keanggotaan
+                  suatu nilai dalam List?
+                </h4>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q6" value="a" />
+                  is
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q6" value="b" />
+                  in
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q6" value="c" />
+                  and
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q6" value="d" />
+                  ==
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q6"></div>
+              </div>
+
+              <div class="question-card">
+                <h4>7. Apa perbedaan operator == dan is?</h4>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q7" value="a" />
+                  Keduanya selalu sama
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q7" value="b" />
+                  == membandingkan nilai, sedangkan is membandingkan identitas
+                  objek
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q7" value="c" />
+                  is untuk penjumlahan
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q7" value="d" />
+                  == untuk menghapus data
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q7"></div>
+              </div>
+
+              <div class="question-card">
+                <h4>8. Apa hasil dari 10 + 5 * 2?</h4>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q8" value="a" />
+                  30
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q8" value="b" />
+                  20
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q8" value="c" />
+                  25
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q8" value="d" />
+                  15
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q8"></div>
+              </div>
+
+              <button type="button" class="quiz-button" id="check-quiz">
+                Periksa Jawaban
+              </button>
+
+              <button
+                type="button"
+                class="quiz-button"
+                id="reset-quiz"
+                style="background: #64748b; display: none"
+              >
+                Ulangi Kuis
+              </button>
+            </form>
+
+            <div class="quiz-result" id="quiz-result">
+              <h4>Hasil Kuis</h4>
+              <p id="quiz-score"></p>
+              <p id="quiz-message"></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- BAGIAN 14 -->
+        <section class="subsection">
+          <h3>14. Kesimpulan</h3>
+
+          <p>
+            Operator merupakan bagian penting dalam bahasa pemrograman Python
+            karena digunakan untuk melakukan berbagai operasi terhadap data dan
+            variabel. Melalui operator, programmer dapat melakukan perhitungan
+            matematika, membandingkan nilai, menggabungkan kondisi, memperbarui
+            nilai variabel, memeriksa keanggotaan data, serta membandingkan
+            identitas objek.
+          </p>
+
+          <p>
+            Python memiliki tujuh kelompok operator utama yang telah dipelajari,
+            yaitu operator aritmatika, perbandingan, logika, penugasan,
+            keanggotaan, identitas, dan bitwise. Setiap operator memiliki fungsi
+            dan cara penggunaan yang berbeda. Pemahaman terhadap operator akan
+            menjadi bekal penting untuk mempelajari materi berikutnya, khususnya
+            percabangan dan perulangan.
+          </p>
+        </section>
+
+        <!-- TUGAS MATERI -->
+        <div class="task">
+          <h3>Tugas 4: Membuat Program Kalkulator dan Analisis Operator</h3>
+
+          <p>
+            Setelah mempelajari materi Operator Python, kerjakan tugas berikut
+            secara mandiri menggunakan Google Colab.
+          </p>
+
+          <p><strong>Petunjuk Pengerjaan:</strong></p>
+
+          <ol>
+            <li>Buka Google Colab dan buat notebook baru.</li>
+            <li>
+              Beri judul notebook dengan format
+              <code>Tugas4_Nama_NIM</code>.
+            </li>
+            <li>
+              Buat program kalkulator menggunakan minimal enam operator
+              aritmatika.
+            </li>
+            <li>
+              Tambahkan program yang menggunakan operator perbandingan dan
+              logika.
+            </li>
+            <li>
+              Gunakan komentar untuk menjelaskan fungsi setiap bagian program.
+            </li>
+            <li>
+              Jalankan seluruh kode dan pastikan tidak terdapat kesalahan.
+            </li>
+            <li>
+              Tambahkan penjelasan singkat mengenai hasil program yang dibuat.
+            </li>
+          </ol>
+
+          <p><strong>Ketentuan Program:</strong></p>
+
+          <ul>
+            <li>Program menggunakan minimal dua variabel bilangan.</li>
+            <li>
+              Program menampilkan hasil penjumlahan, pengurangan, perkalian,
+              pembagian, modulus, dan pangkat.
+            </li>
+            <li>Program menampilkan minimal tiga hasil perbandingan.</li>
+            <li>
+              Program menggunakan operator logika <code>and</code>,
+              <code>or</code>, atau <code>not</code>.
+            </li>
+            <li>
+              Hasil program harus dapat dijalankan dan dibaca dengan jelas.
+            </li>
+          </ul>
+
+          <p><strong>Petunjuk Pengumpulan:</strong></p>
+
+          <ol>
+            <li>Simpan notebook Google Colab.</li>
+            <li>Atur akses file agar dapat dibuka oleh dosen/guru.</li>
+            <li>Salin tautan notebook Google Colab.</li>
+            <li>
+              Kumpulkan tautan melalui tombol
+              <strong>Pengumpulan Tugas</strong> pada sidebar website.
+            </li>
+          </ol>
+
+          <a
+            href="https://colab.research.google.com/#create=true"
+            target="_blank"
+            class="colab-button"
+          >
+            Mulai Mengerjakan di Google Colab ↗
+          </a>
+        </div>
+
+        <!-- NAVIGASI MATERI -->
+        <div class="navigation" id="navigation"></div>
+      </main>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>Python Learn | Media Pembelajaran Python Dasar</footer>
+
+    <script src="assets/js/script.js"></script>
+
+    <script>
+      // Kunci jawaban & penjelasan kuis disesuaikan dengan pengenalan-python.html
+      const jawabanBenar = {
+        q1: 'b',
+        q2: 'c',
+        q3: 'b',
+        q4: 'b',
+        q5: 'c',
+        q6: 'b',
+        q7: 'b',
+        q8: 'b',
+      };
+
+      const penjelasan = {
+        q1: 'Operator digunakan untuk melakukan operasi terhadap nilai atau variabel, misalnya perhitungan dan perbandingan.',
+        q2: '10 dibagi 3 menghasilkan sisa 1. Operator modulus (%) digunakan untuk mendapatkan sisa pembagian.',
+        q3: 'Operator == digunakan untuk membandingkan apakah dua nilai sama.',
+        q4: 'Operator and menghasilkan True hanya jika kedua kondisi bernilai True. Karena salah satunya False, hasilnya False.',
+        q5: 'Operator += menambahkan suatu nilai ke nilai variabel yang sudah ada. Contohnya x += 5 setara dengan x = x + 5.',
+        q6: 'Operator in digunakan untuk memeriksa apakah suatu nilai terdapat di dalam kumpulan data, seperti List.',
+        q7: 'Operator == membandingkan kesamaan nilai, sedangkan is membandingkan apakah dua variabel merujuk pada objek yang sama.',
+        q8: 'Perkalian dikerjakan lebih dahulu: 5 × 2 = 10. Setelah itu, 10 + 10 = 20.',
+      };
+
+      const form = document.getElementById('quiz-form');
+      const jumlahSoal = 8;
+
+      function perbaruiProgress() {
+        let terjawab = 0;
+
+        for (let i = 1; i <= jumlahSoal; i++) {
+          if (form.querySelector(`input[name="q${i}"]:checked`)) {
+            terjawab++;
+          }
+        }
+
+        document.getElementById(
+          'quiz-count'
+        ).textContent = `${terjawab}/${jumlahSoal} dijawab`;
+
+        document.getElementById('quiz-progress-bar').style.width = `${
+          (terjawab / jumlahSoal) * 100
+        }%`;
+      }
+
+      form.addEventListener('change', perbaruiProgress);
+
+      document
+        .getElementById('check-quiz')
+        .addEventListener('click', function () {
+          let skor = 0;
+          let belumDijawab = [];
+
+          for (let i = 1; i <= jumlahSoal; i++) {
+            const pilihan = form.querySelector(`input[name="q${i}"]:checked`);
+            const feedback = document.getElementById(`feedback-q${i}`);
+
+            feedback.className = 'quiz-feedback';
+
+            if (!pilihan) {
+              belumDijawab.push(i);
+              feedback.textContent = 'Belum dijawab.';
+              feedback.classList.add('wrong');
+              continue;
+            }
+
+            if (pilihan.value === jawabanBenar[`q${i}`]) {
+              skor++;
+              feedback.textContent = 'Benar! ' + penjelasan[`q${i}`];
+              feedback.classList.add('correct');
+            } else {
+              feedback.textContent = 'Belum tepat. ' + penjelasan[`q${i}`];
+              feedback.classList.add('wrong');
+            }
+          }
+
+          if (belumDijawab.length > 0) {
+            alert(
+              'Masih ada soal yang belum dijawab: ' +
+                belumDijawab.join(', ') +
+                '. Silakan lengkapi terlebih dahulu.'
+            );
+            return;
+          }
+
+          const nilai = Math.round((skor / jumlahSoal) * 100);
+
+          document.getElementById('quiz-result').style.display = 'block';
+
+          document.getElementById(
+            'quiz-score'
+          ).textContent = `Jawaban benar: ${skor} dari ${jumlahSoal} soal. Nilai: ${nilai}/100.`;
+
+          let pesan = '';
+
+          if (nilai >= 85) {
+            pesan = 'Sangat baik! Kamu sudah memahami materi operator Python.';
+          } else if (nilai >= 70) {
+            pesan = 'Bagus! Terus tingkatkan pemahamanmu.';
+          } else if (nilai >= 50) {
+            pesan = 'Cukup baik. Pelajari kembali bagian yang belum dipahami.';
+          } else {
+            pesan = 'Ayo belajar kembali dan coba kerjakan kuis sekali lagi.';
+          }
+
+          document.getElementById('quiz-message').textContent = pesan;
+
+          document.getElementById('check-quiz').style.display = 'none';
+          document.getElementById('reset-quiz').style.display = 'inline-block';
+
+          document.getElementById('quiz-result').scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+          });
+        });
+
+      document
+        .getElementById('reset-quiz')
+        .addEventListener('click', function () {
+          form.reset();
+
+          for (let i = 1; i <= jumlahSoal; i++) {
+            const feedback = document.getElementById(`feedback-q${i}`);
+            feedback.textContent = '';
+            feedback.className = 'quiz-feedback';
+          }
+
+          document.getElementById('quiz-result').style.display = 'none';
+          document.getElementById('check-quiz').style.display = 'inline-block';
+          document.getElementById('reset-quiz').style.display = 'none';
+
+          perbaruiProgress();
+
+          window.scrollTo({
+            top: document.querySelector('.quiz-container').offsetTop,
+            behavior: 'smooth',
+          });
+        });
+
+      perbaruiProgress();
+    </script>
+  </body>
+</html>
