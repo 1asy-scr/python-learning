@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Materi 9: Fungsi Python | Python Learn</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <style>
+      /* Styling disamakan persis dengan pengenalan-python.html */
+      .subsection {
+        margin-bottom: 30px;
+      }
+
+      .subsection h3 {
+        margin-top: 30px;
+      }
+
+      .table-responsive {
+        overflow-x: auto;
+        margin: 20px 0;
+      }
+
+      .content table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+        margin: 15px 0;
+      }
+
+      .content th,
+      .content td {
+        border: 1px solid #dbe3ef;
+        padding: 11px 13px;
+        text-align: left;
+      }
+
+      .content th {
+        background: #eff6ff;
+        color: #172554;
+      }
+
+      .code-output {
+        background: #f8fbff;
+        border-left: 4px solid #1764dc;
+        padding: 12px 16px;
+        border-radius: 5px;
+        margin: 10px 0 20px;
+      }
+
+      .code-output strong {
+        display: block;
+        margin-bottom: 7px;
+        color: #172554;
+      }
+
+      .code-output pre {
+        margin: 0;
+        white-space: pre-wrap;
+      }
+
+      .difficulty {
+        display: inline-block;
+        font-size: 12px;
+        padding: 4px 10px;
+        border-radius: 20px;
+        background: #dbeafe;
+        color: #1764dc;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      /* Kuis Interaktif */
+      .quiz-container {
+        border: 1px solid #dbe3ef;
+        border-radius: 9px;
+        padding: 22px;
+        margin-top: 20px;
+        background: #f8fbff;
+      }
+
+      .quiz-header {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .quiz-progress {
+        background: #e2e8f0;
+        height: 8px;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 22px;
+      }
+
+      .quiz-progress-bar {
+        height: 100%;
+        width: 0%;
+        background: #1764dc;
+        transition: width 0.3s;
+      }
+
+      .question-card {
+        background: #fff;
+        border: 1px solid #dbe3ef;
+        border-radius: 8px;
+        padding: 18px;
+        margin-bottom: 16px;
+      }
+
+      .question-card h4 {
+        margin: 0 0 13px;
+        color: #172554;
+      }
+
+      .quiz-option {
+        display: block;
+        padding: 10px 12px;
+        margin: 8px 0;
+        border: 1px solid #dbe3ef;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        background: white;
+      }
+
+      .quiz-option:hover {
+        background: #eff6ff;
+        border-color: #1764dc;
+      }
+
+      .quiz-option input {
+        margin-right: 9px;
+        accent-color: #1764dc;
+      }
+
+      .quiz-button {
+        background: #1764dc;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 12px 22px;
+        cursor: pointer;
+        font-size: 14px;
+        margin-top: 10px;
+      }
+
+      .quiz-button:hover {
+        background: #104bad;
+      }
+
+      .quiz-result {
+        display: none;
+        padding: 17px;
+        margin-top: 18px;
+        border-radius: 7px;
+        background: #eff6ff;
+        border-left: 4px solid #1764dc;
+      }
+
+      .quiz-result h4 {
+        margin-top: 0;
+      }
+
+      .quiz-feedback {
+        font-size: 13px;
+        margin-top: 8px;
+        color: #475569;
+      }
+
+      .quiz-feedback.correct {
+        color: #15803d;
+      }
+
+      .quiz-feedback.wrong {
+        color: #dc2626;
+      }
+
+      @media (max-width: 700px) {
+        .quiz-container {
+          padding: 14px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header>
+      <a href="index.html" class="logo">
+        <div class="logo-icon">Py</div>
+        <h1>Python <span>Learn</span></h1>
+      </a>
+
+      <nav class="top-nav">
+        <a href="tentang.html">Tentang</a>
+        <a href="index.html">Beranda</a>
+      </nav>
+    </header>
+
+    <div class="container">
+      <!-- SIDEBAR -->
+      <aside class="sidebar" id="sidebar"></aside>
+
+      <!-- KONTEN MATERI -->
+      <main class="content">
+        <div class="breadcrumb">
+          <a href="index.html">Python Learn</a>
+          &nbsp; / &nbsp; Fungsi Python
+        </div>
+
+        <h2>Materi 9: Fungsi (Function) dalam Python</h2>
+
+        <p>
+          Selamat datang di materi kesembilan! Pada materi ini kita akan
+          mempelajari cara membuat dan menggunakan fungsi untuk menyusun program
+          Python yang lebih terstruktur, efisien, dan mudah digunakan kembali.
+        </p>
+
+        <div class="info">
+          <strong>Tujuan Pembelajaran</strong>
+          Setelah mempelajari materi ini, kamu diharapkan mampu:
+          <ol>
+            <li>Menjelaskan pengertian dan manfaat fungsi dalam Python.</li>
+            <li>Membuat dan memanggil fungsi menggunakan <code>def</code>.</li>
+            <li>Menggunakan parameter, argumen, dan <code>return</code>.</li>
+            <li>
+              Membedakan built-in function, user-defined function, dan lambda.
+            </li>
+            <li>Menggunakan parameter default dan keyword argument.</li>
+            <li>Memahami variabel lokal dan global.</li>
+            <li>Membuat program sederhana dengan memanfaatkan fungsi.</li>
+          </ol>
+        </div>
+
+        <!-- BAGIAN 1 -->
+        <section class="subsection">
+          <h3>1. Pengertian Fungsi dalam Python</h3>
+
+          <p>
+            Fungsi (function) adalah sekumpulan kode program yang dibuat untuk
+            menjalankan tugas tertentu. Fungsi dapat digunakan berulang kali
+            tanpa harus menulis ulang kode yang sama.
+          </p>
+
+          <p>Dengan menggunakan fungsi, program Python menjadi lebih:</p>
+
+          <ul>
+            <li>
+              <strong>Terstruktur:</strong> Kode tersusun berdasarkan tugas
+              masing-masing.
+            </li>
+            <li>
+              <strong>Efisien:</strong> Kode yang sama tidak perlu ditulis
+              berulang kali.
+            </li>
+            <li>
+              <strong>Mudah diperbaiki:</strong> Kesalahan dapat diperbaiki pada
+              bagian fungsi terkait.
+            </li>
+            <li>
+              <strong>Mudah dikembangkan:</strong> Fungsi dapat digunakan dalam
+              berbagai bagian program.
+            </li>
+          </ul>
+
+          <h4>Contoh tanpa menggunakan fungsi</h4>
+
+          <pre><code>print("Selamat datang!")
+print("Selamat datang!")
+print("Selamat datang!")</code></pre>
+
+          <h4>Contoh menggunakan fungsi</h4>
+
+          <pre><code>def salam():
+    print("Selamat datang!")
+
+salam()
+salam()
+salam()</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+Selamat datang!
+Selamat datang!
+Selamat datang!</pre
+            >
+          </div>
+
+          <p>
+            Kedua contoh menghasilkan output yang sama. Namun, menggunakan
+            fungsi membuat kode lebih ringkas dan mudah dikelola. Kita cukup
+            membuat fungsi satu kali, kemudian memanggilnya setiap kali
+            diperlukan.
+          </p>
+        </section>
+
+        <!-- BAGIAN 2 -->
+        <section class="subsection">
+          <h3>2. Cara Membuat Fungsi di Python</h3>
+
+          <p>
+            Untuk membuat fungsi, Python menggunakan kata kunci
+            <code>def</code>. Berikut struktur dasar penulisan fungsi:
+          </p>
+
+          <pre><code>def nama_fungsi():
+    # Kode yang akan dijalankan
+    perintah</code></pre>
+
+          <p>Keterangan setiap bagian:</p>
+
+          <ul>
+            <li><code>def</code>: Kata kunci untuk mendefinisikan fungsi.</li>
+            <li>
+              <code>nama_fungsi</code>: Nama yang digunakan untuk memanggil
+              fungsi.
+            </li>
+            <li>
+              <code>()</code>: Tempat menuliskan parameter jika diperlukan.
+            </li>
+            <li><code>:</code>: Menandakan awal blok fungsi.</li>
+            <li>
+              <strong>Indentasi:</strong> Menandakan kode yang termasuk dalam
+              fungsi.
+            </li>
+          </ul>
+
+          <h4>Contoh membuat fungsi</h4>
+
+          <pre><code>def perkenalan():
+    print("Halo, nama saya Andi.")
+    print("Saya sedang belajar Python.")
+
+perkenalan()</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+Halo, nama saya Andi.
+Saya sedang belajar Python.</pre
+            >
+          </div>
+
+          <div class="info">
+            <strong>Hal penting!</strong>
+            Fungsi yang sudah dibuat tidak otomatis dijalankan. Kita harus
+            memanggilnya menggunakan nama fungsi diikuti tanda kurung
+            <code>()</code>.
+          </div>
+        </section>
+
+        <!-- BAGIAN 3 -->
+        <section class="subsection">
+          <h3>3. Fungsi dengan Parameter</h3>
+
+          <p>
+            Parameter adalah variabel yang ditulis di dalam tanda kurung saat
+            mendefinisikan fungsi. Parameter digunakan untuk menerima data dari
+            luar fungsi.
+          </p>
+
+          <h4>Contoh fungsi dengan satu parameter</h4>
+
+          <pre><code>def salam(nama):
+    print("Halo,", nama)
+    print("Selamat belajar Python!")
+
+salam("Andi")
+salam("Budi")
+salam("Siti")</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+Halo, Andi
+Selamat belajar Python!
+Halo, Budi
+Selamat belajar Python!
+Halo, Siti
+Selamat belajar Python!</pre
+            >
+          </div>
+
+          <p>Pada contoh tersebut:</p>
+
+          <ul>
+            <li><code>nama</code> merupakan parameter.</li>
+            <li>
+              <code>"Andi"</code>, <code>"Budi"</code>, dan
+              <code>"Siti"</code> merupakan argumen atau nilai yang dikirimkan
+              ketika fungsi dipanggil.
+            </li>
+          </ul>
+
+          <h4>Fungsi dengan lebih dari satu parameter</h4>
+
+          <p>
+            Sebuah fungsi juga dapat menerima beberapa parameter. Setiap
+            parameter dipisahkan dengan tanda koma.
+          </p>
+
+          <pre><code>def perkenalan(nama, umur):
+    print("Nama:", nama)
+    print("Umur:", umur, "tahun")
+
+perkenalan("Andi", 17)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+Nama: Andi
+Umur: 17 tahun</pre
+            >
+          </div>
+
+          <div class="info">
+            <strong>Ingat!</strong>
+            Parameter adalah variabel pada definisi fungsi, sedangkan argumen
+            adalah nilai yang diberikan ketika fungsi dipanggil.
+          </div>
+        </section>
+
+        <!-- BAGIAN 4 -->
+        <section class="subsection">
+          <h3>4. Fungsi dengan Return</h3>
+
+          <p>
+            Selain menampilkan hasil menggunakan <code>print()</code>, fungsi
+            dapat mengembalikan nilai menggunakan perintah <code>return</code>.
+          </p>
+
+          <p>
+            Nilai yang dikembalikan dapat disimpan dalam variabel atau digunakan
+            dalam perhitungan lain.
+          </p>
+
+          <h4>Contoh penggunaan return</h4>
+
+          <pre><code>def tambah(a, b):
+    hasil = a + b
+    return hasil
+
+total = tambah(10, 5)
+print("Hasil penjumlahan:", total)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>Hasil penjumlahan: 15</pre>
+          </div>
+
+          <h4>Perbedaan print() dan return</h4>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th><code>print()</code></th>
+                  <th><code>return</code></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Menampilkan informasi ke layar.</td>
+                  <td>Mengembalikan nilai dari fungsi.</td>
+                </tr>
+                <tr>
+                  <td>Tidak mengirimkan hasil sebagai nilai fungsi.</td>
+                  <td>Hasilnya dapat disimpan dalam variabel.</td>
+                </tr>
+                <tr>
+                  <td>Cocok untuk menampilkan pesan.</td>
+                  <td>Cocok untuk pengolahan data dan perhitungan.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>Contoh perbandingan</h4>
+
+          <pre><code>def contoh_print():
+    print(10 + 5)
+
+def contoh_return():
+    return 10 + 5
+
+contoh_print()
+
+hasil = contoh_return()
+print("Nilai return:", hasil)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+15
+Nilai return: 15</pre
+            >
+          </div>
+
+          <p>
+            Fungsi <code>contoh_print()</code> langsung menampilkan hasil ke
+            layar. Sementara itu, <code>contoh_return()</code> mengembalikan
+            nilai 15 sehingga hasilnya dapat disimpan dalam variabel
+            <code>hasil</code>.
+          </p>
+        </section>
+
+        <!-- BAGIAN 5 -->
+        <section class="subsection">
+          <h3>5. Jenis-Jenis Fungsi dalam Python</h3>
+
+          <p>
+            Secara umum, fungsi dalam Python dapat dibedakan menjadi beberapa
+            jenis berdasarkan cara pembuatannya.
+          </p>
+
+          <h4>A. Built-in Function</h4>
+
+          <p>
+            Built-in function adalah fungsi bawaan Python yang dapat langsung
+            digunakan tanpa perlu mendefinisikannya terlebih dahulu.
+          </p>
+
+          <pre><code>nama = "Python"
+angka = [10, 20, 30, 40]
+
+print(len(nama))
+print(max(angka))
+print(min(angka))
+print(sum(angka))</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+6
+40
+10
+100</pre
+            >
+          </div>
+
+          <p>Beberapa fungsi bawaan Python yang sering digunakan:</p>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Fungsi</th>
+                  <th>Kegunaan</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>print()</code></td>
+                  <td>Menampilkan informasi.</td>
+                </tr>
+                <tr>
+                  <td><code>input()</code></td>
+                  <td>Menerima masukan pengguna.</td>
+                </tr>
+                <tr>
+                  <td><code>len()</code></td>
+                  <td>Menghitung jumlah elemen.</td>
+                </tr>
+                <tr>
+                  <td><code>type()</code></td>
+                  <td>Mengetahui tipe data.</td>
+                </tr>
+                <tr>
+                  <td><code>max()</code></td>
+                  <td>Mencari nilai terbesar.</td>
+                </tr>
+                <tr>
+                  <td><code>min()</code></td>
+                  <td>Mencari nilai terkecil.</td>
+                </tr>
+                <tr>
+                  <td><code>sum()</code></td>
+                  <td>Menjumlahkan elemen angka.</td>
+                </tr>
+                <tr>
+                  <td><code>range()</code></td>
+                  <td>Membuat urutan bilangan.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>B. User-defined Function</h4>
+
+          <p>
+            User-defined function adalah fungsi yang dibuat sendiri oleh
+            programmer menggunakan kata kunci <code>def</code>.
+          </p>
+
+          <pre><code>def hitung_luas_persegi(sisi):
+    return sisi * sisi
+
+luas = hitung_luas_persegi(5)
+print("Luas persegi:", luas)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>Luas persegi: 25</pre>
+          </div>
+
+          <h4>C. Anonymous Function (Lambda)</h4>
+
+          <p>
+            Lambda adalah fungsi sederhana yang dibuat tanpa menggunakan nama
+            fungsi seperti <code>def</code>. Lambda umumnya digunakan untuk
+            operasi sederhana yang dapat ditulis dalam satu ekspresi.
+          </p>
+
+          <p>Struktur penulisan lambda:</p>
+
+          <pre><code>lambda parameter: ekspresi</code></pre>
+
+          <h4>Contoh penggunaan lambda</h4>
+
+          <pre><code>kuadrat = lambda x: x * x
+
+print(kuadrat(5))
+print(kuadrat(8))</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+25
+64</pre
+            >
+          </div>
+
+          <div class="info">
+            <strong>Kesimpulan singkat:</strong>
+            Built-in function merupakan fungsi bawaan Python, user-defined
+            function dibuat sendiri menggunakan <code>def</code>, sedangkan
+            lambda digunakan untuk membuat fungsi sederhana secara ringkas.
+          </div>
+        </section>
+
+        <!-- BAGIAN 6 -->
+        <section class="subsection">
+          <h3>6. Parameter Default</h3>
+
+          <p>
+            Parameter default adalah parameter yang sudah memiliki nilai awal.
+            Jika pengguna tidak memberikan argumen untuk parameter tersebut,
+            Python akan menggunakan nilai default.
+          </p>
+
+          <h4>Contoh penggunaan parameter default</h4>
+
+          <pre><code>def salam(nama="Pengunjung"):
+    print("Halo,", nama)
+
+salam()
+salam("Andi")</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+Halo, Pengunjung
+Halo, Andi</pre
+            >
+          </div>
+
+          <p>
+            Pada contoh tersebut, <code>"Pengunjung"</code> menjadi nilai
+            default untuk parameter <code>nama</code>. Ketika fungsi dipanggil
+            tanpa argumen, nilai tersebut digunakan secara otomatis.
+          </p>
+        </section>
+
+        <!-- BAGIAN 7 -->
+        <section class="subsection">
+          <h3>7. Keyword Argument</h3>
+
+          <p>
+            Keyword argument adalah cara mengirimkan argumen dengan menyebutkan
+            nama parameternya. Dengan cara ini, argumen tidak harus ditulis
+            sesuai urutan parameter.
+          </p>
+
+          <h4>Contoh penggunaan keyword argument</h4>
+
+          <pre><code>def biodata(nama, umur, kota):
+    print("Nama:", nama)
+    print("Umur:", umur)
+    print("Kota:", kota)
+
+biodata(
+    kota="Jakarta",
+    nama="Andi",
+    umur=17
+)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+Nama: Andi
+Umur: 17
+Kota: Jakarta</pre
+            >
+          </div>
+
+          <p>
+            Keuntungan keyword argument adalah kita dapat menuliskan argumen
+            tanpa harus mengikuti urutan parameter, selama nama parameternya
+            sesuai.
+          </p>
+
+          <div class="info">
+            <strong>Catatan:</strong>
+            Keyword argument harus menggunakan nama parameter yang benar. Jangan
+            menuliskan argumen posisi setelah keyword argument dalam pemanggilan
+            fungsi.
+          </div>
+        </section>
+
+        <!-- BAGIAN 8 -->
+        <section class="subsection">
+          <h3>8. Variabel Lokal dan Variabel Global</h3>
+
+          <p>
+            Dalam fungsi, terdapat dua jenis variabel yang perlu dipahami
+            berdasarkan ruang lingkup penggunaannya (scope).
+          </p>
+
+          <h4>A. Variabel Lokal</h4>
+
+          <p>
+            Variabel lokal adalah variabel yang dibuat di dalam fungsi dan hanya
+            dapat digunakan di dalam fungsi tersebut.
+          </p>
+
+          <pre><code>def belajar():
+    pesan = "Saya sedang belajar Python"
+    print(pesan)
+
+belajar()</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>Saya sedang belajar Python</pre>
+          </div>
+
+          <p>
+            Variabel <code>pesan</code> merupakan variabel lokal karena dibuat
+            di dalam fungsi <code>belajar()</code>.
+          </p>
+
+          <h4>B. Variabel Global</h4>
+
+          <p>
+            Variabel global adalah variabel yang dibuat di luar fungsi sehingga
+            dapat diakses dari berbagai bagian program.
+          </p>
+
+          <pre><code>nama = "Andi"
+
+def tampilkan_nama():
+    print("Nama:", nama)
+
+tampilkan_nama()</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>Nama: Andi</pre>
+          </div>
+
+          <div class="info">
+            <strong>Catatan penting:</strong>
+            Jika ingin mengubah variabel global dari dalam fungsi, Python
+            menyediakan kata kunci <code>global</code>. Namun, sebaiknya gunakan
+            parameter dan <code>return</code> jika memungkinkan agar kode lebih
+            mudah dipahami dan dikelola.
+          </div>
+
+          <h4>Contoh penggunaan global</h4>
+
+          <pre><code>jumlah = 0
+
+def tambah_jumlah():
+    global jumlah
+    jumlah += 1
+
+tambah_jumlah()
+tambah_jumlah()
+
+print(jumlah)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>2</pre>
+          </div>
+        </section>
+
+        <!-- BAGIAN 9 -->
+        <section class="subsection">
+          <h3>9. Contoh Project: Program Kalkulator Sederhana</h3>
+
+          <p>
+            Sekarang kita akan membuat program kalkulator sederhana dengan
+            memanfaatkan beberapa fungsi. Setiap operasi matematika akan dibuat
+            dalam fungsi tersendiri.
+          </p>
+
+          <h4>Kode Program</h4>
+
+          <pre><code>def tambah(a, b):
+    return a + b
+
+def kurang(a, b):
+    return a - b
+
+def kali(a, b):
+    return a * b
+
+def bagi(a, b):
+    if b == 0:
+        return "Tidak bisa dibagi nol"
+    return a / b
+
+# Memanggil fungsi
+print("=== KALKULATOR SEDERHANA ===")
+
+angka1 = float(input("Masukkan angka pertama: "))
+angka2 = float(input("Masukkan angka kedua: "))
+
+print("Hasil tambah:", tambah(angka1, angka2))
+print("Hasil kurang:", kurang(angka1, angka2))
+print("Hasil kali:", kali(angka1, angka2))
+print("Hasil bagi:", bagi(angka1, angka2))</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+=== KALKULATOR SEDERHANA ===
+Masukkan angka pertama: 10
+Masukkan angka kedua: 5
+Hasil tambah: 15.0
+Hasil kurang: 5.0
+Hasil kali: 50.0
+Hasil bagi: 2.0</pre
+            >
+          </div>
+
+          <h4>Penjelasan Program</h4>
+
+          <ol>
+            <li>
+              Fungsi <code>tambah()</code> digunakan untuk menjumlahkan dua
+              angka.
+            </li>
+            <li>
+              Fungsi <code>kurang()</code> digunakan untuk mengurangi dua angka.
+            </li>
+            <li>
+              Fungsi <code>kali()</code> digunakan untuk mengalikan dua angka.
+            </li>
+            <li>
+              Fungsi <code>bagi()</code> digunakan untuk membagi dua angka.
+            </li>
+            <li>
+              Setiap fungsi mengembalikan hasil menggunakan <code>return</code>.
+            </li>
+            <li>
+              Program memeriksa apakah angka pembagi bernilai nol agar tidak
+              terjadi pembagian dengan nol.
+            </li>
+          </ol>
+
+          <a
+            class="colab-button"
+            href="https://colab.research.google.com/#create=true"
+            target="_blank"
+            rel="noopener"
+          >
+            Praktikkan di Google Colab ↗
+          </a>
+        </section>
+
+        <!-- BAGIAN 10 -->
+        <section class="subsection">
+          <h3>10. Kesalahan Umum Saat Menggunakan Fungsi</h3>
+
+          <p>
+            Ketika belajar menggunakan fungsi, pemula sering melakukan beberapa
+            kesalahan berikut.
+          </p>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Kesalahan</th>
+                  <th>Penyebab</th>
+                  <th>Solusi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>NameError</code></td>
+                  <td>Nama fungsi tidak ditemukan.</td>
+                  <td>
+                    Periksa nama fungsi dan pastikan fungsi sudah didefinisikan.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>TypeError</code></td>
+                  <td>Jumlah atau tipe argumen tidak sesuai.</td>
+                  <td>Periksa parameter dan argumen.</td>
+                </tr>
+                <tr>
+                  <td><code>IndentationError</code></td>
+                  <td>Indentasi tidak tepat.</td>
+                  <td>Gunakan indentasi secara konsisten.</td>
+                </tr>
+                <tr>
+                  <td>Fungsi tidak berjalan</td>
+                  <td>Fungsi belum dipanggil.</td>
+                  <td>Panggil fungsi dengan tanda <code>()</code>.</td>
+                </tr>
+                <tr>
+                  <td>Hasil fungsi <code>None</code></td>
+                  <td>Tidak ada nilai yang dikembalikan.</td>
+                  <td>Gunakan <code>return</code> jika membutuhkan hasil.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>Contoh kesalahan: jumlah argumen tidak sesuai</h4>
+
+          <pre><code>def tambah(a, b):
+    return a + b
+
+print(tambah(10))</code></pre>
+
+          <p>
+            Kode tersebut menghasilkan <code>TypeError</code> karena fungsi
+            membutuhkan dua argumen, tetapi hanya menerima satu argumen.
+          </p>
+
+          <p><strong>Perbaikannya:</strong></p>
+
+          <pre><code>def tambah(a, b):
+    return a + b
+
+print(tambah(10, 5))</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>15</pre>
+          </div>
+        </section>
+
+        <!-- BAGIAN 11 -->
+        <section class="subsection">
+          <h3>11. Latihan Mandiri</h3>
+
+          <p>
+            Cobalah membuat beberapa program berikut untuk melatih pemahamanmu
+            tentang fungsi dalam Python.
+          </p>
+
+          <div class="info">
+            <span class="difficulty">Mudah</span>
+            <strong>Latihan 1: Menghitung Luas Persegi</strong>
+            <p>
+              Buat fungsi bernama <code>luas_persegi(sisi)</code> yang
+              mengembalikan hasil perkalian sisi dengan sisi.
+            </p>
+          </div>
+
+          <div class="info">
+            <span class="difficulty">Menengah</span>
+            <strong>Latihan 2: Menghitung Luas Segitiga</strong>
+            <p>
+              Buat fungsi <code>luas_segitiga(alas, tinggi)</code> dengan
+              menggunakan rumus: <code>L = 0.5 * alas * tinggi</code>.
+            </p>
+          </div>
+
+          <div class="info">
+            <span class="difficulty">Menantang</span>
+            <strong>Latihan 3: Menentukan Bilangan Ganjil atau Genap</strong>
+            <p>
+              Buat fungsi <code>cek_bilangan(angka)</code> yang mengembalikan
+              teks <code>"Genap"</code> jika angka habis dibagi 2 dan
+              <code>"Ganjil"</code> jika tidak.
+            </p>
+          </div>
+
+          <a
+            class="colab-button"
+            href="https://colab.research.google.com/#create=true"
+            target="_blank"
+            rel="noopener"
+          >
+            Praktikkan Latihan di Google Colab ↗
+          </a>
+        </section>
+
+        <!-- BAGIAN 12 -->
+        <section class="subsection">
+          <h3>12. Kuis Pemahaman</h3>
+
+          <p>
+            Uji pemahamanmu tentang fungsi Python melalui kuis berikut! Pilih
+            satu jawaban yang paling tepat untuk setiap pertanyaan, kemudian
+            klik tombol <strong>Periksa Jawaban</strong>.
+          </p>
+
+          <div class="quiz-container">
+            <div class="quiz-header">
+              <strong>Kuis Fungsi Python</strong>
+              <span id="quiz-count">0/5 dijawab</span>
+            </div>
+
+            <div class="quiz-progress">
+              <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
+            </div>
+
+            <form id="quiz-form">
+              <div class="question-card">
+                <h4>
+                  1. Kata kunci apa yang digunakan untuk membuat fungsi di
+                  Python?
+                </h4>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q1" value="a" />
+                  function
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q1" value="b" />
+                  def
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q1" value="c" />
+                  create
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q1" value="d" />
+                  func
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q1"></div>
+              </div>
+
+              <div class="question-card">
+                <h4>2. Apa kegunaan parameter dalam fungsi?</h4>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q2" value="a" />
+                  Menghapus kode
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q2" value="b" />
+                  Menerima data atau nilai dari luar fungsi
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q2" value="c" />
+                  Menghentikan program
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q2" value="d" />
+                  Menampilkan gambar
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q2"></div>
+              </div>
+
+              <div class="question-card">
+                <h4>
+                  3. Perintah apa yang digunakan untuk mengembalikan nilai dari
+                  fungsi?
+                </h4>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q3" value="a" />
+                  print
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q3" value="b" />
+                  input
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q3" value="c" />
+                  return
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q3" value="d" />
+                  break
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q3"></div>
+              </div>
+
+              <div class="question-card">
+                <h4>4. Apa output dari kode berikut?</h4>
+                <pre><code>def kali(a, b):
+    return a * b
+
+print(kali(3, 4))</code></pre>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q4" value="a" />
+                  7
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q4" value="b" />
+                  12
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q4" value="c" />
+                  34
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q4" value="d" />
+                  Error
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q4"></div>
+              </div>
+
+              <div class="question-card">
+                <h4>5. Apa yang dimaksud dengan lambda?</h4>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q5" value="a" />
+                  Fungsi anonim
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q5" value="b" />
+                  Perulangan
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q5" value="c" />
+                  Tipe data
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q5" value="d" />
+                  Operator matematika
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q5"></div>
+              </div>
+
+              <button type="button" class="quiz-button" id="check-quiz">
+                Periksa Jawaban
+              </button>
+
+              <button
+                type="button"
+                class="quiz-button"
+                id="reset-quiz"
+                style="background: #64748b; display: none"
+              >
+                Ulangi Kuis
+              </button>
+            </form>
+
+            <div class="quiz-result" id="quiz-result">
+              <h4>Hasil Kuis</h4>
+              <p id="quiz-score"></p>
+              <p id="quiz-message"></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- BAGIAN 13 -->
+        <section class="subsection">
+          <h3>13. Kesimpulan</h3>
+
+          <p>
+            Pada materi ini, kita telah mempelajari berbagai konsep penting
+            tentang fungsi Python:
+          </p>
+
+          <ol>
+            <li>Fungsi dibuat menggunakan kata kunci <code>def</code>.</li>
+            <li>
+              Fungsi dipanggil dengan menuliskan nama fungsi diikuti
+              <code>()</code>.
+            </li>
+            <li>Parameter digunakan untuk menerima data dari luar fungsi.</li>
+            <li><code>return</code> digunakan untuk mengembalikan nilai.</li>
+            <li>Python memiliki fungsi bawaan atau built-in function.</li>
+            <li>Lambda merupakan fungsi anonim untuk operasi sederhana.</li>
+            <li>Variabel lokal dan global memiliki ruang lingkup berbeda.</li>
+            <li>Penerapan fungsi dalam kalkulator sederhana.</li>
+          </ol>
+
+          <div class="info">
+            <strong>Poin Penting:</strong>
+            Dengan memahami fungsi, kamu sudah memiliki dasar penting untuk
+            membuat program Python yang lebih kompleks. Biasakan membagi program
+            menjadi fungsi-fungsi kecil agar kode lebih mudah dibaca, diuji, dan
+            dikembangkan.
+          </div>
+        </section>
+
+        <!-- TUGAS MATERI -->
+        <div class="task">
+          <h3>Tugas 9: Program Pengelolaan Data dan Nilai Siswa</h3>
+
+          <p>
+            Buatlah program Python untuk mengelola data dan nilai beberapa siswa
+            dengan memanfaatkan fungsi. Program harus dapat menerima data siswa,
+            menghitung nilai rata-rata, dan menampilkan hasil pengolahan data.
+          </p>
+
+          <p><strong>Ketentuan Program:</strong></p>
+
+          <ol>
+            <li>Buat fungsi untuk menerima atau memasukkan data siswa.</li>
+            <li>Buat fungsi untuk menghitung rata-rata nilai siswa.</li>
+            <li>
+              Buat fungsi untuk menentukan status kelulusan siswa. Misalnya,
+              nilai minimal 75 dinyatakan lulus.
+            </li>
+            <li>Buat fungsi untuk menampilkan seluruh data siswa.</li>
+            <li>Program harus dapat mengelola minimal tiga siswa.</li>
+            <li>
+              Gunakan parameter dan <code>return</code> pada fungsi yang sesuai.
+            </li>
+            <li>
+              Tampilkan nama, nilai, rata-rata, dan status kelulusan setiap
+              siswa.
+            </li>
+          </ol>
+
+          <p><strong>Ketentuan Pengumpulan:</strong></p>
+
+          <ol>
+            <li>Buat program menggunakan Google Colab.</li>
+            <li>
+              Simpan notebook dengan nama <code>Tugas9_Nama_NIM.ipynb</code>.
+            </li>
+            <li>Simpan notebook di Google Drive.</li>
+            <li>
+              Atur akses berbagi notebook agar dapat diperiksa oleh dosen/guru.
+            </li>
+            <li>
+              Kumpulkan tautan notebook melalui tombol
+              <strong>Pengumpulan Tugas</strong> pada sidebar website.
+            </li>
+          </ol>
+
+          <a
+            href="https://colab.research.google.com/#create=true"
+            target="_blank"
+            class="colab-button"
+            rel="noopener"
+          >
+            Mulai Mengerjakan di Google Colab ↗
+          </a>
+        </div>
+
+        <!-- NAVIGASI MATERI -->
+        <div class="navigation" id="navigation"></div>
+      </main>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>Python Learn | Media Pembelajaran Python Dasar</footer>
+
+    <script src="assets/js/script.js"></script>
+
+    <script>
+      // Kunci jawaban & penjelasan kuis diselaraskan dengan standar format kuis
+      const jawabanBenar = {
+        q1: 'b',
+        q2: 'b',
+        q3: 'c',
+        q4: 'b',
+        q5: 'a',
+      };
+
+      const penjelasan = {
+        q1: 'Kata kunci def digunakan untuk mendefinisikan atau membuat fungsi dalam Python.',
+        q2: 'Parameter digunakan untuk menerima data atau nilai yang dikirimkan dari luar fungsi.',
+        q3: 'Perintah return digunakan untuk mengembalikan nilai dari fungsi agar dapat digunakan kembali.',
+        q4: 'Fungsi kali mengalikan 3 dengan 4 sehingga menghasilkan 12.',
+        q5: 'Lambda merupakan fungsi anonim atau fungsi tanpa nama yang cocok untuk operasi sederhana.',
+      };
+
+      const form = document.getElementById('quiz-form');
+      const jumlahSoal = 5;
+
+      function perbaruiProgress() {
+        let terjawab = 0;
+
+        for (let i = 1; i <= jumlahSoal; i++) {
+          if (form.querySelector(`input[name="q${i}"]:checked`)) {
+            terjawab++;
+          }
+        }
+
+        document.getElementById(
+          'quiz-count'
+        ).textContent = `${terjawab}/${jumlahSoal} dijawab`;
+
+        document.getElementById('quiz-progress-bar').style.width = `${
+          (terjawab / jumlahSoal) * 100
+        }%`;
+      }
+
+      form.addEventListener('change', perbaruiProgress);
+
+      document
+        .getElementById('check-quiz')
+        .addEventListener('click', function () {
+          let skor = 0;
+          let belumDijawab = [];
+
+          for (let i = 1; i <= jumlahSoal; i++) {
+            const pilihan = form.querySelector(`input[name="q${i}"]:checked`);
+            const feedback = document.getElementById(`feedback-q${i}`);
+
+            feedback.className = 'quiz-feedback';
+
+            if (!pilihan) {
+              belumDijawab.push(i);
+              feedback.textContent = 'Belum dijawab.';
+              feedback.classList.add('wrong');
+              continue;
+            }
+
+            if (pilihan.value === jawabanBenar[`q${i}`]) {
+              skor++;
+              feedback.textContent = 'Benar! ' + penjelasan[`q${i}`];
+              feedback.classList.add('correct');
+            } else {
+              feedback.textContent = 'Belum tepat. ' + penjelasan[`q${i}`];
+              feedback.classList.add('wrong');
+            }
+          }
+
+          if (belumDijawab.length > 0) {
+            alert(
+              'Masih ada soal yang belum dijawab: ' +
+                belumDijawab.join(', ') +
+                '. Silakan lengkapi terlebih dahulu.'
+            );
+            return;
+          }
+
+          const nilai = Math.round((skor / jumlahSoal) * 100);
+
+          document.getElementById('quiz-result').style.display = 'block';
+
+          document.getElementById(
+            'quiz-score'
+          ).textContent = `Jawaban benar: ${skor} dari ${jumlahSoal} soal. Nilai: ${nilai}/100.`;
+
+          let pesan = '';
+
+          if (nilai === 100) {
+            pesan = 'Luar biasa! Semua jawabanmu benar. Pertahankan!';
+          } else if (nilai >= 80) {
+            pesan =
+              'Hebat! Kamu sudah memahami materi fungsi Python dengan baik.';
+          } else if (nilai >= 60) {
+            pesan = 'Bagus! Pelajari kembali bagian yang belum dikuasai.';
+          } else {
+            pesan = 'Tetap semangat! Pelajari kembali materi dan coba lagi.';
+          }
+
+          document.getElementById('quiz-message').textContent = pesan;
+
+          document.getElementById('check-quiz').style.display = 'none';
+          document.getElementById('reset-quiz').style.display = 'inline-block';
+
+          document.getElementById('quiz-result').scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+          });
+        });
+
+      document
+        .getElementById('reset-quiz')
+        .addEventListener('click', function () {
+          form.reset();
+
+          for (let i = 1; i <= jumlahSoal; i++) {
+            const feedback = document.getElementById(`feedback-q${i}`);
+            feedback.textContent = '';
+            feedback.className = 'quiz-feedback';
+          }
+
+          document.getElementById('quiz-result').style.display = 'none';
+          document.getElementById('check-quiz').style.display = 'inline-block';
+          document.getElementById('reset-quiz').style.display = 'none';
+
+          perbaruiProgress();
+
+          window.scrollTo({
+            top: document.querySelector('.quiz-container').offsetTop,
+            behavior: 'smooth',
+          });
+        });
+
+      perbaruiProgress();
+    </script>
+  </body>
+</html>
