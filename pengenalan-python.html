@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Materi 1: Pengenalan Python | Python Learn</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <style>
+      /* Ilustrasi materi */
+      .materi-image {
+        width: 100%;
+        max-height: 330px;
+        object-fit: cover;
+        border-radius: 9px;
+        margin: 15px 0;
+      }
+
+      .image-caption {
+        font-size: 12px;
+        color: #8290a5;
+        margin-top: -8px;
+        margin-bottom: 20px;
+      }
+
+      .image-caption a {
+        color: #1764dc;
+        text-decoration: none;
+      }
+
+      .subsection {
+        margin-bottom: 30px;
+      }
+
+      .subsection h3 {
+        margin-top: 30px;
+      }
+
+      .table-responsive {
+        overflow-x: auto;
+        margin: 20px 0;
+      }
+
+      .content table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+      }
+
+      .content th,
+      .content td {
+        border: 1px solid #dbe3ef;
+        padding: 11px 13px;
+        text-align: left;
+      }
+
+      .content th {
+        background: #eff6ff;
+        color: #172554;
+      }
+
+      .application-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        margin: 20px 0;
+      }
+
+      .application-card {
+        border: 1px solid #dbe3ef;
+        border-radius: 8px;
+        padding: 17px;
+        background: #fff;
+      }
+
+      .application-card h4 {
+        color: #1764dc;
+        margin: 0 0 8px;
+        font-size: 17px;
+      }
+
+      .application-card p {
+        margin: 0;
+        font-size: 14px;
+      }
+
+      /* Kuis interaktif */
+      .quiz-container {
+        border: 1px solid #dbe3ef;
+        border-radius: 9px;
+        padding: 22px;
+        margin-top: 20px;
+        background: #f8fbff;
+      }
+
+      .quiz-header {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .quiz-progress {
+        background: #e2e8f0;
+        height: 8px;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 22px;
+      }
+
+      .quiz-progress-bar {
+        height: 100%;
+        width: 0%;
+        background: #1764dc;
+        transition: width 0.3s;
+      }
+
+      .question-card {
+        background: #fff;
+        border: 1px solid #dbe3ef;
+        border-radius: 8px;
+        padding: 18px;
+        margin-bottom: 16px;
+      }
+
+      .question-card h4 {
+        margin: 0 0 13px;
+        color: #172554;
+      }
+
+      .quiz-option {
+        display: block;
+        padding: 10px 12px;
+        margin: 8px 0;
+        border: 1px solid #dbe3ef;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        background: white;
+      }
+
+      .quiz-option:hover {
+        background: #eff6ff;
+        border-color: #1764dc;
+      }
+
+      .quiz-option input {
+        margin-right: 9px;
+        accent-color: #1764dc;
+      }
+
+      .quiz-button {
+        background: #1764dc;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 12px 22px;
+        cursor: pointer;
+        font-size: 14px;
+        margin-top: 10px;
+      }
+
+      .quiz-button:hover {
+        background: #104bad;
+      }
+
+      .quiz-result {
+        display: none;
+        padding: 17px;
+        margin-top: 18px;
+        border-radius: 7px;
+        background: #eff6ff;
+        border-left: 4px solid #1764dc;
+      }
+
+      .quiz-result h4 {
+        margin-top: 0;
+      }
+
+      .quiz-feedback {
+        font-size: 13px;
+        margin-top: 8px;
+        color: #475569;
+      }
+
+      .quiz-feedback.correct {
+        color: #15803d;
+      }
+
+      .quiz-feedback.wrong {
+        color: #dc2626;
+      }
+
+      @media (max-width: 700px) {
+        .application-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .quiz-container {
+          padding: 14px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <a href="index.html" class="logo">
+        <div class="logo-icon">Py</div>
+        <h1>Python <span>Learn</span></h1>
+      </a>
+
+      <nav class="top-nav">
+        <a href="tentang.html">Tentang</a>
+        <a href="index.html">Beranda</a>
+      </nav>
+    </header>
+
+    <div class="container">
+      <!-- SIDEBAR -->
+      <aside class="sidebar" id="sidebar"></aside>
+
+      <!-- KONTEN MATERI -->
+      <main class="content">
+        <div class="breadcrumb">
+          <a href="index.html">Python Learn</a>
+          &nbsp; / &nbsp; Pengenalan Python
+        </div>
+
+        <h2>Materi 1: Pengenalan Python</h2>
+
+        <p>
+          Selamat datang di materi pertama Python Learn! Pada materi ini, kamu
+          akan mengenal bahasa pemrograman Python, sejarah perkembangannya,
+          berbagai kegunaannya dalam dunia teknologi, serta aturan dasar
+          penulisan kode Python.
+        </p>
+
+        <div class="info">
+          <strong>Tujuan Pembelajaran</strong>
+          Setelah mempelajari materi ini, kamu diharapkan mampu:
+          <ol>
+            <li>Menjelaskan pengertian dan sejarah singkat Python.</li>
+            <li>Mengidentifikasi keunggulan dan kegunaan Python.</li>
+            <li>Memahami persiapan untuk mulai belajar Python.</li>
+            <li>Menulis dan menjalankan program Python sederhana.</li>
+            <li>Memahami aturan dasar penulisan kode Python.</li>
+          </ol>
+        </div>
+
+        <!-- BAGIAN 1 -->
+        <section class="subsection">
+          <h3>1. Apa Itu Python?</h3>
+          <p>
+            Python adalah bahasa pemrograman tingkat tinggi (<em
+              >high-level programming language</em
+            >) yang dirancang agar mudah dibaca, dipelajari, dan digunakan.
+          </p>
+
+          <p>
+            Python pertama kali dikembangkan oleh Guido van Rossum dan dirilis
+            pada tahun 1991. Python menjadi salah satu bahasa pemrograman
+            populer karena memiliki sintaks yang sederhana serta dapat digunakan
+            untuk berbagai kebutuhan pengembangan teknologi.
+          </p>
+
+          <p>
+            Python dapat digunakan untuk membuat aplikasi, mengembangkan
+            website, mengolah data, membuat kecerdasan buatan (<em
+              >Artificial Intelligence</em
+            >), hingga mengotomatisasi pekerjaan.
+          </p>
+
+          <p><strong>Contoh kode Python sederhana:</strong></p>
+
+          <pre><code>print("Hello, World!")</code></pre>
+
+          <p><strong>Hasil output:</strong></p>
+
+          <pre><code>Hello, World!</code></pre>
+
+          <p>
+            Kode tersebut merupakan contoh program sederhana yang digunakan
+            untuk menampilkan tulisan ke layar. Perintah
+            <code>print()</code> akan dibahas lebih lanjut pada bagian
+            berikutnya.
+          </p>
+        </section>
+
+        <!-- BAGIAN 2 -->
+        <section class="subsection">
+          <h3>2. Sejarah Singkat Python</h3>
+
+          <p>
+            Python dikembangkan oleh Guido van Rossum pada akhir tahun 1980-an
+            dan pertama kali dirilis pada tahun 1991. Nama Python terinspirasi
+            dari acara komedi Inggris bernama
+            <em>Monty Python's Flying Circus</em>, bukan dari nama ular piton.
+          </p>
+
+          <p>
+            Seiring perkembangannya, Python terus mengalami pembaruan dan
+            menjadi bahasa pemrograman yang digunakan secara luas di berbagai
+            bidang teknologi.
+          </p>
+
+          <p><strong>Beberapa versi Python yang penting:</strong></p>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Versi</th>
+                  <th>Tahun</th>
+                  <th>Keterangan</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Python 1.0</td>
+                  <td>1994</td>
+                  <td>Rilis versi utama pertama.</td>
+                </tr>
+                <tr>
+                  <td>Python 2.0</td>
+                  <td>2000</td>
+                  <td>Memperkenalkan berbagai fitur baru.</td>
+                </tr>
+                <tr>
+                  <td>Python 3.0</td>
+                  <td>2008</td>
+                  <td>Pembaruan besar bahasa Python.</td>
+                </tr>
+                <tr>
+                  <td>Python 3.x</td>
+                  <td>Berlanjut</td>
+                  <td>Pengembangan dan pembaruan berkelanjutan.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="info">
+            <strong>Fakta Menarik</strong>
+            Nama Python bukan berasal dari nama ular, melainkan dari acara
+            komedi Inggris yang disukai oleh penciptanya.
+          </div>
+        </section>
+
+        <!-- BAGIAN 3 -->
+        <section class="subsection">
+          <h3>3. Mengapa Harus Belajar Python?</h3>
+
+          <p>
+            Python merupakan pilihan yang bagus untuk pemula karena memiliki
+            beberapa keunggulan berikut.
+          </p>
+
+          <h4>1. Mudah Dipelajari</h4>
+
+          <p>
+            Sintaks Python sederhana dan mudah dibaca, sehingga cocok untuk
+            orang yang baru mengenal pemrograman.
+          </p>
+
+          <h4>2. Serbaguna</h4>
+
+          <p>
+            Python dapat digunakan untuk pengembangan website, aplikasi,
+            analisis data, kecerdasan buatan, dan otomatisasi.
+          </p>
+
+          <h4>3. Gratis dan Open Source</h4>
+
+          <p>
+            Python dapat digunakan secara gratis dan kode sumbernya tersedia
+            untuk dipelajari serta dikembangkan.
+          </p>
+
+          <h4>4. Komunitas Besar</h4>
+
+          <p>
+            Banyak programmer menggunakan Python sehingga tersedia banyak
+            tutorial, dokumentasi, forum diskusi, dan pustaka pendukung.
+          </p>
+        </section>
+
+        <!-- BAGIAN 4 -->
+        <section class="subsection">
+          <h3>4. Kegunaan Python dalam Dunia Teknologi</h3>
+
+          <p>
+            Python memiliki banyak kegunaan dalam berbagai bidang. Berikut
+            beberapa contoh penerapannya.
+          </p>
+
+          <div class="application-grid">
+            <div class="application-card">
+              <h4>Web Development</h4>
+              <p>
+                Membangun aplikasi dan website menggunakan framework seperti
+                Django dan Flask.
+              </p>
+            </div>
+
+            <div class="application-card">
+              <h4>Artificial Intelligence</h4>
+              <p>
+                Mengembangkan sistem kecerdasan buatan dan
+                <em>machine learning</em>.
+              </p>
+            </div>
+
+            <div class="application-card">
+              <h4>Data Science</h4>
+              <p>Mengolah, menganalisis, dan memvisualisasikan data.</p>
+            </div>
+
+            <div class="application-card">
+              <h4>Automation</h4>
+              <p>Mengotomatisasi pekerjaan yang dilakukan secara berulang.</p>
+            </div>
+
+            <div class="application-card">
+              <h4>Game Development</h4>
+              <p>Membuat game sederhana menggunakan library seperti Pygame.</p>
+            </div>
+
+            <div class="application-card">
+              <h4>Cybersecurity</h4>
+              <p>
+                Membantu analisis keamanan dan pengujian sistem secara legal.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- BAGIAN 5 -->
+        <section class="subsection">
+          <h3>5. Persiapan Sebelum Belajar Python</h3>
+
+          <p>
+            Sebelum mulai menulis kode Python, ada beberapa hal yang perlu
+            dipersiapkan.
+          </p>
+
+          <ol>
+            <li>
+              <strong>Komputer atau laptop.</strong>
+              Digunakan untuk menulis dan menjalankan program.
+            </li>
+
+            <li>
+              <strong>Python Interpreter.</strong>
+              Program yang digunakan untuk menjalankan kode Python.
+            </li>
+
+            <li>
+              <strong>Code Editor.</strong>
+              Aplikasi untuk menulis kode, misalnya Visual Studio Code atau
+              IDLE.
+            </li>
+
+            <li>
+              <strong>Semangat belajar.</strong>
+              Kunci utama untuk memahami pemrograman adalah kemauan untuk
+              mencoba dan berlatih.
+            </li>
+          </ol>
+
+          <div class="application-grid">
+            <div class="application-card">
+              <h4>Python</h4>
+              <p>
+                Python dapat diunduh secara gratis melalui situs resmi Python
+                Software Foundation.
+              </p>
+              <p>
+                <a href="https://www.python.org/downloads/" target="_blank">
+                  Download Python ↗
+                </a>
+              </p>
+            </div>
+
+            <div class="application-card">
+              <h4>Visual Studio Code</h4>
+              <p>
+                Code editor populer yang dapat digunakan untuk menulis program
+                Python.
+              </p>
+              <p>
+                <a href="https://code.visualstudio.com/" target="_blank">
+                  Download Visual Studio Code ↗
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <div class="info">
+            <strong>Catatan untuk pembelajaran ini</strong>
+            Kamu tidak harus menginstal Python atau Visual Studio Code. Pada
+            pembelajaran Python Learn, kita akan menggunakan Google Colab
+            sehingga kode dapat ditulis dan dijalankan langsung melalui browser.
+          </div>
+        </section>
+
+        <!-- BAGIAN 6 -->
+        <section class="subsection">
+          <h3>6. Program Python Pertama</h3>
+
+          <p>
+            Sekarang kita akan mencoba membuat program Python pertama. Program
+            ini akan menampilkan beberapa kalimat sederhana menggunakan perintah
+            <code>print()</code>.
+          </p>
+
+          <p><strong>Perhatikan kode berikut:</strong></p>
+
+          <pre><code>print("Selamat Datang di Python!")
+print("Saya Sedang Belajar Python")
+print("Python Itu Menyenangkan!")</code></pre>
+
+          <p><strong>Hasil output:</strong></p>
+
+          <pre><code>Selamat Datang di Python!
+Saya Sedang Belajar Python
+Python Itu Menyenangkan!</code></pre>
+
+          <p><strong>Penjelasan:</strong></p>
+
+          <ul>
+            <li>
+              <code>print()</code> merupakan fungsi bawaan Python untuk
+              menampilkan informasi.
+            </li>
+            <li>Teks yang ingin ditampilkan ditulis di antara tanda kutip.</li>
+            <li>
+              Setiap perintah <code>print()</code> akan menampilkan output pada
+              baris baru.
+            </li>
+          </ul>
+
+          <a
+            href="https://colab.research.google.com/#create=true"
+            target="_blank"
+            class="colab-button"
+          >
+            Praktikkan di Google Colab ↗
+          </a>
+        </section>
+
+        <!-- BAGIAN 7 -->
+        <section class="subsection">
+          <h3>7. Aturan Dasar Penulisan Python</h3>
+
+          <p>
+            Dalam menulis kode Python, terdapat beberapa aturan dasar yang perlu
+            diketahui.
+          </p>
+
+          <h4>A. Python Bersifat Case-Sensitive</h4>
+
+          <p>
+            Artinya, huruf besar dan huruf kecil dianggap berbeda. Perhatikan
+            contoh berikut.
+          </p>
+
+          <pre><code>nama = "Andi"
+Nama = "Budi"
+
+print(nama)
+print(Nama)</code></pre>
+
+          <p>
+            Variabel <code>nama</code> dan <code>Nama</code>
+            dianggap sebagai dua variabel yang berbeda.
+          </p>
+
+          <h4>B. Menggunakan Tanda Kutip untuk Teks</h4>
+
+          <p>
+            Teks atau string ditulis dengan menggunakan tanda kutip satu maupun
+            tanda kutip dua.
+          </p>
+
+          <pre><code>print("Belajar Python")
+print('Pemrograman itu menyenangkan')</code></pre>
+
+          <h4>C. Menggunakan Indentasi</h4>
+
+          <p>
+            Indentasi adalah jarak atau spasi di awal baris kode. Python
+            menggunakan indentasi untuk menentukan blok program.
+          </p>
+
+          <pre><code>if 10 > 5:
+    print("Sepuluh lebih besar dari lima")</code></pre>
+
+          <p>
+            Perhatikan bahwa perintah <code>print()</code>
+            ditulis menjorok ke dalam. Indentasi tersebut menunjukkan bahwa
+            perintah berada di dalam blok
+            <code>if</code>.
+          </p>
+
+          <h4>D. Menggunakan Komentar</h4>
+
+          <p>
+            Komentar digunakan untuk memberikan keterangan pada kode dan tidak
+            dijalankan sebagai perintah program. Komentar satu baris diawali
+            dengan tanda pagar (#).
+          </p>
+
+          <pre><code># Ini adalah komentar
+print("Hello Python")</code></pre>
+        </section>
+
+        <!-- BAGIAN 8 -->
+        <section class="subsection">
+          <h3>8. Contoh Latihan Sederhana</h3>
+
+          <p>
+            Setelah memahami konsep dasar Python, sekarang cobalah membuat
+            program sederhana untuk menampilkan biodata.
+          </p>
+
+          <p><strong>Contoh kode:</strong></p>
+
+          <pre><code>print("======================")
+print("       BIODATA        ")
+print("======================")
+print("Nama    : Andi")
+print("Umur    : 17 Tahun")
+print("Hobi    : Membaca")
+print("Alamat  : Jakarta")
+print("======================")</code></pre>
+
+          <p><strong>Hasil output:</strong></p>
+
+          <pre><code>======================
+       BIODATA
+======================
+Nama    : Andi
+Umur    : 17 Tahun
+Hobi    : Membaca
+Alamat  : Jakarta
+======================</code></pre>
+
+          <p>
+            Kamu bisa mengubah nama, umur, hobi, dan alamat sesuai data contoh
+            yang diinginkan. Cobalah jalankan kode tersebut di Google Colab.
+          </p>
+        </section>
+
+        <!-- BAGIAN 9 -->
+        <section class="subsection">
+          <h3>9. Kuis Pemahaman</h3>
+
+          <p>
+            Uji pemahamanmu setelah mempelajari materi pengenalan Python. Pilih
+            satu jawaban yang paling tepat untuk setiap pertanyaan.
+          </p>
+
+          <div class="quiz-container">
+            <div class="quiz-header">
+              <strong>Kuis Pengenalan Python</strong>
+              <span id="quiz-count">0/5 dijawab</span>
+            </div>
+
+            <div class="quiz-progress">
+              <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
+            </div>
+
+            <form id="quiz-form">
+              <div class="question-card">
+                <h4>1. Siapa pencipta bahasa pemrograman Python?</h4>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q1" value="a" />
+                  Bill Gates
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q1" value="b" />
+                  Guido van Rossum
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q1" value="c" />
+                  Mark Zuckerberg
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q1" value="d" />
+                  Dennis Ritchie
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q1"></div>
+              </div>
+
+              <div class="question-card">
+                <h4>2. Apa fungsi dari perintah print() dalam Python?</h4>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q2" value="a" />
+                  Menghapus program
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q2" value="b" />
+                  Menampilkan output
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q2" value="c" />
+                  Membuat folder
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q2" value="d" />
+                  Menghentikan komputer
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q2"></div>
+              </div>
+
+              <div class="question-card">
+                <h4>3. Pada tahun berapa Python pertama kali dirilis?</h4>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q3" value="a" />
+                  1980
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q3" value="b" />
+                  1991
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q3" value="c" />
+                  2000
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q3" value="d" />
+                  2008
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q3"></div>
+              </div>
+
+              <div class="question-card">
+                <h4>4. Manakah contoh penulisan kode Python yang benar?</h4>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q4" value="a" />
+                  print("Hello World")
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q4" value="b" />
+                  echo("Hello World")
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q4" value="c" />
+                  console.log("Hello World")
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q4" value="d" />
+                  display = "Hello World"()
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q4"></div>
+              </div>
+
+              <div class="question-card">
+                <h4>5. Apa arti case-sensitive dalam Python?</h4>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q5" value="a" />
+                  Kode harus berwarna
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q5" value="b" />
+                  Huruf besar dan kecil dibedakan
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q5" value="c" />
+                  Kode harus panjang
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q5" value="d" />
+                  Program harus menggunakan angka
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q5"></div>
+              </div>
+
+              <button type="button" class="quiz-button" id="check-quiz">
+                Periksa Jawaban
+              </button>
+
+              <button
+                type="button"
+                class="quiz-button"
+                id="reset-quiz"
+                style="background: #64748b; display: none"
+              >
+                Ulangi Kuis
+              </button>
+            </form>
+
+            <div class="quiz-result" id="quiz-result">
+              <h4>Hasil Kuis</h4>
+              <p id="quiz-score"></p>
+              <p id="quiz-message"></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- BAGIAN 10 -->
+        <section class="subsection">
+          <h3>10. Kesimpulan</h3>
+
+          <p>
+            Python adalah bahasa pemrograman yang mudah dipelajari, fleksibel,
+            dan memiliki banyak kegunaan dalam dunia teknologi. Dengan
+            mempelajari dasar-dasar Python, kamu dapat mulai mengembangkan
+            berbagai program sederhana hingga aplikasi yang lebih kompleks.
+          </p>
+
+          <p>
+            Hal terpenting dalam belajar Python adalah memahami konsep dasarnya
+            dan terus berlatih menulis kode program. Jangan takut mencoba,
+            membuat kesalahan, dan memperbaiki kode karena proses tersebut
+            merupakan bagian dari pembelajaran pemrograman.
+          </p>
+        </section>
+
+        <!-- TUGAS MATERI -->
+        <div class="task">
+          <h3>Tugas 1: Membuat Program Biodata</h3>
+
+          <p>
+            <strong>Tujuan:</strong>
+            Mempraktikkan penggunaan perintah dasar Python untuk menampilkan
+            informasi melalui program sederhana.
+          </p>
+
+          <p><strong>Petunjuk pengerjaan:</strong></p>
+
+          <ol>
+            <li>Buka Google Colab dan buat notebook baru.</li>
+            <li>Buat program untuk menampilkan biodata sederhana.</li>
+            <li>
+              Program harus menampilkan nama, umur, hobi, alamat, dan cita-cita.
+            </li>
+            <li>Gunakan minimal enam perintah <code>print()</code>.</li>
+            <li>Tambahkan komentar pada bagian judul program.</li>
+            <li>
+              Gunakan tanda kutip dan penulisan sintaks Python dengan benar.
+            </li>
+            <li>
+              Jalankan program dan pastikan seluruh output tampil dengan baik.
+            </li>
+            <li>Tambahkan satu variasi informasi lain sesuai kreativitasmu.</li>
+          </ol>
+
+          <p><strong>Petunjuk pengumpulan:</strong></p>
+
+          <ol>
+            <li>Simpan notebook dengan nama <code>Tugas1_Nama_NIM</code>.</li>
+            <li>Pastikan notebook tersimpan di Google Drive.</li>
+            <li>Atur akses berbagi tautan sesuai arahan pengajar.</li>
+            <li>Salin tautan notebook.</li>
+            <li>
+              Kumpulkan tautan melalui tombol
+              <strong>Pengumpulan Tugas</strong> pada sidebar website atau media
+              yang ditentukan pengajar.
+            </li>
+          </ol>
+
+          <a
+            href="https://colab.research.google.com/#create=true"
+            target="_blank"
+            class="colab-button"
+          >
+            Mulai Mengerjakan Tugas ↗
+          </a>
+        </div>
+
+        <!-- NAVIGASI MATERI -->
+        <div class="navigation" id="navigation"></div>
+      </main>
+    </div>
+
+    <footer>Python Learn | Media Pembelajaran Python Dasar</footer>
+
+    <script src="assets/js/script.js"></script>
+
+    <script>
+      // Kunci jawaban kuis
+      const jawabanBenar = {
+        q1: 'b',
+        q2: 'b',
+        q3: 'b',
+        q4: 'a',
+        q5: 'b',
+      };
+
+      const penjelasan = {
+        q1: 'Guido van Rossum adalah pencipta bahasa pemrograman Python.',
+        q2: 'print() digunakan untuk menampilkan informasi atau output.',
+        q3: 'Python pertama kali dirilis pada tahun 1991.',
+        q4: 'print("Hello World") merupakan sintaks Python yang benar.',
+        q5: 'Case-sensitive berarti huruf besar dan kecil dibedakan.',
+      };
+
+      const form = document.getElementById('quiz-form');
+      const jumlahSoal = 5;
+
+      function perbaruiProgress() {
+        let terjawab = 0;
+
+        for (let i = 1; i <= jumlahSoal; i++) {
+          if (form.querySelector(`input[name="q${i}"]:checked`)) {
+            terjawab++;
+          }
+        }
+
+        document.getElementById(
+          'quiz-count'
+        ).textContent = `${terjawab}/${jumlahSoal} dijawab`;
+
+        document.getElementById('quiz-progress-bar').style.width = `${
+          (terjawab / jumlahSoal) * 100
+        }%`;
+      }
+
+      form.addEventListener('change', perbaruiProgress);
+
+      document
+        .getElementById('check-quiz')
+        .addEventListener('click', function () {
+          let skor = 0;
+          let belumDijawab = [];
+
+          for (let i = 1; i <= jumlahSoal; i++) {
+            const pilihan = form.querySelector(`input[name="q${i}"]:checked`);
+
+            const feedback = document.getElementById(`feedback-q${i}`);
+
+            feedback.className = 'quiz-feedback';
+
+            if (!pilihan) {
+              belumDijawab.push(i);
+              feedback.textContent = 'Belum dijawab.';
+              feedback.classList.add('wrong');
+              continue;
+            }
+
+            if (pilihan.value === jawabanBenar[`q${i}`]) {
+              skor++;
+              feedback.textContent = 'Benar! ' + penjelasan[`q${i}`];
+              feedback.classList.add('correct');
+            } else {
+              feedback.textContent = 'Belum tepat. ' + penjelasan[`q${i}`];
+              feedback.classList.add('wrong');
+            }
+          }
+
+          if (belumDijawab.length > 0) {
+            alert(
+              'Masih ada soal yang belum dijawab: ' +
+                belumDijawab.join(', ') +
+                '. Silakan lengkapi terlebih dahulu.'
+            );
+            return;
+          }
+
+          const nilai = skor * 20;
+
+          document.getElementById('quiz-result').style.display = 'block';
+
+          document.getElementById(
+            'quiz-score'
+          ).textContent = `Jawaban benar: ${skor} dari ${jumlahSoal} soal. Nilai: ${nilai}/100.`;
+
+          let pesan = '';
+
+          if (skor === 5) {
+            pesan =
+              'Sangat baik! Kamu sudah memahami materi pengenalan Python.';
+          } else if (skor >= 3) {
+            pesan = 'Bagus! Pelajari kembali bagian yang belum kamu kuasai.';
+          } else {
+            pesan = 'Tetap semangat! Baca kembali materi dan coba ulangi kuis.';
+          }
+
+          document.getElementById('quiz-message').textContent = pesan;
+
+          document.getElementById('check-quiz').style.display = 'none';
+          document.getElementById('reset-quiz').style.display = 'inline-block';
+
+          document.getElementById('quiz-result').scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+          });
+        });
+
+      document
+        .getElementById('reset-quiz')
+        .addEventListener('click', function () {
+          form.reset();
+
+          for (let i = 1; i <= jumlahSoal; i++) {
+            const feedback = document.getElementById(`feedback-q${i}`);
+            feedback.textContent = '';
+            feedback.className = 'quiz-feedback';
+          }
+
+          document.getElementById('quiz-result').style.display = 'none';
+          document.getElementById('check-quiz').style.display = 'inline-block';
+          document.getElementById('reset-quiz').style.display = 'none';
+
+          perbaruiProgress();
+
+          window.scrollTo({
+            top: document.querySelector('.quiz-container').offsetTop,
+            behavior: 'smooth',
+          });
+        });
+
+      perbaruiProgress();
+    </script>
+  </body>
+</html>
