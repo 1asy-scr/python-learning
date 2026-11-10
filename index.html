@@ -1,32 +1,161 @@
-<!doctype html>
-<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Website belajar Python dari dasar dengan praktikum Google Colab."><title>Beranda | Python Learning</title>
-<link rel="stylesheet" href="assets/css/style.css"></head><body>
-<header class="site-header"><div class="container nav"><a class="brand" href="index.html"><span class="brand-mark">Py</span> Python Learning</a>
-<button class="menu-toggle" aria-label="Buka menu">☰</button><nav class="nav-links"><a class="active" href="index.html">Beranda</a><a class="" href="materi.html">Materi</a><a class="" href="praktikum.html">Praktikum</a><a class="" href="latihan.html">Latihan</a><a class="" href="evaluasi.html">Evaluasi</a><a class="" href="tentang.html">Tentang</a></nav></div></header>
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<main><section class="hero"><div class="container hero-grid"><div><span class="eyebrow">Belajar pemrograman dari nol</span>
-<h1>Mulai perjalanan coding Python Anda.</h1><p class="lead">Pelajari konsep dasar Python melalui materi ringkas, contoh program, dan praktik langsung menggunakan Google Colab. Tidak perlu memasang Python di komputer.</p>
-<div class="actions"><a class="btn btn-primary" href="materi.html">Mulai Belajar →</a><a class="btn btn-outline" href="praktikum.html">Buka Praktikum</a></div></div>
-<div class="code-window"><div class="window-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span style="margin-left:8px">contoh.py</span></div>
-<pre><span class="code-blue">nama</span> = <span class="code-green">"Python Learner"</span>
-<span class="code-blue">print</span>(<span class="code-green">"Halo, "</span> + nama)
+    <title>Python Learn - Belajar Python Dasar</title>
 
-<span class="code-yellow"># Program pertama Anda</span>
-angka1 = 12
-angka2 = 8
-hasil = angka1 + angka2
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
 
-print(<span class="code-green">"Hasil:"</span>, hasil)</pre></div></div></section>
-<section class="section"><div class="container"><div class="section-head"><span class="eyebrow">Jalur pembelajaran</span><h2>Belajar selangkah demi selangkah</h2><p>Ikuti urutan materi, pahami contoh, lalu coba sendiri di notebook praktikum.</p></div>
-<div class="cards">
-<article class="card"><div class="card-icon">📘</div><h3>Materi terstruktur</h3><p>Mulai dari pengenalan Python hingga fungsi dan struktur data.</p><a class="card-link" href="materi.html">Jelajahi materi →</a></article>
-<article class="card"><div class="card-icon">💻</div><h3>Praktik di Colab</h3><p>Tulis dan jalankan kode langsung di browser melalui Google Colab.</p><a class="card-link" href="praktikum.html">Lihat notebook →</a></article>
-<article class="card"><div class="card-icon">🧩</div><h3>Latihan dan evaluasi</h3><p>Uji pemahaman dengan pertanyaan konsep dan tugas pemrograman.</p><a class="card-link" href="latihan.html">Mulai latihan →</a></article>
-</div></div></section>
-<section class="section" style="background:#fff"><div class="container two-col"><div><h2>Bagaimana cara belajarnya?</h2><p class="muted">Website ini menjadi panduan belajar. Saat praktik, Anda akan diarahkan ke Google Colab untuk menjalankan kode Python.</p></div>
-<div class="steps"><div class="step"><strong>Pilih topik</strong><div class="muted">Baca materi dan tujuan pembelajaran.</div></div><div class="step"><strong>Buka notebook</strong><div class="muted">Klik tombol praktik untuk membuka Google Colab.</div></div><div class="step"><strong>Jalankan dan modifikasi kode</strong><div class="muted">Tekan tombol Run di Colab, amati hasilnya, lalu coba variasi sendiri.</div></div></div></div></section></main>
+  <body>
+    <header>
+      <a href="index.html" class="logo">
+        <div class="logo-icon">Py</div>
+        <h1>Python <span>Learn</span></h1>
+      </a>
 
-<footer class="site-footer"><div class="container footer-row"><div><strong>Python Learning</strong><div class="small">Belajar Python dari dasar, praktik dengan Google Colab.</div></div>
-<div class="small">© <span data-year></span> Python Learning. Materi untuk pembelajaran.</div></div></footer>
-<script src="assets/js/script.js"></script></body></html>
+      <nav class="top-nav">
+        <a href="tentang.html">Tentang</a>
+        <a href="index.html">Beranda</a>
+      </nav>
+    </header>
+
+    <div class="container">
+      <!-- SIDEBAR -->
+      <aside class="sidebar" id="sidebar"></aside>
+
+      <!-- KONTEN UTAMA -->
+      <main class="content">
+        <div class="breadcrumb">
+          &nbsp; Python Dasar &nbsp; / &nbsp; Beranda
+        </div>
+
+        <h2>Selamat Datang di Python Learn</h2>
+
+        <p>
+          Python Learn merupakan media pembelajaran untuk mengenal dan
+          mempelajari dasar-dasar pemrograman menggunakan bahasa Python. Materi
+          disusun secara bertahap, mulai dari pengenalan Python hingga
+          penggunaan fungsi dalam pemrograman.
+        </p>
+
+        <div class="welcome">
+          <h3>Mulai Belajar Python!</h3>
+
+          <p>
+            Tidak perlu memiliki pengalaman pemrograman sebelumnya. Anda dapat
+            mempelajari setiap materi, memahami contoh program, mencoba kode
+            secara langsung, dan mengerjakan latihan yang tersedia.
+          </p>
+
+          <a href="pengenalan-python.html" class="colab-button">
+            Mulai Belajar →
+          </a>
+        </div>
+
+        <h3>Petunjuk Pembelajaran</h3>
+
+        <ol>
+          <li>Pelajari materi secara berurutan.</li>
+          <li>Baca penjelasan dan perhatikan contoh sintaks Python.</li>
+          <li>Coba jalankan contoh program melalui Google Colab.</li>
+          <li>Kerjakan tugas pada bagian akhir setiap materi.</li>
+          <li>Kumpulkan tugas sesuai petunjuk yang diberikan.</li>
+        </ol>
+
+        <h3>Materi Tutorial Python Dasar</h3>
+
+        <p>
+          Berikut adalah delapan materi yang akan dipelajari dalam website
+          Python Learn.
+        </p>
+
+        <div class="materi-list">
+          <a href="pengenalan-python.html" class="materi-card">
+            <strong>01. Pengenalan Python</strong>
+            <small
+              >Mengenal bahasa pemrograman Python dan program pertama.</small
+            >
+          </a>
+
+          <a href="google-colab.html" class="materi-card">
+            <strong>02. Google Colab</strong>
+            <small>Mengenal dan menggunakan Google Colab untuk praktik.</small>
+          </a>
+
+          <a href="variabel-tipe-data.html" class="materi-card">
+            <strong>03. Variabel dan Tipe Data</strong>
+            <small>Menyimpan data dan mengenal berbagai tipe data.</small>
+          </a>
+
+          <a href="operator.html" class="materi-card">
+            <strong>04. Operator</strong>
+            <small
+              >Menggunakan operator aritmatika, perbandingan, dan logika.</small
+            >
+          </a>
+
+          <a href="fungsi.html" class="materi-card">
+            <strong>05. Input dan Output</strong>
+            <small
+              >Menerima data dan menampilkan informasi kepada pengguna.</small
+            >
+          </a>
+
+          <a href="percabangan.html" class="materi-card">
+            <strong>06. Percabangan</strong>
+            <small>Membuat keputusan berdasarkan kondisi tertentu.</small>
+          </a>
+
+          <a href="perulangan.html" class="materi-card">
+            <strong>07. Perulangan</strong>
+            <small>Menjalankan perintah secara berulang.</small>
+          </a>
+
+          <a href="struktur-data.html" class="materi-card">
+            <strong>08. Struktur Data</strong>
+            <small
+              >Mengelola data menggunakan list, tuple, dictionary, dan
+              set.</small
+            >
+          </a>
+
+          <a href="fungsi.html" class="materi-card">
+            <strong>09. Fungsi</strong>
+            <small>Membuat program yang terstruktur menggunakan fungsi.</small>
+          </a>
+
+          <a href="#" class="materi-card">
+            <strong>TUGAS AKHIR</strong>
+            <small
+              >Proyek membuat program sederhana yang melibatkan berbagai
+              fitur.</small
+            >
+          </a>
+        </div>
+
+        <h3>Media Praktik</h3>
+
+        <p>
+          Untuk menjalankan kode Python, pembelajaran ini menggunakan Google
+          Colab. Anda dapat menulis dan menjalankan program langsung melalui
+          browser tanpa harus menginstal Python di komputer.
+        </p>
+
+        <a
+          href="https://colab.research.google.com/#create=true"
+          target="_blank"
+          class="colab-button"
+        >
+          Buka Google Colab ↗
+        </a>
+      </main>
+    </div>
+
+    <footer>Python Learn | Media Pembelajaran Python Dasar</footer>
+
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>
