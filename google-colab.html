@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mengenal Google Colab | Python Learn</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <style>
+      /* Kuis interaktif */
+      .quiz-container {
+        border: 1px solid #dbe3ef;
+        border-radius: 9px;
+        padding: 22px;
+        margin-top: 20px;
+        background: #f8fbff;
+      }
+
+      .quiz-progress {
+        background: #e2e8f0;
+        height: 8px;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 22px;
+      }
+
+      .quiz-progress-bar {
+        height: 100%;
+        width: 0%;
+        background: #1764dc;
+        transition: width 0.3s;
+      }
+
+      .question {
+        background: #fff;
+        border: 1px solid #dbe3ef;
+        border-radius: 8px;
+        padding: 18px;
+        margin-bottom: 16px;
+      }
+
+      .question h4 {
+        margin: 0 0 13px;
+        color: #172554;
+      }
+
+      .question label {
+        display: block;
+        padding: 10px 12px;
+        margin: 8px 0;
+        border: 1px solid #dbe3ef;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        background: white;
+      }
+
+      .question label:hover {
+        background: #eff6ff;
+        border-color: #1764dc;
+      }
+
+      .question label input {
+        margin-right: 9px;
+        accent-color: #1764dc;
+      }
+
+      .explanation {
+        font-size: 13px;
+        margin-top: 8px;
+        color: #475569;
+      }
+
+      .explanation.correct {
+        color: #15803d;
+      }
+
+      .explanation.incorrect {
+        color: #dc2626;
+      }
+
+      .quiz-actions {
+        margin-top: 10px;
+      }
+
+      .quiz-actions button {
+        background: #1764dc;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 12px 22px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .quiz-actions button:hover {
+        background: #104bad;
+      }
+
+      .quiz-actions button.secondary {
+        background: #64748b;
+      }
+
+      .quiz-actions button.secondary:hover {
+        background: #475569;
+      }
+
+      .quiz-result {
+        display: none;
+        padding: 17px;
+        margin-top: 18px;
+        border-radius: 7px;
+        background: #eff6ff;
+        border-left: 4px solid #1764dc;
+      }
+
+      .quiz-result.warning {
+        border-left-color: #f59e0b;
+        background: #fffbe3;
+      }
+
+      @media (max-width: 700px) {
+        .quiz-container {
+          padding: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <a href="index.html" class="logo">
+        <div class="logo-icon">Py</div>
+        <h1>Python <span>Learn</span></h1>
+      </a>
+
+      <nav class="top-nav">
+        <a href="tentang.html">Tentang</a>
+        <a href="index.html">Beranda</a>
+      </nav>
+    </header>
+
+    <div class="container">
+      <!-- SIDEBAR -->
+      <aside class="sidebar" id="sidebar"></aside>
+
+      <!-- KONTEN MATERI -->
+      <main class="content">
+        <div class="breadcrumb">
+          <a href="index.html">Python Learn</a>
+          &nbsp; / &nbsp; Google Colab
+        </div>
+
+        <h2>Materi 2: Mengenal Google Colab</h2>
+
+        <p>
+          Pada materi sebelumnya, kita telah mengenal bahasa pemrograman Python,
+          sejarah perkembangannya, serta contoh program sederhana. Selanjutnya,
+          kita akan mempelajari salah satu alat yang dapat digunakan untuk
+          menulis dan menjalankan kode Python, yaitu Google Colab.
+        </p>
+
+        <p>
+          Google Colab akan menjadi lingkungan praktik utama dalam pembelajaran
+          Python ini. Dengan Google Colab, kita dapat menulis dan menjalankan
+          program Python secara langsung melalui browser tanpa harus memasang
+          Python di komputer.
+        </p>
+
+        <!-- 1. APA ITU GOOGLE COLAB -->
+        <section class="subsection">
+          <h3>1. Apa Itu Google Colab?</h3>
+
+          <p>
+            <strong>Google Colaboratory</strong> atau lebih dikenal dengan
+            <strong>Google Colab</strong> adalah layanan berbasis cloud yang
+            disediakan oleh Google untuk menulis, menjalankan, dan membagikan
+            kode program Python melalui browser.
+          </p>
+
+          <p>
+            Google Colab menyediakan lingkungan pemrograman interaktif yang
+            disebut notebook. Di dalam notebook, pengguna dapat menuliskan kode
+            Python, menjalankannya, melihat hasilnya, serta menambahkan teks
+            atau penjelasan.
+          </p>
+
+          <div class="info">
+            <strong>Informasi Penting</strong>
+            <p>
+              Google Colab dapat digunakan secara gratis dengan akun Google.
+              Pengguna tidak perlu melakukan instalasi Python terlebih dahulu
+              untuk mulai belajar dan menjalankan program.
+            </p>
+          </div>
+
+          <p>
+            Untuk mulai menggunakan Google Colab, kunjungi situs resminya
+            melalui tautan berikut:
+          </p>
+
+          <p>
+            <a
+              href="https://colab.research.google.com/"
+              target="_blank"
+              rel="noopener"
+            >
+              <strong>Buka Google Colab</strong>
+            </a>
+          </p>
+        </section>
+
+        <!-- 2. FUNGSI GOOGLE COLAB -->
+        <section class="subsection">
+          <h3>2. Fungsi dan Kegunaan Google Colab</h3>
+
+          <p>
+            Google Colab memiliki berbagai fungsi yang mendukung kegiatan
+            pemrograman, pembelajaran, dan pengolahan data. Beberapa kegunaannya
+            adalah sebagai berikut.
+          </p>
+
+          <ol>
+            <li>
+              <strong>Menulis kode Python.</strong>
+              Google Colab menyediakan area kerja untuk menuliskan instruksi
+              atau kode program Python.
+            </li>
+            <li>
+              <strong>Menjalankan program.</strong>
+              Kode yang ditulis dapat dijalankan secara langsung dan hasilnya
+              ditampilkan pada notebook.
+            </li>
+            <li>
+              <strong>Belajar pemrograman.</strong>
+              Pengguna dapat mencoba berbagai contoh program Python tanpa perlu
+              memasang perangkat lunak tambahan.
+            </li>
+            <li>
+              <strong>Pengolahan data.</strong>
+              Google Colab dapat digunakan untuk membaca, mengolah, dan
+              menganalisis data.
+            </li>
+            <li>
+              <strong>Membuat visualisasi.</strong>
+              Pengguna dapat membuat grafik dan visualisasi data menggunakan
+              berbagai library Python.
+            </li>
+            <li>
+              <strong>Berbagi pekerjaan.</strong>
+              Notebook dapat dibagikan kepada orang lain melalui tautan, seperti
+              ketika membagikan dokumen Google Drive.
+            </li>
+          </ol>
+        </section>
+
+        <!-- 3. KELEBIHAN -->
+        <section class="subsection">
+          <h3>3. Kelebihan Google Colab</h3>
+
+          <p>
+            Google Colab memiliki sejumlah kelebihan yang membuatnya cocok
+            digunakan sebagai sarana belajar Python, khususnya bagi pemula.
+          </p>
+
+          <ul>
+            <li>
+              <strong>Gratis untuk penggunaan dasar.</strong>
+              Pengguna dapat memanfaatkan layanan dasar Google Colab tanpa harus
+              membayar.
+            </li>
+            <li>
+              <strong>Tidak perlu instalasi.</strong>
+              Python dan berbagai library umum telah tersedia dalam lingkungan
+              kerja Colab.
+            </li>
+            <li>
+              <strong>Dapat diakses melalui browser.</strong>
+              Pengguna dapat belajar menggunakan komputer yang terhubung dengan
+              internet.
+            </li>
+            <li>
+              <strong>Terintegrasi dengan Google Drive.</strong>
+              Notebook dapat disimpan dan dikelola melalui Google Drive.
+            </li>
+            <li>
+              <strong>Mendukung pembelajaran interaktif.</strong>
+              Kode dan penjelasan dapat ditulis dalam satu dokumen.
+            </li>
+            <li>
+              <strong>Mudah dibagikan.</strong>
+              Notebook dapat dibagikan kepada teman atau pengajar.
+            </li>
+          </ul>
+
+          <div class="info">
+            <strong>Catatan</strong>
+            <p>
+              Ketersediaan sumber daya komputasi pada Google Colab dapat berubah
+              sesuai kebijakan dan kapasitas layanan.
+            </p>
+          </div>
+        </section>
+
+        <!-- 4. KEKURANGAN -->
+        <section class="subsection">
+          <h3>4. Kekurangan Google Colab</h3>
+
+          <p>
+            Meskipun memiliki banyak kelebihan, Google Colab juga mempunyai
+            beberapa keterbatasan yang perlu diketahui.
+          </p>
+
+          <ul>
+            <li>
+              <strong>Membutuhkan koneksi internet.</strong>
+              Pengguna memerlukan koneksi internet untuk mengakses dan
+              menjalankan notebook.
+            </li>
+            <li>
+              <strong>Memiliki batas penggunaan.</strong>
+              Sumber daya komputasi dan durasi penggunaan dapat dibatasi oleh
+              layanan.
+            </li>
+            <li>
+              <strong>Lingkungan kerja dapat terputus.</strong>
+              Sesi kerja dapat berakhir sehingga pengguna perlu menjalankan
+              kembali kode ketika membuka sesi baru.
+            </li>
+            <li>
+              <strong>File sementara dapat hilang.</strong>
+              File yang disimpan pada penyimpanan sementara mesin virtual tidak
+              selalu tersedia setelah sesi berakhir.
+            </li>
+            <li>
+              <strong>Bergantung pada layanan Google.</strong>
+              Pengguna perlu mengikuti ketentuan dan ketersediaan layanan Google
+              Colab.
+            </li>
+          </ul>
+
+          <div class="info">
+            <strong>Saran Belajar</strong>
+            <p>
+              Biasakan menyimpan notebook di Google Drive dan mengunduh salinan
+              pekerjaan penting agar hasil latihan tidak mudah hilang.
+            </p>
+          </div>
+        </section>
+
+        <!-- 5. TAMPILAN GOOGLE COLAB -->
+        <section class="subsection">
+          <h3>5. Mengenal Tampilan Google Colab</h3>
+
+          <p>
+            Sebelum menulis kode, kita perlu mengenal beberapa bagian utama yang
+            terdapat pada halaman Google Colab.
+          </p>
+
+          <ol>
+            <li>
+              <strong>Nama Notebook.</strong>
+              Menunjukkan nama dokumen atau file notebook yang sedang dibuka.
+              Nama notebook dapat diubah sesuai kebutuhan.
+            </li>
+            <li>
+              <strong>Menu Bar.</strong>
+              Berisi menu seperti File, Edit, View, Insert, Runtime, Tools, dan
+              Help.
+            </li>
+            <li>
+              <strong>Toolbar.</strong>
+              Berisi tombol untuk menambahkan cell, menjalankan kode, dan
+              melakukan beberapa pengaturan.
+            </li>
+            <li>
+              <strong>Code Cell.</strong>
+              Area untuk menuliskan kode Python.
+            </li>
+            <li>
+              <strong>Output Cell.</strong>
+              Area untuk menampilkan hasil dari kode yang dijalankan.
+            </li>
+            <li>
+              <strong>Runtime.</strong>
+              Lingkungan komputasi yang digunakan untuk menjalankan kode
+              program.
+            </li>
+          </ol>
+
+          <div class="info">
+            <strong>Perhatikan!</strong>
+            <p>
+              Pada Google Colab, kode tidak langsung dijalankan ketika ditulis.
+              Kita perlu menekan tombol Run atau menggunakan kombinasi tombol
+              tertentu untuk menjalankannya.
+            </p>
+          </div>
+        </section>
+
+        <!-- 6. CARA MENGGUNAKAN -->
+        <section class="subsection">
+          <h3>6. Cara Menggunakan Google Colab</h3>
+
+          <p>Berikut langkah-langkah untuk mulai menggunakan Google Colab.</p>
+
+          <ol>
+            <li>Buka browser pada komputer atau laptop.</li>
+            <li>
+              Kunjungi
+              <a
+                href="https://colab.research.google.com/"
+                target="_blank"
+                rel="noopener"
+              >
+                https://colab.research.google.com/ </a
+              >.
+            </li>
+            <li>Masuk menggunakan akun Google jika diminta.</li>
+            <li>
+              Pada halaman awal Google Colab, pilih menu
+              <strong>New Notebook</strong> untuk membuat notebook baru.
+            </li>
+            <li>
+              Setelah notebook terbuka, klik area Code Cell untuk mulai menulis
+              kode Python.
+            </li>
+            <li>Tuliskan kode Python yang ingin dijalankan.</li>
+            <li>
+              Klik tombol Run atau tekan
+              <strong>Shift + Enter</strong>.
+            </li>
+            <li>Perhatikan hasil yang muncul di bawah Code Cell.</li>
+          </ol>
+
+          <div class="info">
+            <strong>Praktik Sekarang</strong>
+            <p>
+              Klik tombol berikut untuk membuka Google Colab dan membuat
+              notebook baru.
+            </p>
+            <a
+              class="colab-button"
+              href="https://colab.research.google.com/#create=true"
+              target="_blank"
+              rel="noopener"
+            >
+              Buka Notebook Baru
+            </a>
+          </div>
+        </section>
+
+        <!-- 7. JENIS CELL -->
+        <section class="subsection">
+          <h3>7. Mengenal Jenis Cell di Google Colab</h3>
+
+          <p>
+            Cell merupakan bagian atau area kerja dalam notebook. Google Colab
+            menyediakan dua jenis cell utama yang perlu kita kenali.
+          </p>
+
+          <h4>A. Code Cell</h4>
+          <p>
+            Code Cell digunakan untuk menuliskan dan menjalankan kode Python.
+          </p>
+
+          <pre><code>print("Selamat belajar Python!")
+print("Saya menggunakan Google Colab.")</code></pre>
+
+          <p><strong>Output:</strong></p>
+          <pre><code>Selamat belajar Python!
+Saya menggunakan Google Colab.</code></pre>
+
+          <h4>B. Text Cell</h4>
+          <p>
+            Text Cell digunakan untuk menuliskan penjelasan, catatan, judul,
+            atau dokumentasi dalam notebook. Text Cell mendukung format
+            Markdown.
+          </p>
+
+          <p>Contoh isi Text Cell:</p>
+          <pre><code># Belajar Python
+## Materi 2: Google Colab
+
+Pada notebook ini saya belajar
+menjalankan program Python.</code></pre>
+
+          <div class="info">
+            <strong>Perbedaan Utama</strong>
+            <p>
+              Code Cell digunakan untuk menjalankan instruksi Python, sedangkan
+              Text Cell digunakan untuk memberikan penjelasan atau informasi.
+            </p>
+          </div>
+        </section>
+
+        <!-- 8. MENJALANKAN BEBERAPA CELL -->
+        <section class="subsection">
+          <h3>8. Menjalankan Beberapa Code Cell</h3>
+
+          <p>
+            Dalam satu notebook, kita dapat membuat beberapa Code Cell. Setiap
+            cell dapat berisi kode yang berbeda dan dijalankan secara terpisah.
+          </p>
+
+          <p><strong>Contoh Code Cell 1:</strong></p>
+          <pre><code>nama = "Andi"
+print(nama)</code></pre>
+
+          <p><strong>Output:</strong></p>
+          <pre><code>Andi</code></pre>
+
+          <p><strong>Contoh Code Cell 2:</strong></p>
+          <pre><code>umur = 18
+print(umur)</code></pre>
+
+          <p><strong>Output:</strong></p>
+          <pre><code>18</code></pre>
+
+          <p><strong>Contoh Code Cell 3:</strong></p>
+          <pre><code>print("Nama saya", nama)
+print("Umur saya", umur, "tahun")</code></pre>
+
+          <p><strong>Output:</strong></p>
+          <pre><code>Nama saya Andi
+Umur saya 18 tahun</code></pre>
+
+          <p>
+            Contoh tersebut menunjukkan bahwa variabel yang dibuat pada satu
+            cell dapat digunakan pada cell berikutnya selama masih berada dalam
+            sesi runtime yang sama.
+          </p>
+
+          <div class="info">
+            <strong>Hal yang Perlu Diperhatikan</strong>
+            <p>
+              Urutan menjalankan cell dapat memengaruhi hasil program. Jika
+              sebuah variabel belum dibuat, kemudian digunakan pada cell lain,
+              Python dapat menampilkan pesan kesalahan.
+            </p>
+          </div>
+        </section>
+
+        <!-- 9. LIBRARY -->
+        <section class="subsection">
+          <h3>9. Menggunakan Library Python di Google Colab</h3>
+
+          <p>
+            Library adalah kumpulan kode atau fungsi yang dapat digunakan untuk
+            membantu menyelesaikan berbagai pekerjaan pemrograman. Dengan
+            library, kita tidak perlu membuat semua fungsi dari awal.
+          </p>
+
+          <p>
+            Google Colab telah menyediakan sejumlah library Python yang umum
+            digunakan. Kita dapat memanggilnya menggunakan perintah
+            <code>import</code>.
+          </p>
+
+          <h4>Contoh Menggunakan Library Math</h4>
+
+          <pre><code>import math
+
+angka = 25
+hasil = math.sqrt(angka)
+
+print("Akar dari", angka, "adalah", hasil)</code></pre>
+
+          <p><strong>Output:</strong></p>
+          <pre><code>Akar dari 25 adalah 5.0</code></pre>
+
+          <p>
+            Pada contoh tersebut, kita menggunakan library
+            <code>math</code> untuk menghitung akar kuadrat menggunakan fungsi
+            <code>sqrt()</code>.
+          </p>
+
+          <h4>Contoh Menggunakan Library Random</h4>
+
+          <pre><code>import random
+
+angka = random.randint(1, 10)
+
+print("Angka yang diperoleh:", angka)</code></pre>
+
+          <p>Program tersebut menghasilkan bilangan acak antara 1 sampai 10.</p>
+
+          <div class="info">
+            <strong>Catatan</strong>
+            <p>
+              Tidak semua library tersedia secara otomatis. Library tertentu
+              dapat dipasang menggunakan perintah
+              <code>!pip install nama_library</code>. Namun, untuk materi dasar
+              ini kita akan menggunakan library yang sudah tersedia.
+            </p>
+          </div>
+        </section>
+
+        <!-- 10. MENYIMPAN NOTEBOOK -->
+        <section class="subsection">
+          <h3>10. Menyimpan dan Mengunduh Notebook</h3>
+
+          <p>
+            Notebook yang dibuat di Google Colab perlu disimpan agar pekerjaan
+            dapat dibuka dan dilanjutkan kembali. Secara umum, Google Colab
+            dapat menyimpan notebook ke Google Drive.
+          </p>
+
+          <h4>A. Menyimpan Notebook</h4>
+          <ol>
+            <li>Buka notebook yang sedang dikerjakan.</li>
+            <li>Klik nama notebook untuk mengubah namanya.</li>
+            <li>
+              Berikan nama yang sesuai dengan materi atau kegiatan yang
+              dikerjakan.
+            </li>
+            <li>
+              Notebook dapat disimpan ke Google Drive melalui menu File jika
+              diperlukan.
+            </li>
+          </ol>
+
+          <h4>B. Mengunduh Notebook</h4>
+          <ol>
+            <li>Klik menu <strong>File</strong>.</li>
+            <li>Pilih menu <strong>Download</strong>.</li>
+            <li>Pilih <strong>Download .ipynb</strong>.</li>
+            <li>
+              File notebook akan diunduh ke perangkat dengan format
+              <code>.ipynb</code>.
+            </li>
+          </ol>
+
+          <div class="info">
+            <strong>Tips</strong>
+            <p>
+              Gunakan nama file yang jelas, misalnya
+              <code>Tugas2_GoogleColab_Nama.ipynb</code>. Dengan demikian, file
+              lebih mudah ditemukan dan dikenali ketika dikumpulkan.
+            </p>
+          </div>
+        </section>
+
+        <!-- 11. PRAKTIK LANGSUNG -->
+        <section class="subsection">
+          <h3>11. Praktik Langsung: Membuat Program Biodata</h3>
+
+          <p>
+            Setelah mengenal fitur dasar Google Colab, sekarang kita akan
+            mencoba membuat program sederhana untuk menampilkan biodata. Praktik
+            ini bertujuan agar kita terbiasa menulis dan menjalankan kode Python
+            di dalam Code Cell.
+          </p>
+
+          <h4>Langkah 1: Buat Notebook Baru</h4>
+          <p>
+            Buka Google Colab, kemudian pilih
+            <strong>New Notebook</strong>.
+          </p>
+
+          <h4>Langkah 2: Masukkan Kode Program</h4>
+          <p>Tuliskan kode berikut pada Code Cell.</p>
+
+          <pre><code># Program Biodata Sederhana
+
+nama = "Andi"
+tempat_lahir = "Bandung"
+umur = 18
+hobi = "Membaca"
+
+print("BIODATA DIRI")
+print("====================")
+print("Nama          :", nama)
+print("Tempat Lahir  :", tempat_lahir)
+print("Umur          :", umur, "tahun")
+print("Hobi          :", hobi)</code></pre>
+
+          <h4>Langkah 3: Jalankan Program</h4>
+          <p>
+            Tekan tombol Run atau gunakan kombinasi
+            <strong>Shift + Enter</strong>.
+          </p>
+
+          <h4>Hasil Program</h4>
+          <pre><code>BIODATA DIRI
+====================
+Nama          : Andi
+Tempat Lahir  : Bandung
+Umur          : 18 tahun
+Hobi          : Membaca</code></pre>
+
+          <h4>Langkah 4: Modifikasi Program</h4>
+          <p>
+            Ubah nilai variabel pada program tersebut menggunakan biodata
+            masing-masing. Jalankan kembali program dan amati hasilnya.
+          </p>
+
+          <a
+            class="colab-button"
+            href="https://colab.research.google.com/#create=true"
+            target="_blank"
+            rel="noopener"
+          >
+            Praktik di Google Colab
+          </a>
+        </section>
+
+        <!-- 12. KUIS -->
+        <section class="subsection">
+          <h3>12. Kuis Pemahaman Google Colab</h3>
+
+          <p>
+            Kerjakan kuis berikut untuk mengukur pemahaman terhadap materi
+            Google Colab. Pilih satu jawaban yang paling tepat pada setiap
+            pertanyaan.
+          </p>
+
+          <div class="quiz-container" id="quiz">
+            <div class="quiz-progress">
+              <div class="quiz-progress-bar" id="progress-fill"></div>
+            </div>
+
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 15px;
+                font-weight: bold;
+                color: #172554;
+              "
+            >
+              <span>Kuis Google Colab</span>
+              <span id="progress-text">0/5 dijawab</span>
+            </div>
+
+            <div
+              class="question"
+              data-answer="b"
+              data-explanation="Google Colab merupakan layanan berbasis cloud untuk menulis dan menjalankan kode Python melalui browser."
+            >
+              <h4>1. Apa yang dimaksud dengan Google Colab?</h4>
+              <label
+                ><input type="radio" name="q1" value="a" /> A. Aplikasi untuk
+                mengedit gambar</label
+              >
+              <label
+                ><input type="radio" name="q1" value="b" /> B. Layanan berbasis
+                cloud untuk menulis dan menjalankan kode Python</label
+              >
+              <label
+                ><input type="radio" name="q1" value="c" /> C. Sistem operasi
+                komputer</label
+              >
+              <label
+                ><input type="radio" name="q1" value="d" /> D. Bahasa
+                pemrograman baru</label
+              >
+              <p class="explanation"></p>
+            </div>
+
+            <div
+              class="question"
+              data-answer="c"
+              data-explanation="Google Colab dapat digunakan melalui browser sehingga pengguna tidak perlu memasang Python secara manual untuk mulai belajar."
+            >
+              <h4>2. Apa salah satu kelebihan Google Colab?</h4>
+              <label
+                ><input type="radio" name="q2" value="a" /> A. Hanya dapat
+                digunakan tanpa internet</label
+              >
+              <label
+                ><input type="radio" name="q2" value="b" /> B. Tidak dapat
+                menyimpan notebook</label
+              >
+              <label
+                ><input type="radio" name="q2" value="c" /> C. Dapat digunakan
+                melalui browser tanpa instalasi Python lokal</label
+              >
+              <label
+                ><input type="radio" name="q2" value="d" /> D. Hanya dapat
+                menjalankan HTML</label
+              >
+              <p class="explanation"></p>
+            </div>
+
+            <div
+              class="question"
+              data-answer="a"
+              data-explanation="Code Cell merupakan area yang digunakan untuk menuliskan dan menjalankan kode Python."
+            >
+              <h4>
+                3. Bagian notebook yang digunakan untuk menulis kode Python
+                disebut ...
+              </h4>
+              <label
+                ><input type="radio" name="q3" value="a" /> A. Code Cell</label
+              >
+              <label
+                ><input type="radio" name="q3" value="b" /> B. Text Cell</label
+              >
+              <label
+                ><input type="radio" name="q3" value="c" /> C. Menu Bar</label
+              >
+              <label
+                ><input type="radio" name="q3" value="d" /> D. Toolbar</label
+              >
+              <p class="explanation"></p>
+            </div>
+
+            <div
+              class="question"
+              data-answer="d"
+              data-explanation="Shift + Enter digunakan untuk menjalankan cell sekaligus berpindah ke cell berikutnya atau membuat cell baru jika diperlukan."
+            >
+              <h4>
+                4. Kombinasi tombol untuk menjalankan sebuah cell adalah ...
+              </h4>
+              <label
+                ><input type="radio" name="q4" value="a" /> A. Ctrl + C</label
+              >
+              <label
+                ><input type="radio" name="q4" value="b" /> B. Alt + F4</label
+              >
+              <label
+                ><input type="radio" name="q4" value="c" /> C. Ctrl + S</label
+              >
+              <label
+                ><input type="radio" name="q4" value="d" /> D. Shift +
+                Enter</label
+              >
+              <p class="explanation"></p>
+            </div>
+
+            <div
+              class="question"
+              data-answer="b"
+              data-explanation="Ekstensi .ipynb merupakan format file notebook yang digunakan oleh Jupyter Notebook dan Google Colab."
+            >
+              <h4>5. Apa ekstensi file notebook Google Colab?</h4>
+              <label><input type="radio" name="q5" value="a" /> A. .html</label>
+              <label
+                ><input type="radio" name="q5" value="b" /> B. .ipynb</label
+              >
+              <label><input type="radio" name="q5" value="c" /> C. .pyc</label>
+              <label><input type="radio" name="q5" value="d" /> D. .docx</label>
+              <p class="explanation"></p>
+            </div>
+
+            <div class="quiz-actions">
+              <button type="button" id="check-quiz" class="colab-button">
+                Periksa Jawaban
+              </button>
+              <button
+                type="button"
+                id="reset-quiz"
+                class="colab-button secondary"
+                style="display: none"
+              >
+                Ulangi Kuis
+              </button>
+            </div>
+
+            <div id="quiz-result" class="quiz-result" aria-live="polite"></div>
+          </div>
+        </section>
+
+        <!-- 13. KESIMPULAN -->
+        <section class="subsection">
+          <h3>13. Kesimpulan</h3>
+
+          <p>
+            Google Colab merupakan layanan berbasis cloud yang memudahkan
+            pengguna untuk menulis, menjalankan, dan membagikan program Python
+            melalui browser. Layanan ini sangat membantu pemula karena tidak
+            memerlukan instalasi Python secara manual.
+          </p>
+
+          <p>
+            Dalam Google Colab, pengguna dapat membuat notebook yang terdiri
+            atas Code Cell dan Text Cell. Kode Python dapat dijalankan
+            menggunakan tombol Run atau kombinasi Shift + Enter. Notebook juga
+            dapat disimpan di Google Drive dan diunduh dalam format
+            <code>.ipynb</code>.
+          </p>
+
+          <p>
+            Setelah memahami cara menggunakan Google Colab, kita siap
+            mempelajari konsep dasar pemrograman Python secara lebih mendalam,
+            dimulai dari variabel dan tipe data.
+          </p>
+        </section>
+
+        <!-- TUGAS -->
+        <section class="task">
+          <h3>Tugas 2: Membuat dan Mengumpulkan Notebook Google Colab</h3>
+
+          <p>
+            Setelah mempelajari materi ini, kerjakan tugas berikut secara
+            mandiri.
+          </p>
+
+          <h4>Petunjuk Pengerjaan</h4>
+          <ol>
+            <li>Buka Google Colab dan buat sebuah notebook baru.</li>
+            <li>
+              Berikan nama notebook:
+              <strong>Tugas 2 - Google Colab - Nama Anda</strong>.
+            </li>
+            <li>
+              Buat satu Text Cell yang berisi judul "Praktik Google Colab" dan
+              identitas diri.
+            </li>
+            <li>
+              Buat Code Cell untuk menampilkan biodata menggunakan perintah
+              <code>print()</code>.
+            </li>
+            <li>
+              Buat Code Cell kedua untuk melakukan perhitungan sederhana,
+              misalnya penjumlahan, pengurangan, perkalian, dan pembagian.
+            </li>
+            <li>
+              Pastikan seluruh kode berhasil dijalankan dan hasilnya terlihat.
+            </li>
+            <li>
+              Simpan notebook dan unduh dalam format
+              <code>.ipynb</code>.
+            </li>
+          </ol>
+
+          <h4>Ketentuan Pengumpulan</h4>
+          <ul>
+            <li>Pastikan nama file mencantumkan nama Anda.</li>
+            <li>Pastikan notebook dapat dibuka dan dijalankan.</li>
+            <li>Kumpulkan file sesuai petunjuk pengumpulan tugas.</li>
+          </ul>
+
+          <div class="info">
+            <strong>Perhatian</strong>
+            <p>
+              Pengumpulan tugas dilakukan melalui tombol
+              <strong>Pengumpulan Tugas</strong> pada sidebar. Pastikan file
+              notebook sudah disiapkan sebelum melakukan pengumpulan.
+            </p>
+          </div>
+        </section>
+
+        <!-- NAVIGASI MATERI -->
+        <div class="navigation" id="navigation"></div>
+
+        <footer>
+          <p>&copy; 2026 Python Learn. Belajar Python dari Dasar.</p>
+        </footer>
+      </main>
+    </div>
+
+    <!-- JAVASCRIPT KUIS -->
+    <script>
+      const quiz = document.getElementById('quiz');
+      const questions = quiz.querySelectorAll('.question');
+      const progressText = document.getElementById('progress-text');
+      const progressFill = document.getElementById('progress-fill');
+      const resultBox = document.getElementById('quiz-result');
+      const checkBtn = document.getElementById('check-quiz');
+      const resetBtn = document.getElementById('reset-quiz');
+
+      function updateProgress() {
+        let answered = 0;
+
+        questions.forEach((question) => {
+          if (question.querySelector('input:checked')) {
+            answered++;
+          }
+        });
+
+        progressText.textContent = answered + '/5 dijawab';
+        progressFill.style.width = (answered / questions.length) * 100 + '%';
+      }
+
+      quiz.querySelectorAll("input[type='radio']").forEach((input) => {
+        input.addEventListener('change', updateProgress);
+      });
+
+      checkBtn.addEventListener('click', function () {
+        let score = 0;
+        let answered = 0;
+
+        questions.forEach((question) => {
+          const selected = question.querySelector('input:checked');
+          const explanation = question.querySelector('.explanation');
+          const correctAnswer = question.dataset.answer;
+
+          if (selected) {
+            answered++;
+
+            if (selected.value === correctAnswer) {
+              score++;
+              explanation.textContent =
+                'Benar! ' + question.dataset.explanation;
+              explanation.className = 'explanation correct';
+            } else {
+              explanation.textContent =
+                'Belum tepat. ' + question.dataset.explanation;
+              explanation.className = 'explanation incorrect';
+            }
+          } else {
+            explanation.textContent =
+              'Belum dijawab. ' + question.dataset.explanation;
+            explanation.className = 'explanation incorrect';
+          }
+        });
+
+        resultBox.style.display = 'block';
+
+        if (answered < questions.length) {
+          resultBox.innerHTML =
+            '<strong>Peringatan!</strong><p>Silakan jawab semua pertanyaan terlebih dahulu. ' +
+            answered +
+            ' dari 5 pertanyaan sudah dijawab.</p>';
+          resultBox.className = 'quiz-result warning';
+          return;
+        }
+
+        const finalScore = score * 20;
+
+        resultBox.innerHTML =
+          '<h4>Hasil Kuis</h4>' +
+          '<p>Jawaban benar: ' +
+          score +
+          ' dari 5 pertanyaan. Nilai: ' +
+          finalScore +
+          '/100.</p>';
+
+        resultBox.className = 'quiz-result';
+
+        checkBtn.style.display = 'none';
+        resetBtn.style.display = 'inline-block';
+
+        resultBox.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+        });
+      });
+
+      resetBtn.addEventListener('click', function () {
+        quiz.querySelectorAll("input[type='radio']").forEach((input) => {
+          input.checked = false;
+        });
+
+        questions.forEach((question) => {
+          const explanation = question.querySelector('.explanation');
+          explanation.textContent = '';
+          explanation.className = 'explanation';
+        });
+
+        resultBox.textContent = '';
+        resultBox.style.display = 'none';
+        resultBox.className = 'quiz-result';
+
+        checkBtn.style.display = 'inline-block';
+        resetBtn.style.display = 'none';
+
+        updateProgress();
+
+        window.scrollTo({
+          top: quiz.offsetTop,
+          behavior: 'smooth',
+        });
+      });
+
+      updateProgress();
+    </script>
+
+    <!-- SCRIPT NAVIGASI BERSAMA -->
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>
