@@ -1,0 +1,1661 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Materi 7: Perulangan Python | Python Learn</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <style>
+      /* Styling disamakan persis dengan pengenalan-python.html */
+      .subsection {
+        margin-bottom: 30px;
+      }
+
+      .subsection h3 {
+        margin-top: 30px;
+      }
+
+      .table-responsive {
+        overflow-x: auto;
+        margin: 20px 0;
+      }
+
+      .content table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+        margin: 15px 0;
+      }
+
+      .content th,
+      .content td {
+        border: 1px solid #dbe3ef;
+        padding: 11px 13px;
+        text-align: left;
+      }
+
+      .content th {
+        background: #eff6ff;
+        color: #172554;
+      }
+
+      .code-output {
+        background: #f8fbff;
+        border-left: 4px solid #1764dc;
+        padding: 12px 16px;
+        border-radius: 5px;
+        margin: 10px 0 20px;
+      }
+
+      .code-output strong {
+        display: block;
+        margin-bottom: 7px;
+        color: #172554;
+      }
+
+      .code-output pre {
+        margin: 0;
+        white-space: pre-wrap;
+      }
+
+      .difficulty {
+        display: inline-block;
+        font-size: 12px;
+        padding: 4px 10px;
+        border-radius: 20px;
+        background: #dbeafe;
+        color: #1764dc;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      /* Kuis Interaktif */
+      .quiz-container {
+        border: 1px solid #dbe3ef;
+        border-radius: 9px;
+        padding: 22px;
+        margin-top: 20px;
+        background: #f8fbff;
+      }
+
+      .quiz-header {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .quiz-progress {
+        background: #e2e8f0;
+        height: 8px;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 22px;
+      }
+
+      .quiz-progress-bar {
+        height: 100%;
+        width: 0%;
+        background: #1764dc;
+        transition: width 0.3s;
+      }
+
+      .question-card {
+        background: #fff;
+        border: 1px solid #dbe3ef;
+        border-radius: 8px;
+        padding: 18px;
+        margin-bottom: 16px;
+      }
+
+      .question-card h4 {
+        margin: 0 0 13px;
+        color: #172554;
+      }
+
+      .quiz-option {
+        display: block;
+        padding: 10px 12px;
+        margin: 8px 0;
+        border: 1px solid #dbe3ef;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        background: white;
+      }
+
+      .quiz-option:hover {
+        background: #eff6ff;
+        border-color: #1764dc;
+      }
+
+      .quiz-option input {
+        margin-right: 9px;
+        accent-color: #1764dc;
+      }
+
+      .quiz-button {
+        background: #1764dc;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 12px 22px;
+        cursor: pointer;
+        font-size: 14px;
+        margin-top: 10px;
+      }
+
+      .quiz-button:hover {
+        background: #104bad;
+      }
+
+      .quiz-result {
+        display: none;
+        padding: 17px;
+        margin-top: 18px;
+        border-radius: 7px;
+        background: #eff6ff;
+        border-left: 4px solid #1764dc;
+      }
+
+      .quiz-result h4 {
+        margin-top: 0;
+      }
+
+      .quiz-feedback {
+        font-size: 13px;
+        margin-top: 8px;
+        color: #475569;
+      }
+
+      .quiz-feedback.correct {
+        color: #15803d;
+      }
+
+      .quiz-feedback.wrong {
+        color: #dc2626;
+      }
+
+      @media (max-width: 700px) {
+        .quiz-container {
+          padding: 14px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header>
+      <a href="index.html" class="logo">
+        <div class="logo-icon">Py</div>
+        <h1>Python <span>Learn</span></h1>
+      </a>
+
+      <nav class="top-nav">
+        <a href="tentang.html">Tentang</a>
+        <a href="index.html">Beranda</a>
+      </nav>
+    </header>
+
+    <div class="container">
+      <!-- SIDEBAR -->
+      <aside class="sidebar" id="sidebar"></aside>
+
+      <!-- KONTEN MATERI -->
+      <main class="content">
+        <div class="breadcrumb">
+          <a href="index.html">Python Learn</a>
+          &nbsp; / &nbsp; Perulangan Python
+        </div>
+
+        <h2>Materi 7: Perulangan Python (For dan While)</h2>
+
+        <p>
+          Selamat datang di materi ketujuh! Pada materi ini kita akan
+          mempelajari perulangan atau <i>looping</i> dalam Python. Perulangan
+          memungkinkan sebuah program menjalankan perintah berkali-kali tanpa
+          harus menuliskan kode yang sama secara berulang.
+        </p>
+
+        <div class="info">
+          <strong>Tujuan Pembelajaran</strong>
+          Setelah mempelajari materi ini, kamu diharapkan mampu:
+          <ol>
+            <li>Memahami konsep dan fungsi perulangan dalam Python.</li>
+            <li>
+              Menggunakan perulangan <code>for</code> dan <code>while</code>.
+            </li>
+            <li>Memanfaatkan fungsi <code>range()</code>.</li>
+            <li>
+              Menggunakan <code>break</code>, <code>continue</code>, dan
+              <code>pass</code>.
+            </li>
+            <li>Membuat perulangan bersarang atau <i>nested loop</i>.</li>
+            <li>Menerapkan perulangan dalam program sederhana.</li>
+          </ol>
+        </div>
+
+        <!-- BAGIAN 1 -->
+        <section class="subsection">
+          <h3>1. Pengertian Perulangan</h3>
+
+          <p>
+            Perulangan atau <i>looping</i> adalah salah satu konsep dasar dalam
+            pemrograman yang digunakan untuk menjalankan suatu perintah secara
+            berulang selama kondisi tertentu terpenuhi atau selama jumlah
+            pengulangan belum selesai.
+          </p>
+
+          <p>
+            Dengan perulangan, kita tidak perlu menulis perintah yang sama
+            berkali-kali. Cukup dengan satu struktur perulangan, Python dapat
+            menjalankan perintah tersebut sesuai kebutuhan.
+          </p>
+
+          <p>Contoh perulangan dalam kehidupan sehari-hari:</p>
+
+          <ul>
+            <li>Menampilkan angka 1 sampai 10.</li>
+            <li>Mengulang proses menghitung nilai siswa.</li>
+            <li>Menampilkan daftar nama.</li>
+            <li>Meminta pengguna memasukkan data sampai data sesuai.</li>
+          </ul>
+
+          <p>Python memiliki dua jenis perulangan utama:</p>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Jenis Perulangan</th>
+                  <th>Fungsi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>for</code></td>
+                  <td>
+                    Mengulang berdasarkan urutan data atau jumlah iterasi.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>while</code></td>
+                  <td>Mengulang selama kondisi bernilai <code>True</code>.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            Selain itu, terdapat perintah tambahan yang dapat mengatur jalannya
+            perulangan, yaitu <code>break</code>, <code>continue</code>, dan
+            <code>pass</code>.
+          </p>
+        </section>
+
+        <!-- BAGIAN 2 -->
+        <section class="subsection">
+          <h3>2. Perulangan <code>for</code></h3>
+
+          <p>
+            Perulangan <code>for</code> digunakan untuk menjalankan perintah
+            berdasarkan urutan data atau sejumlah iterasi tertentu. Perulangan
+            ini cocok digunakan ketika kita sudah mengetahui jumlah pengulangan
+            atau ingin membaca setiap elemen dalam sebuah kumpulan data.
+          </p>
+
+          <h4>Sintaks Dasar</h4>
+
+          <pre><code>for variabel in urutan_data:
+    perintah</code></pre>
+
+          <h4>Contoh 1: Menampilkan angka</h4>
+
+          <pre><code>for angka in range(5):
+    print(angka)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+0
+1
+2
+3
+4</pre
+            >
+          </div>
+
+          <h4>Penjelasan</h4>
+
+          <ul>
+            <li><code>for</code> digunakan untuk memulai perulangan.</li>
+            <li>
+              <code>angka</code> merupakan variabel yang menyimpan nilai setiap
+              iterasi.
+            </li>
+            <li>
+              <code>range(5)</code> menghasilkan urutan angka mulai dari 0
+              sampai 4.
+            </li>
+            <li>
+              <code>print(angka)</code> menampilkan angka pada setiap
+              pengulangan.
+            </li>
+          </ul>
+
+          <h4>Contoh 2: Mengulang sebanyak 5 kali</h4>
+
+          <pre><code>for i in range(1, 6):
+    print("Belajar Python")</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+Belajar Python
+Belajar Python
+Belajar Python
+Belajar Python
+Belajar Python</pre
+            >
+          </div>
+
+          <h4>Contoh 3: Menampilkan angka 1 sampai 10</h4>
+
+          <pre><code>for angka in range(1, 11):
+    print(angka)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre
+            >
+          </div>
+        </section>
+
+        <!-- BAGIAN 3 -->
+        <section class="subsection">
+          <h3>3. Mengenal Fungsi <code>range()</code></h3>
+
+          <p>
+            Fungsi <code>range()</code> digunakan untuk menghasilkan urutan
+            bilangan yang sering digunakan dalam perulangan <code>for</code>.
+            Python menyediakan tiga bentuk penggunaan fungsi
+            <code>range()</code>.
+          </p>
+
+          <h4>A. <code>range(stop)</code></h4>
+
+          <p>
+            Menghasilkan angka mulai dari 0 hingga sebelum nilai
+            <code>stop</code>.
+          </p>
+
+          <pre><code>for i in range(5):
+    print(i)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+0
+1
+2
+3
+4</pre
+            >
+          </div>
+
+          <h4>B. <code>range(start, stop)</code></h4>
+
+          <p>
+            Menghasilkan angka mulai dari <code>start</code> hingga sebelum
+            <code>stop</code>.
+          </p>
+
+          <pre><code>for i in range(2, 7):
+    print(i)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+2
+3
+4
+5
+6</pre
+            >
+          </div>
+
+          <h4>C. <code>range(start, stop, step)</code></h4>
+
+          <p>Menghasilkan angka dengan jarak atau langkah tertentu.</p>
+
+          <pre><code>for i in range(1, 11, 2):
+    print(i)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+1
+3
+5
+7
+9</pre
+            >
+          </div>
+
+          <p>Pada contoh tersebut, angka bertambah 2 setiap pengulangan.</p>
+
+          <h4>Contoh Menghitung Mundur</h4>
+
+          <pre><code>for i in range(10, 0, -1):
+    print(i)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1</pre
+            >
+          </div>
+
+          <div class="info">
+            <strong>Catatan Penting:</strong>
+            Nilai terakhir pada <code>range()</code> tidak ikut ditampilkan.
+            Contohnya, <code>range(1, 6)</code> menghasilkan angka 1, 2, 3, 4,
+            dan 5, bukan sampai 6.
+          </div>
+        </section>
+
+        <!-- BAGIAN 4 -->
+        <section class="subsection">
+          <h3>4. Perulangan <code>for</code> dengan List</h3>
+
+          <p>
+            Perulangan <code>for</code> juga dapat digunakan untuk membaca
+            setiap elemen dalam sebuah list.
+          </p>
+
+          <h4>Contoh 1: Menampilkan daftar buah</h4>
+
+          <pre><code>buah = ["Apel", "Jeruk", "Mangga", "Pisang"]
+
+for nama_buah in buah:
+    print(nama_buah)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+Apel
+Jeruk
+Mangga
+Pisang</pre
+            >
+          </div>
+
+          <h4>Penjelasan</h4>
+
+          <ol>
+            <li>
+              Variabel <code>buah</code> menyimpan beberapa nama buah dalam
+              bentuk list.
+            </li>
+            <li>
+              Perulangan <code>for</code> membaca setiap elemen dalam list.
+            </li>
+            <li>
+              Variabel <code>nama_buah</code> menyimpan elemen yang sedang
+              diproses.
+            </li>
+            <li><code>print()</code> menampilkan setiap nama buah.</li>
+          </ol>
+
+          <h4>Contoh 2: Menampilkan daftar nama siswa</h4>
+
+          <pre><code>siswa = ["Andi", "Budi", "Siti", "Rina"]
+
+for nama in siswa:
+    print(f"Halo, {nama}!")</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+Halo, Andi!
+Halo, Budi!
+Halo, Siti!
+Halo, Rina!</pre
+            >
+          </div>
+        </section>
+
+        <!-- BAGIAN 5 -->
+        <section class="subsection">
+          <h3>5. Perulangan <code>while</code></h3>
+
+          <p>
+            Perulangan <code>while</code> digunakan untuk menjalankan perintah
+            selama suatu kondisi bernilai <code>True</code>. Perulangan ini
+            cocok ketika jumlah pengulangan belum diketahui secara pasti dan
+            bergantung pada suatu kondisi.
+          </p>
+
+          <h4>Sintaks Dasar</h4>
+
+          <pre><code>while kondisi:
+    perintah</code></pre>
+
+          <h4>Contoh 1: Menampilkan angka 1 sampai 5</h4>
+
+          <pre><code>angka = 1
+
+while angka &lt;= 5:
+    print(angka)
+    angka += 1</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+1
+2
+3
+4
+5</pre
+            >
+          </div>
+
+          <h4>Penjelasan</h4>
+
+          <ol>
+            <li>Variabel <code>angka</code> dimulai dari nilai 1.</li>
+            <li>Python memeriksa kondisi <code>angka &lt;= 5</code>.</li>
+            <li>Jika kondisi benar, angka ditampilkan.</li>
+            <li><code>angka += 1</code> menambahkan nilai angka sebanyak 1.</li>
+            <li>Proses berulang sampai kondisi bernilai <code>False</code>.</li>
+          </ol>
+
+          <h4>Contoh 2: Menghitung mundur</h4>
+
+          <pre><code>angka = 5
+
+while angka &gt;= 1:
+    print(angka)
+    angka -= 1
+
+print("Selesai!")</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+5
+4
+3
+2
+1
+Selesai!</pre
+            >
+          </div>
+        </section>
+
+        <!-- BAGIAN 6 -->
+        <section class="subsection">
+          <h3>6. Perbedaan <code>for</code> dan <code>while</code></h3>
+
+          <p>
+            Meskipun sama-sama digunakan untuk perulangan, <code>for</code> dan
+            <code>while</code> memiliki cara kerja yang berbeda.
+          </p>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Perulangan <code>for</code></th>
+                  <th>Perulangan <code>while</code></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Cocok untuk jumlah iterasi yang diketahui.</td>
+                  <td>Cocok untuk pengulangan berdasarkan kondisi.</td>
+                </tr>
+                <tr>
+                  <td>Menggunakan urutan data atau iterable.</td>
+                  <td>Menggunakan kondisi Boolean.</td>
+                </tr>
+                <tr>
+                  <td>Sering digunakan bersama <code>range()</code>.</td>
+                  <td>Sering menggunakan variabel kondisi.</td>
+                </tr>
+                <tr>
+                  <td>Iterasi mengikuti elemen atau urutan.</td>
+                  <td>Berjalan selama kondisi bernilai <code>True</code>.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>Contoh penggunaan <code>for</code></h4>
+
+          <pre><code>for i in range(5):
+    print("Halo")</code></pre>
+
+          <h4>Contoh penggunaan <code>while</code></h4>
+
+          <pre><code>i = 0
+
+while i &lt; 5:
+    print("Halo")
+    i += 1</code></pre>
+
+          <p>
+            Kedua program tersebut menghasilkan kata "Halo" sebanyak lima kali.
+            Perbedaannya terletak pada cara mengatur pengulangannya.
+          </p>
+        </section>
+
+        <!-- BAGIAN 7 -->
+        <section class="subsection">
+          <h3>7. Perintah <code>break</code></h3>
+
+          <p>
+            <code>break</code> digunakan untuk menghentikan perulangan secara
+            langsung, meskipun kondisi perulangan masih bernilai benar.
+          </p>
+
+          <h4>Contoh menggunakan <code>for</code></h4>
+
+          <pre><code>for angka in range(1, 11):
+    if angka == 6:
+        break
+
+    print(angka)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+1
+2
+3
+4
+5</pre
+            >
+          </div>
+
+          <p>
+            Ketika nilai <code>angka</code> mencapai 6, perintah
+            <code>break</code> dijalankan. Akibatnya, perulangan langsung
+            dihentikan.
+          </p>
+
+          <h4>Contoh menggunakan <code>while</code></h4>
+
+          <pre><code>angka = 1
+
+while angka &lt;= 10:
+    if angka == 5:
+        break
+
+    print(angka)
+    angka += 1</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+1
+2
+3
+4</pre
+            >
+          </div>
+        </section>
+
+        <!-- BAGIAN 8 -->
+        <section class="subsection">
+          <h3>8. Perintah <code>continue</code></h3>
+
+          <p>
+            <code>continue</code> digunakan untuk melewati sisa perintah pada
+            satu iterasi dan melanjutkan ke iterasi berikutnya.
+          </p>
+
+          <pre><code>for angka in range(1, 6):
+    if angka == 3:
+        continue
+
+    print(angka)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+1
+2
+4
+5</pre
+            >
+          </div>
+
+          <p>
+            Ketika angka bernilai 3, perintah <code>continue</code> membuat
+            Python melewati perintah <code>print()</code> pada iterasi tersebut.
+            Perulangan kemudian dilanjutkan ke angka berikutnya.
+          </p>
+
+          <h4>Perbedaan <code>break</code> dan <code>continue</code></h4>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Perintah</th>
+                  <th>Fungsi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>break</code></td>
+                  <td>Menghentikan seluruh perulangan.</td>
+                </tr>
+                <tr>
+                  <td><code>continue</code></td>
+                  <td>Melewati satu iterasi dan melanjutkan perulangan.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- BAGIAN 9 -->
+        <section class="subsection">
+          <h3>9. Perintah <code>pass</code></h3>
+
+          <p>
+            <code>pass</code> digunakan sebagai perintah kosong yang tidak
+            melakukan tindakan apa pun. Perintah ini biasanya digunakan sebagai
+            <i>placeholder</i> ketika kita ingin membuat struktur perulangan
+            terlebih dahulu, tetapi belum menambahkan instruksi di dalamnya.
+          </p>
+
+          <pre><code>for i in range(5):
+    pass
+
+print("Program selesai.")</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>Program selesai.</pre>
+          </div>
+
+          <p>
+            Meskipun perulangan berjalan sebanyak lima kali, tidak ada perintah
+            yang dijalankan di dalamnya karena hanya terdapat <code>pass</code>.
+          </p>
+        </section>
+
+        <!-- BAGIAN 10 -->
+        <section class="subsection">
+          <h3>10. Perulangan Bersarang (Nested Loop)</h3>
+
+          <p>
+            <i>Nested loop</i> adalah perulangan yang berada di dalam perulangan
+            lainnya. Konsep ini berguna ketika kita ingin melakukan pengulangan
+            bertingkat, seperti membuat tabel, pola angka, atau pola karakter.
+          </p>
+
+          <h4>Contoh 1: Menampilkan pola bintang</h4>
+
+          <pre><code>for i in range(1, 5):
+    for j in range(i):
+        print("*", end="")
+
+    print()</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+*
+**
+***
+****</pre
+            >
+          </div>
+
+          <h4>Penjelasan</h4>
+
+          <ol>
+            <li>Perulangan pertama mengatur jumlah baris.</li>
+            <li>Perulangan kedua mengatur jumlah bintang pada setiap baris.</li>
+            <li>
+              <code>end=""</code> membuat bintang ditampilkan pada baris yang
+              sama.
+            </li>
+            <li>
+              <code>print()</code> kosong digunakan untuk berpindah ke baris
+              berikutnya.
+            </li>
+          </ol>
+
+          <h4>Contoh 2: Menampilkan tabel perkalian</h4>
+
+          <pre><code>for i in range(1, 4):
+    for j in range(1, 4):
+        print(i * j, end="\t")
+
+    print()</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+1	2	3
+2	4	6
+3	9	9</pre
+            >
+          </div>
+        </section>
+
+        <!-- BAGIAN 11 -->
+        <section class="subsection">
+          <h3>11. Kesalahan yang Sering Terjadi</h3>
+
+          <p>
+            Ketika menggunakan perulangan, ada beberapa kesalahan yang sering
+            dilakukan pemula.
+          </p>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Kesalahan</th>
+                  <th>Penyebab</th>
+                  <th>Solusi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Infinite loop</td>
+                  <td>
+                    Kondisi <code>while</code> tidak pernah menjadi
+                    <code>False</code>.
+                  </td>
+                  <td>Pastikan kondisi diperbarui.</td>
+                </tr>
+                <tr>
+                  <td><code>IndentationError</code></td>
+                  <td>Indentasi tidak konsisten.</td>
+                  <td>Gunakan indentasi yang benar.</td>
+                </tr>
+                <tr>
+                  <td>Perulangan tidak berjalan</td>
+                  <td>Kondisi awal langsung bernilai <code>False</code>.</td>
+                  <td>Periksa kondisi perulangan.</td>
+                </tr>
+                <tr>
+                  <td>Hasil tidak sesuai</td>
+                  <td>Kesalahan pada batas <code>range()</code>.</td>
+                  <td>
+                    Periksa nilai <code>start</code> dan <code>stop</code>.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Terlalu banyak pengulangan</td>
+                  <td>Variabel penghitung tidak diperbarui.</td>
+                  <td>Tambahkan atau kurangi nilai penghitung.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>Apa itu infinite loop?</h4>
+
+          <p>
+            <i>Infinite loop</i> adalah kondisi ketika perulangan terus berjalan
+            tanpa berhenti karena kondisi perulangan selalu bernilai
+            <code>True</code>.
+          </p>
+
+          <p>
+            <strong
+              >Contoh kode yang berpotensi menyebabkan infinite loop:</strong
+            >
+          </p>
+
+          <pre><code>angka = 1
+
+while angka &lt;= 5:
+    print(angka)</code></pre>
+
+          <p>
+            Pada kode tersebut, nilai <code>angka</code> tidak pernah berubah
+            sehingga kondisi selalu benar.
+          </p>
+
+          <p><strong>Perbaikannya:</strong></p>
+
+          <pre><code>angka = 1
+
+while angka &lt;= 5:
+    print(angka)
+    angka += 1</code></pre>
+
+          <p>
+            Dengan menambahkan <code>angka += 1</code>, nilai variabel akan
+            terus bertambah sampai kondisi menjadi salah.
+          </p>
+
+          <div class="info">
+            <strong>Tips!</strong>
+            Berhati-hatilah ketika menjalankan perulangan <code>while</code>.
+            Pastikan ada perubahan pada variabel atau kondisi yang memungkinkan
+            perulangan berhenti.
+          </div>
+        </section>
+
+        <!-- BAGIAN 12 -->
+        <section class="subsection">
+          <h3>12. Contoh Project: Program Penghitung Total Belanja</h3>
+
+          <p>
+            Sekarang kita akan membuat program sederhana yang menggunakan
+            perulangan untuk menghitung total belanja beberapa barang.
+          </p>
+
+          <h4>Kode Program</h4>
+
+          <pre><code>print("=== PROGRAM TOTAL BELANJA ===")
+
+jumlah_barang = int(input("Masukkan jumlah barang: "))
+total = 0
+
+for i in range(jumlah_barang):
+    print(f"\nBarang ke-{i + 1}")
+
+    nama = input("Nama barang: ")
+    harga = int(input("Harga barang: "))
+
+    total += harga
+
+print("\n=== STRUK BELANJA ===")
+print("Jumlah barang:", jumlah_barang)
+print("Total belanja: Rp", total)
+
+if total &gt;= 100000:
+    print("Anda mendapatkan bonus!")
+else:
+    print("Terima kasih sudah berbelanja.")</code></pre>
+
+          <div class="code-output">
+            <strong>Contoh Hasil Program:</strong>
+            <pre>
+=== PROGRAM TOTAL BELANJA ===
+Masukkan jumlah barang: 2
+
+Barang ke-1
+Nama barang: Buku
+Harga barang: 15000
+
+Barang ke-2
+Nama barang: Pensil
+Harga barang: 5000
+
+=== STRUK BELANJA ===
+Jumlah barang: 2
+Total belanja: Rp 20000
+Terima kasih sudah berbelanja.</pre
+            >
+          </div>
+
+          <h4>Penjelasan Program</h4>
+
+          <ol>
+            <li>Program meminta jumlah barang yang ingin dimasukkan.</li>
+            <li>
+              Variabel <code>total</code> digunakan untuk menyimpan jumlah
+              harga.
+            </li>
+            <li>
+              Perulangan <code>for</code> digunakan untuk memasukkan data setiap
+              barang.
+            </li>
+            <li>Harga barang ditambahkan ke variabel <code>total</code>.</li>
+            <li>
+              Setelah perulangan selesai, program menampilkan total belanja.
+            </li>
+            <li>
+              Percabangan <code>if-else</code> menentukan apakah pengguna
+              mendapatkan bonus.
+            </li>
+          </ol>
+
+          <a
+            class="colab-button"
+            href="https://colab.research.google.com/#create=true"
+            target="_blank"
+            rel="noopener"
+          >
+            Praktikkan di Google Colab ↗
+          </a>
+        </section>
+
+        <!-- BAGIAN 13 -->
+        <section class="subsection">
+          <h3>13. Contoh Project: Program Tebak Angka Sederhana</h3>
+
+          <p>
+            Project ini menggunakan <code>while</code> untuk mengulang proses
+            sampai pengguna memasukkan angka yang benar.
+          </p>
+
+          <h4>Kode Program</h4>
+
+          <pre><code>angka_rahasia = 7
+
+print("=== PERMAINAN TEBAK ANGKA ===")
+print("Tebak angka dari 1 sampai 10!")
+
+tebakan = 0
+
+while tebakan != angka_rahasia:
+    tebakan = int(input("Masukkan tebakan: "))
+
+    if tebakan &lt; angka_rahasia:
+        print("Terlalu kecil!")
+    elif tebakan &gt; angka_rahasia:
+        print("Terlalu besar!")
+    else:
+        print("Selamat! Tebakan Anda benar.")</code></pre>
+
+          <div class="code-output">
+            <strong>Contoh Hasil Program:</strong>
+            <pre>
+=== PERMAINAN TEBAK ANGKA ===
+Tebak angka dari 1 sampai 10!
+
+Masukkan tebakan: 4
+Terlalu kecil!
+
+Masukkan tebakan: 9
+Terlalu besar!
+
+Masukkan tebakan: 7
+Selamat! Tebakan Anda benar.</pre
+            >
+          </div>
+
+          <h4>Penjelasan Program</h4>
+
+          <ul>
+            <li>
+              Variabel <code>angka_rahasia</code> menyimpan angka yang harus
+              ditebak.
+            </li>
+            <li>Variabel <code>tebakan</code> menyimpan input pengguna.</li>
+            <li>
+              Perulangan <code>while</code> berjalan selama tebakan belum sama
+              dengan angka rahasia.
+            </li>
+            <li>
+              Percabangan menentukan apakah tebakan terlalu kecil, terlalu
+              besar, atau benar.
+            </li>
+            <li>
+              Jika tebakan benar, kondisi <code>while</code> menjadi
+              <code>False</code> dan perulangan berhenti.
+            </li>
+          </ul>
+
+          <a
+            class="colab-button"
+            href="https://colab.research.google.com/#create=true"
+            target="_blank"
+            rel="noopener"
+          >
+            Praktikkan di Google Colab ↗
+          </a>
+        </section>
+
+        <!-- BAGIAN 14 -->
+        <section class="subsection">
+          <h3>14. Latihan Mandiri</h3>
+
+          <p>
+            Setelah mempelajari materi perulangan, sekarang saatnya mencoba
+            membuat program sendiri!
+          </p>
+
+          <div class="info">
+            <span class="difficulty">Mudah</span>
+            <strong>Latihan 1: Menampilkan Angka 1–20</strong>
+            <p>
+              Buat program menggunakan <code>for</code> untuk menampilkan angka
+              1 sampai 20.
+            </p>
+          </div>
+
+          <div class="info">
+            <span class="difficulty">Mudah</span>
+            <strong>Latihan 2: Menghitung Mundur</strong>
+            <p>
+              Buat program menggunakan <code>while</code> untuk menampilkan
+              angka 10 sampai 1, kemudian tampilkan tulisan "Selesai!".
+            </p>
+          </div>
+
+          <div class="info">
+            <span class="difficulty">Menengah</span>
+            <strong>Latihan 3: Menampilkan Bilangan Genap</strong>
+            <p>
+              Buat program yang menampilkan seluruh bilangan genap dari 1 sampai
+              50 menggunakan perulangan.
+            </p>
+          </div>
+
+          <div class="info">
+            <span class="difficulty">Menengah</span>
+            <strong>Latihan 4: Menghitung Total Nilai</strong>
+            <p>
+              Buat program yang meminta pengguna memasukkan lima nilai siswa.
+              Kemudian hitung dan tampilkan total serta rata-rata nilainya.
+            </p>
+          </div>
+
+          <div class="info">
+            <span class="difficulty">Menantang</span>
+            <strong>Latihan 5: Membuat Pola Bintang</strong>
+            <p>
+              Gunakan <i>nested loop</i> untuk membuat pola bintang berbentuk
+              segitiga dengan tinggi lima baris.
+            </p>
+          </div>
+
+          <a
+            class="colab-button"
+            href="https://colab.research.google.com/#create=true"
+            target="_blank"
+            rel="noopener"
+          >
+            Praktikkan Latihan di Google Colab ↗
+          </a>
+        </section>
+
+        <!-- BAGIAN 15 -->
+        <section class="subsection">
+          <h3>15. Kuis Pemahaman</h3>
+
+          <p>
+            Uji pemahamanmu tentang perulangan Python melalui kuis berikut!
+            Pilih satu jawaban yang paling tepat untuk setiap pertanyaan,
+            kemudian klik tombol <strong>Periksa Jawaban</strong>.
+          </p>
+
+          <div class="quiz-container">
+            <div class="quiz-header">
+              <strong>Kuis Perulangan Python</strong>
+              <span id="quiz-count">0/6 dijawab</span>
+            </div>
+
+            <div class="quiz-progress">
+              <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
+            </div>
+
+            <form id="quiz-form">
+              <div class="question-card">
+                <h4>1. Apa fungsi utama perulangan dalam Python?</h4>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q1" value="a" />
+                  Membuat variabel
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q1" value="b" />
+                  Menjalankan perintah secara berulang
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q1" value="c" />
+                  Menghapus data
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q1" value="d" />
+                  Mengubah tipe data
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q1"></div>
+              </div>
+
+              <div class="question-card">
+                <h4>
+                  2. Perulangan apa yang cocok digunakan ketika jumlah iterasi
+                  sudah diketahui?
+                </h4>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q2" value="a" />
+                  while
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q2" value="b" />
+                  if
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q2" value="c" />
+                  for
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q2" value="d" />
+                  else
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q2"></div>
+              </div>
+
+              <div class="question-card">
+                <h4>3. Apa hasil dari kode berikut?</h4>
+                <pre><code>for i in range(3):
+    print(i)</code></pre>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q3" value="a" />
+                  1, 2, 3
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q3" value="b" />
+                  0, 1, 2
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q3" value="c" />
+                  0, 1, 2, 3
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q3" value="d" />
+                  1, 2
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q3"></div>
+              </div>
+
+              <div class="question-card">
+                <h4>
+                  4. Perintah apa yang digunakan untuk menghentikan perulangan
+                  secara langsung?
+                </h4>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q4" value="a" />
+                  continue
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q4" value="b" />
+                  pass
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q4" value="c" />
+                  break
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q4" value="d" />
+                  stop
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q4"></div>
+              </div>
+
+              <div class="question-card">
+                <h4>5. Apa fungsi perintah <code>continue</code>?</h4>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q5" value="a" />
+                  Menghentikan seluruh program
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q5" value="b" />
+                  Melewati iterasi saat ini dan melanjutkan iterasi berikutnya
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q5" value="c" />
+                  Mengulang dari awal program
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q5" value="d" />
+                  Menghapus variabel
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q5"></div>
+              </div>
+
+              <div class="question-card">
+                <h4>6. Apa yang dimaksud dengan infinite loop?</h4>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q6" value="a" />
+                  Perulangan yang berjalan satu kali
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q6" value="b" />
+                  Perulangan yang tidak pernah berhenti
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q6" value="c" />
+                  Perulangan yang selalu salah
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q6" value="d" />
+                  Perulangan yang tidak memiliki variabel
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q6"></div>
+              </div>
+
+              <button type="button" class="quiz-button" id="check-quiz">
+                Periksa Jawaban
+              </button>
+
+              <button
+                type="button"
+                class="quiz-button"
+                id="reset-quiz"
+                style="background: #64748b; display: none"
+              >
+                Ulangi Kuis
+              </button>
+            </form>
+
+            <div class="quiz-result" id="quiz-result">
+              <h4>Hasil Kuis</h4>
+              <p id="quiz-score"></p>
+              <p id="quiz-message"></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- BAGIAN 16 -->
+        <section class="subsection">
+          <h3>16. Kesimpulan</h3>
+
+          <p>
+            Pada materi ini, kita telah mempelajari berbagai konsep penting
+            tentang perulangan Python:
+          </p>
+
+          <ol>
+            <li>Pengertian dan fungsi perulangan.</li>
+            <li>
+              Penggunaan <code>for</code> untuk mengulang berdasarkan urutan
+              data.
+            </li>
+            <li>
+              Penggunaan <code>range()</code> untuk menghasilkan urutan angka.
+            </li>
+            <li>
+              Penggunaan <code>while</code> untuk mengulang berdasarkan kondisi.
+            </li>
+            <li>
+              Perbedaan perulangan <code>for</code> dan <code>while</code>.
+            </li>
+            <li>
+              Penggunaan <code>break</code>, <code>continue</code>, dan
+              <code>pass</code>.
+            </li>
+            <li>Perulangan bersarang atau <i>nested loop</i>.</li>
+            <li>
+              Penerapan perulangan dalam program penghitung belanja dan
+              permainan tebak angka.
+            </li>
+          </ol>
+
+          <div class="info">
+            <strong>Poin Penting:</strong>
+            Perulangan membantu membuat program lebih efisien karena kita dapat
+            menjalankan perintah berkali-kali tanpa harus menuliskan kode yang
+            sama berulang-ulang. Pilihlah <code>for</code> atau
+            <code>while</code> sesuai kebutuhan program yang dibuat.
+          </div>
+        </section>
+
+        <!-- TUGAS MATERI -->
+        <div class="task">
+          <h3>Tugas 7: Program Pengolahan Data Nilai Siswa</h3>
+
+          <p>
+            Buatlah sebuah program Python untuk mengolah nilai beberapa siswa
+            dengan memanfaatkan perulangan. Program harus dapat menerima data
+            nilai, menghitung total dan rata-rata, serta menentukan keterangan
+            kelulusan setiap siswa.
+          </p>
+
+          <p><strong>Ketentuan Program:</strong></p>
+
+          <ol>
+            <li>
+              Program meminta pengguna memasukkan jumlah siswa yang akan diolah.
+            </li>
+            <li>
+              Gunakan perulangan untuk meminta nama dan nilai setiap siswa.
+            </li>
+            <li>
+              Gunakan percabangan untuk menentukan keterangan kelulusan. Siswa
+              dinyatakan lulus jika nilai minimal 75.
+            </li>
+            <li>Tampilkan nama, nilai, dan keterangan setiap siswa.</li>
+            <li>
+              Hitung dan tampilkan total nilai serta rata-rata seluruh siswa.
+            </li>
+            <li>
+              Pastikan program dapat berjalan sesuai dengan jumlah siswa yang
+              dimasukkan.
+            </li>
+          </ol>
+
+          <p><strong>Ketentuan Pengumpulan:</strong></p>
+
+          <ol>
+            <li>Buat program menggunakan Google Colab.</li>
+            <li>
+              Simpan notebook dengan nama <code>Tugas7_Nama_NIM.ipynb</code>.
+            </li>
+            <li>Simpan notebook di Google Drive.</li>
+            <li>
+              Atur akses berbagi notebook agar dapat diperiksa oleh dosen/guru.
+            </li>
+            <li>
+              Kumpulkan tautan notebook melalui tombol
+              <strong>Pengumpulan Tugas</strong> pada sidebar website.
+            </li>
+          </ol>
+
+          <a
+            href="https://colab.research.google.com/#create=true"
+            target="_blank"
+            class="colab-button"
+            rel="noopener"
+          >
+            Mulai Mengerjakan di Google Colab ↗
+          </a>
+        </div>
+
+        <!-- NAVIGASI MATERI -->
+        <div class="navigation" id="navigation"></div>
+      </main>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>Python Learn | Media Pembelajaran Python Dasar</footer>
+
+    <script src="assets/js/script.js"></script>
+
+    <script>
+      // Kunci jawaban & penjelasan kuis diselaraskan dengan standar format kuis
+      const jawabanBenar = {
+        q1: 'b',
+        q2: 'c',
+        q3: 'b',
+        q4: 'c',
+        q5: 'b',
+        q6: 'b',
+      };
+
+      const penjelasan = {
+        q1: 'Perulangan digunakan untuk menjalankan perintah secara berulang tanpa menuliskan kode yang sama berkali-kali.',
+        q2: 'Perulangan for cocok digunakan ketika jumlah iterasi sudah diketahui atau ketika kita ingin membaca elemen dalam suatu kumpulan data.',
+        q3: 'range(3) menghasilkan urutan 0, 1, dan 2. Nilai 3 tidak termasuk dalam hasilnya.',
+        q4: 'Perintah break digunakan untuk menghentikan perulangan secara langsung.',
+        q5: 'continue melewati sisa perintah pada iterasi saat ini dan melanjutkan ke iterasi berikutnya.',
+        q6: 'Infinite loop adalah perulangan yang terus berjalan karena kondisi perulangannya tidak pernah menjadi False.',
+      };
+
+      const form = document.getElementById('quiz-form');
+      const jumlahSoal = 6;
+
+      function perbaruiProgress() {
+        let terjawab = 0;
+
+        for (let i = 1; i <= jumlahSoal; i++) {
+          if (form.querySelector(`input[name="q${i}"]:checked`)) {
+            terjawab++;
+          }
+        }
+
+        document.getElementById(
+          'quiz-count'
+        ).textContent = `${terjawab}/${jumlahSoal} dijawab`;
+
+        document.getElementById('quiz-progress-bar').style.width = `${
+          (terjawab / jumlahSoal) * 100
+        }%`;
+      }
+
+      form.addEventListener('change', perbaruiProgress);
+
+      document
+        .getElementById('check-quiz')
+        .addEventListener('click', function () {
+          let skor = 0;
+          let belumDijawab = [];
+
+          for (let i = 1; i <= jumlahSoal; i++) {
+            const pilihan = form.querySelector(`input[name="q${i}"]:checked`);
+            const feedback = document.getElementById(`feedback-q${i}`);
+
+            feedback.className = 'quiz-feedback';
+
+            if (!pilihan) {
+              belumDijawab.push(i);
+              feedback.textContent = 'Belum dijawab.';
+              feedback.classList.add('wrong');
+              continue;
+            }
+
+            if (pilihan.value === jawabanBenar[`q${i}`]) {
+              skor++;
+              feedback.textContent = 'Benar! ' + penjelasan[`q${i}`];
+              feedback.classList.add('correct');
+            } else {
+              feedback.textContent = 'Belum tepat. ' + penjelasan[`q${i}`];
+              feedback.classList.add('wrong');
+            }
+          }
+
+          if (belumDijawab.length > 0) {
+            alert(
+              'Masih ada soal yang belum dijawab: ' +
+                belumDijawab.join(', ') +
+                '. Silakan lengkapi terlebih dahulu.'
+            );
+            return;
+          }
+
+          const nilai = Math.round((skor / jumlahSoal) * 100);
+
+          document.getElementById('quiz-result').style.display = 'block';
+
+          document.getElementById(
+            'quiz-score'
+          ).textContent = `Jawaban benar: ${skor} dari ${jumlahSoal} soal. Nilai: ${nilai}/100.`;
+
+          let pesan = '';
+
+          if (nilai === 100) {
+            pesan = 'Luar biasa! Semua jawabanmu benar. Pertahankan!';
+          } else if (nilai >= 80) {
+            pesan =
+              'Hebat! Kamu sudah memahami materi perulangan Python dengan baik.';
+          } else if (nilai >= 60) {
+            pesan = 'Bagus! Pelajari kembali bagian yang belum dikuasai.';
+          } else {
+            pesan = 'Tetap semangat! Pelajari kembali materi dan coba lagi.';
+          }
+
+          document.getElementById('quiz-message').textContent = pesan;
+
+          document.getElementById('check-quiz').style.display = 'none';
+          document.getElementById('reset-quiz').style.display = 'inline-block';
+
+          document.getElementById('quiz-result').scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+          });
+        });
+
+      document
+        .getElementById('reset-quiz')
+        .addEventListener('click', function () {
+          form.reset();
+
+          for (let i = 1; i <= jumlahSoal; i++) {
+            const feedback = document.getElementById(`feedback-q${i}`);
+            feedback.textContent = '';
+            feedback.className = 'quiz-feedback';
+          }
+
+          document.getElementById('quiz-result').style.display = 'none';
+          document.getElementById('check-quiz').style.display = 'inline-block';
+          document.getElementById('reset-quiz').style.display = 'none';
+
+          perbaruiProgress();
+
+          window.scrollTo({
+            top: document.querySelector('.quiz-container').offsetTop,
+            behavior: 'smooth',
+          });
+        });
+
+      perbaruiProgress();
+    </script>
+  </body>
+</html>
