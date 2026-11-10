@@ -1,0 +1,2013 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Materi 8: Struktur Data Python | Python Learn</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <style>
+      /* Styling disamakan persis dengan pengenalan-python.html */
+      .subsection {
+        margin-bottom: 30px;
+      }
+
+      .subsection h3 {
+        margin-top: 30px;
+      }
+
+      .table-responsive {
+        overflow-x: auto;
+        margin: 20px 0;
+      }
+
+      .content table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+        margin: 15px 0;
+      }
+
+      .content th,
+      .content td {
+        border: 1px solid #dbe3ef;
+        padding: 11px 13px;
+        text-align: left;
+      }
+
+      .content th {
+        background: #eff6ff;
+        color: #172554;
+      }
+
+      .code-output {
+        background: #f8fbff;
+        border-left: 4px solid #1764dc;
+        padding: 12px 16px;
+        border-radius: 5px;
+        margin: 10px 0 20px;
+      }
+
+      .code-output strong {
+        display: block;
+        margin-bottom: 7px;
+        color: #172554;
+      }
+
+      .code-output pre {
+        margin: 0;
+        white-space: pre-wrap;
+      }
+
+      .difficulty {
+        display: inline-block;
+        font-size: 12px;
+        padding: 4px 10px;
+        border-radius: 20px;
+        background: #dbeafe;
+        color: #1764dc;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      /* Kuis Interaktif */
+      .quiz-container {
+        border: 1px solid #dbe3ef;
+        border-radius: 9px;
+        padding: 22px;
+        margin-top: 20px;
+        background: #f8fbff;
+      }
+
+      .quiz-header {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .quiz-progress {
+        background: #e2e8f0;
+        height: 8px;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 22px;
+      }
+
+      .quiz-progress-bar {
+        height: 100%;
+        width: 0%;
+        background: #1764dc;
+        transition: width 0.3s;
+      }
+
+      .question-card {
+        background: #fff;
+        border: 1px solid #dbe3ef;
+        border-radius: 8px;
+        padding: 18px;
+        margin-bottom: 16px;
+      }
+
+      .question-card h4 {
+        margin: 0 0 13px;
+        color: #172554;
+      }
+
+      .quiz-option {
+        display: block;
+        padding: 10px 12px;
+        margin: 8px 0;
+        border: 1px solid #dbe3ef;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        background: white;
+      }
+
+      .quiz-option:hover {
+        background: #eff6ff;
+        border-color: #1764dc;
+      }
+
+      .quiz-option input {
+        margin-right: 9px;
+        accent-color: #1764dc;
+      }
+
+      .quiz-button {
+        background: #1764dc;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 12px 22px;
+        cursor: pointer;
+        font-size: 14px;
+        margin-top: 10px;
+      }
+
+      .quiz-button:hover {
+        background: #104bad;
+      }
+
+      .quiz-result {
+        display: none;
+        padding: 17px;
+        margin-top: 18px;
+        border-radius: 7px;
+        background: #eff6ff;
+        border-left: 4px solid #1764dc;
+      }
+
+      .quiz-result h4 {
+        margin-top: 0;
+      }
+
+      .quiz-feedback {
+        font-size: 13px;
+        margin-top: 8px;
+        color: #475569;
+      }
+
+      .quiz-feedback.correct {
+        color: #15803d;
+      }
+
+      .quiz-feedback.wrong {
+        color: #dc2626;
+      }
+
+      @media (max-width: 700px) {
+        .quiz-container {
+          padding: 14px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header>
+      <a href="index.html" class="logo">
+        <div class="logo-icon">Py</div>
+        <h1>Python <span>Learn</span></h1>
+      </a>
+
+      <nav class="top-nav">
+        <a href="tentang.html">Tentang</a>
+        <a href="index.html">Beranda</a>
+      </nav>
+    </header>
+
+    <div class="container">
+      <!-- SIDEBAR -->
+      <aside class="sidebar" id="sidebar"></aside>
+
+      <!-- KONTEN MATERI -->
+      <main class="content">
+        <div class="breadcrumb">
+          <a href="index.html">Python Learn</a>
+          &nbsp; / &nbsp; Struktur Data Python
+        </div>
+
+        <h2>Materi 8: Struktur Data dalam Python</h2>
+
+        <p>
+          Selamat datang di materi kedelapan! Pada materi ini kita akan
+          mempelajari struktur data dalam Python. Struktur data membantu kita
+          menyimpan dan mengelola banyak informasi secara lebih terorganisasi
+          sehingga data lebih mudah diakses dan diproses.
+        </p>
+
+        <div class="info">
+          <strong>Tujuan Pembelajaran</strong>
+          Setelah mempelajari materi ini, kamu diharapkan mampu:
+          <ol>
+            <li>Memahami pengertian dan fungsi struktur data.</li>
+            <li>Menggunakan List, Tuple, Set, dan Dictionary.</li>
+            <li>Mengakses, menambah, mengubah, dan menghapus data.</li>
+            <li>Menggunakan indeks dan teknik slicing.</li>
+            <li>Menggunakan fungsi dan method untuk mengolah data.</li>
+            <li>Menerapkan struktur data dalam program sederhana.</li>
+          </ol>
+        </div>
+
+        <!-- BAGIAN 1 -->
+        <section class="subsection">
+          <h3>1. Pengertian Struktur Data</h3>
+
+          <p>
+            Struktur data adalah cara untuk menyimpan, mengatur, dan mengelola
+            sekumpulan data agar lebih mudah digunakan dalam sebuah program.
+          </p>
+
+          <p>
+            Dalam Python, struktur data membantu kita menyimpan banyak informasi
+            dalam satu variabel sehingga tidak perlu membuat variabel terpisah
+            untuk setiap data.
+          </p>
+
+          <h4>Contoh tanpa struktur data</h4>
+
+          <pre><code>buah1 = "Apel"
+buah2 = "Jeruk"
+buah3 = "Mangga"</code></pre>
+
+          <h4>Contoh menggunakan struktur data</h4>
+
+          <pre><code>buah = ["Apel", "Jeruk", "Mangga"]
+
+print(buah)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>['Apel', 'Jeruk', 'Mangga']</pre>
+          </div>
+
+          <p>
+            Dengan menggunakan struktur data, informasi menjadi lebih
+            terorganisasi dan lebih mudah diproses.
+          </p>
+
+          <p>
+            Python memiliki empat struktur data dasar yang sering digunakan:
+          </p>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Struktur Data</th>
+                  <th>Karakteristik</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>List</code></td>
+                  <td>
+                    Berurutan, dapat diubah, dan boleh memiliki data duplikat.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>Tuple</code></td>
+                  <td>
+                    Berurutan, tidak dapat diubah, dan boleh memiliki data
+                    duplikat.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>Set</code></td>
+                  <td>Menyimpan elemen unik tanpa duplikat.</td>
+                </tr>
+                <tr>
+                  <td><code>Dictionary</code></td>
+                  <td>Menyimpan data dalam pasangan key dan value.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- BAGIAN 2 -->
+        <section class="subsection">
+          <h3>2. List</h3>
+
+          <p>
+            List adalah struktur data yang digunakan untuk menyimpan banyak
+            elemen dalam satu variabel. List bersifat <i>mutable</i>, artinya
+            elemen di dalamnya dapat diubah setelah list dibuat.
+          </p>
+
+          <p>
+            List ditulis menggunakan tanda kurung siku <code>[]</code>, dan
+            setiap elemen dipisahkan dengan tanda koma.
+          </p>
+
+          <h4>Contoh membuat list</h4>
+
+          <pre><code>buah = ["Apel", "Jeruk", "Mangga", "Pisang"]
+
+print(buah)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>['Apel', 'Jeruk', 'Mangga', 'Pisang']</pre>
+          </div>
+
+          <h4>A. Mengakses elemen list</h4>
+
+          <p>
+            Setiap elemen list memiliki indeks yang dimulai dari angka 0.
+            Artinya, elemen pertama memiliki indeks 0, elemen kedua memiliki
+            indeks 1, dan seterusnya.
+          </p>
+
+          <pre><code>buah = ["Apel", "Jeruk", "Mangga"]
+
+print(buah[0])
+print(buah[1])
+print(buah[2])</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+Apel
+Jeruk
+Mangga</pre
+            >
+          </div>
+
+          <h4>B. Mengubah elemen list</h4>
+
+          <p>
+            List dapat diubah setelah dibuat dengan cara mengakses indeks elemen
+            yang ingin diperbarui.
+          </p>
+
+          <pre><code>buah = ["Apel", "Jeruk", "Mangga"]
+
+buah[1] = "Semangka"
+
+print(buah)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>['Apel', 'Semangka', 'Mangga']</pre>
+          </div>
+
+          <h4>C. Menambahkan elemen list</h4>
+
+          <p>Python menyediakan beberapa method untuk menambahkan data:</p>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Method</th>
+                  <th>Fungsi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>append()</code></td>
+                  <td>Menambahkan elemen di akhir list.</td>
+                </tr>
+                <tr>
+                  <td><code>insert()</code></td>
+                  <td>Menambahkan elemen pada indeks tertentu.</td>
+                </tr>
+                <tr>
+                  <td><code>extend()</code></td>
+                  <td>Menambahkan beberapa elemen dari iterable.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>Contoh penggunaan:</p>
+
+          <pre><code>buah = ["Apel", "Jeruk"]
+
+buah.append("Mangga")
+buah.insert(1, "Pisang")
+
+print(buah)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>['Apel', 'Pisang', 'Jeruk', 'Mangga']</pre>
+          </div>
+
+          <h4>D. Menghapus elemen list</h4>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Method</th>
+                  <th>Fungsi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>remove()</code></td>
+                  <td>Menghapus elemen berdasarkan nilainya.</td>
+                </tr>
+                <tr>
+                  <td><code>pop()</code></td>
+                  <td>
+                    Menghapus elemen berdasarkan indeks. Jika indeks tidak
+                    diberikan, elemen terakhir dihapus.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>clear()</code></td>
+                  <td>Menghapus seluruh elemen.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>Contoh:</p>
+
+          <pre><code>buah = ["Apel", "Jeruk", "Mangga"]
+
+buah.remove("Jeruk")
+
+print(buah)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>['Apel', 'Mangga']</pre>
+          </div>
+
+          <h4>E. Menggunakan perulangan pada list</h4>
+
+          <p>
+            Kita dapat menggunakan perulangan <code>for</code> untuk menampilkan
+            seluruh elemen list.
+          </p>
+
+          <pre><code>buah = ["Apel", "Jeruk", "Mangga"]
+
+for item in buah:
+    print(item)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+Apel
+Jeruk
+Mangga</pre
+            >
+          </div>
+        </section>
+
+        <!-- BAGIAN 3 -->
+        <section class="subsection">
+          <h3>3. Tuple</h3>
+
+          <p>
+            Tuple hampir sama dengan list, tetapi elemen di dalam tuple tidak
+            dapat diubah setelah dibuat. Sifat ini disebut <i>immutable</i>.
+          </p>
+
+          <p>Tuple ditulis menggunakan tanda kurung biasa <code>()</code>.</p>
+
+          <h4>Contoh membuat tuple</h4>
+
+          <pre><code>warna = ("Merah", "Hijau", "Biru")
+
+print(warna)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>('Merah', 'Hijau', 'Biru')</pre>
+          </div>
+
+          <h4>A. Mengakses elemen tuple</h4>
+
+          <pre><code>warna = ("Merah", "Hijau", "Biru")
+
+print(warna[0])
+print(warna[2])</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+Merah
+Biru</pre
+            >
+          </div>
+
+          <h4>B. Tuple tidak dapat diubah</h4>
+
+          <p>Contoh kode yang salah:</p>
+
+          <pre><code>warna = ("Merah", "Hijau", "Biru")
+
+warna[0] = "Kuning"</code></pre>
+
+          <div class="info">
+            <strong>Perhatian!</strong>
+            Kode tersebut menghasilkan <code>TypeError</code> karena tuple tidak
+            mendukung perubahan elemen setelah dibuat. Jika data perlu sering
+            diubah, gunakan list.
+          </div>
+
+          <h4>C. Menggunakan perulangan pada tuple</h4>
+
+          <pre><code>warna = ("Merah", "Hijau", "Biru")
+
+for item in warna:
+    print(item)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+Merah
+Hijau
+Biru</pre
+            >
+          </div>
+
+          <h4>D. Tuple dengan satu elemen</h4>
+
+          <p>
+            Untuk membuat tuple yang hanya memiliki satu elemen, tambahkan tanda
+            koma setelah elemennya.
+          </p>
+
+          <pre><code>data = ("Python",)
+
+print(type(data))</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>&lt;class 'tuple'&gt;</pre>
+          </div>
+        </section>
+
+        <!-- BAGIAN 4 -->
+        <section class="subsection">
+          <h3>4. Set</h3>
+
+          <p>
+            Set adalah struktur data yang digunakan untuk menyimpan sekumpulan
+            elemen unik. Artinya, set tidak menyimpan elemen yang sama lebih
+            dari satu kali.
+          </p>
+
+          <p>
+            Set ditulis menggunakan tanda kurung kurawal <code>{}</code>. Set
+            tidak menjamin urutan elemen sehingga tidak digunakan untuk
+            mengakses data berdasarkan indeks.
+          </p>
+
+          <h4>Contoh membuat set</h4>
+
+          <pre><code>angka = {1, 2, 3, 4, 5}
+
+print(angka)</code></pre>
+
+          <div class="code-output">
+            <strong>Contoh Hasil Output:</strong>
+            <pre>{1, 2, 3, 4, 5}</pre>
+          </div>
+
+          <h4>A. Menghilangkan data duplikat</h4>
+
+          <pre><code>angka = {1, 2, 2, 3, 3, 4}
+
+print(angka)</code></pre>
+
+          <div class="code-output">
+            <strong>Contoh Hasil Output:</strong>
+            <pre>{1, 2, 3, 4}</pre>
+          </div>
+
+          <p>
+            Elemen yang sama hanya disimpan satu kali. Perlu diingat bahwa
+            urutan tampilan elemen set tidak dijamin.
+          </p>
+
+          <h4>B. Menambahkan elemen set</h4>
+
+          <p>
+            Gunakan <code>add()</code> untuk menambahkan satu elemen dan
+            <code>update()</code> untuk menambahkan beberapa elemen.
+          </p>
+
+          <pre><code>buah = {"Apel", "Jeruk"}
+
+buah.add("Mangga")
+buah.update(["Pisang", "Semangka"])
+
+print(buah)</code></pre>
+
+          <p>
+            Hasilnya berisi lima nama buah tanpa duplikat. Urutan tampilannya
+            dapat berbeda.
+          </p>
+
+          <h4>C. Menghapus elemen set</h4>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Method</th>
+                  <th>Fungsi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>remove()</code></td>
+                  <td>
+                    Menghapus elemen. Menghasilkan <code>KeyError</code> jika
+                    elemen tidak ditemukan.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>discard()</code></td>
+                  <td>
+                    Menghapus elemen tanpa error jika elemen tidak ditemukan.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>clear()</code></td>
+                  <td>Menghapus seluruh elemen.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>Contoh:</p>
+
+          <pre><code>angka = {1, 2, 3, 4}
+
+angka.discard(2)
+
+print(angka)</code></pre>
+
+          <div class="code-output">
+            <strong>Contoh Hasil Output:</strong>
+            <pre>{1, 3, 4}</pre>
+          </div>
+
+          <h4>D. Operasi himpunan pada set</h4>
+
+          <p>
+            Set juga mendukung operasi matematika himpunan, seperti gabungan,
+            irisan, dan selisih.
+          </p>
+
+          <pre><code>A = {1, 2, 3, 4}
+B = {3, 4, 5, 6}
+
+print(A | B)  # Union
+print(A &amp; B)  # Intersection
+print(A - B)  # Difference</code></pre>
+
+          <div class="code-output">
+            <strong>Contoh Hasil Output:</strong>
+            <pre>
+{1, 2, 3, 4, 5, 6}
+{3, 4}
+{1, 2}</pre
+            >
+          </div>
+
+          <p>Penjelasan:</p>
+
+          <ul>
+            <li>
+              <code>A | B</code> menggabungkan seluruh elemen dari kedua set.
+            </li>
+            <li>
+              <code>A &amp; B</code> mengambil elemen yang terdapat pada kedua
+              set.
+            </li>
+            <li>
+              <code>A - B</code> mengambil elemen yang hanya terdapat pada set
+              A.
+            </li>
+          </ul>
+        </section>
+
+        <!-- BAGIAN 5 -->
+        <section class="subsection">
+          <h3>5. Dictionary</h3>
+
+          <p>
+            Dictionary adalah struktur data yang menyimpan data dalam bentuk
+            pasangan <code>key</code> dan <code>value</code>.
+          </p>
+
+          <ul>
+            <li><strong>Key</strong> adalah kunci atau identitas data.</li>
+            <li>
+              <strong>Value</strong> adalah nilai yang disimpan berdasarkan key
+              tersebut.
+            </li>
+          </ul>
+
+          <p>
+            Dictionary ditulis menggunakan tanda kurung kurawal
+            <code>{}</code> dengan format <code>key: value</code>. Setiap key
+            harus bersifat unik.
+          </p>
+
+          <h4>Contoh membuat dictionary</h4>
+
+          <pre><code>siswa = {
+    "nama": "Andi",
+    "umur": 17,
+    "kelas": "11A"
+}
+
+print(siswa)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>{'nama': 'Andi', 'umur': 17, 'kelas': '11A'}</pre>
+          </div>
+
+          <h4>A. Mengakses value berdasarkan key</h4>
+
+          <pre><code>siswa = {
+    "nama": "Andi",
+    "umur": 17,
+    "kelas": "11A"
+}
+
+print(siswa["nama"])
+print(siswa["umur"])</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+Andi
+17</pre
+            >
+          </div>
+
+          <p>
+            Kita juga dapat menggunakan method <code>get()</code> untuk
+            mengambil nilai berdasarkan key.
+          </p>
+
+          <pre><code>print(siswa.get("kelas"))</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>11A</pre>
+          </div>
+
+          <h4>B. Menambahkan dan mengubah data</h4>
+
+          <pre><code>siswa = {
+    "nama": "Andi",
+    "umur": 17
+}
+
+siswa["kelas"] = "11A"
+siswa["umur"] = 18
+
+print(siswa)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>{'nama': 'Andi', 'umur': 18, 'kelas': '11A'}</pre>
+          </div>
+
+          <h4>C. Menghapus data dictionary</h4>
+
+          <pre><code>siswa = {
+    "nama": "Andi",
+    "umur": 17,
+    "kelas": "11A"
+}
+
+del siswa["umur"]
+
+print(siswa)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>{'nama': 'Andi', 'kelas': '11A'}</pre>
+          </div>
+
+          <h4>D. Menampilkan key dan value</h4>
+
+          <p>Dictionary menyediakan beberapa method penting:</p>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Method</th>
+                  <th>Fungsi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>keys()</code></td>
+                  <td>Mengambil seluruh key.</td>
+                </tr>
+                <tr>
+                  <td><code>values()</code></td>
+                  <td>Mengambil seluruh value.</td>
+                </tr>
+                <tr>
+                  <td><code>items()</code></td>
+                  <td>Mengambil pasangan key dan value.</td>
+                </tr>
+                <tr>
+                  <td><code>update()</code></td>
+                  <td>Menambahkan atau memperbarui data.</td>
+                </tr>
+                <tr>
+                  <td><code>pop()</code></td>
+                  <td>Menghapus data berdasarkan key.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>Contoh menggunakan perulangan:</p>
+
+          <pre><code>siswa = {
+    "nama": "Andi",
+    "umur": 17,
+    "kelas": "11A"
+}
+
+for key, value in siswa.items():
+    print(key, ":", value)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+nama : Andi
+umur : 17
+kelas : 11A</pre
+            >
+          </div>
+        </section>
+
+        <!-- BAGIAN 6 -->
+        <section class="subsection">
+          <h3>6. Perbedaan List, Tuple, Set, dan Dictionary</h3>
+
+          <p>
+            Keempat struktur data tersebut memiliki karakteristik dan kegunaan
+            masing-masing.
+          </p>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Karakteristik</th>
+                  <th>List</th>
+                  <th>Tuple</th>
+                  <th>Set</th>
+                  <th>Dictionary</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Penulisan</td>
+                  <td><code>[]</code></td>
+                  <td><code>()</code></td>
+                  <td><code>{}</code></td>
+                  <td><code>{key: value}</code></td>
+                </tr>
+                <tr>
+                  <td>Berurutan</td>
+                  <td>Ya</td>
+                  <td>Ya</td>
+                  <td>Tidak dijamin</td>
+                  <td>Ya</td>
+                </tr>
+                <tr>
+                  <td>Dapat diubah</td>
+                  <td>Ya</td>
+                  <td>Tidak</td>
+                  <td>Ya</td>
+                  <td>Ya</td>
+                </tr>
+                <tr>
+                  <td>Duplikat</td>
+                  <td>Boleh</td>
+                  <td>Boleh</td>
+                  <td>Tidak</td>
+                  <td>Key tidak boleh duplikat</td>
+                </tr>
+                <tr>
+                  <td>Akses data</td>
+                  <td>Indeks</td>
+                  <td>Indeks</td>
+                  <td>Tanpa indeks</td>
+                  <td>Key</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>Kapan menggunakan masing-masing struktur data?</h4>
+
+          <ul>
+            <li>
+              Gunakan <strong>List</strong> jika ingin menyimpan kumpulan data
+              yang dapat ditambah, dihapus, atau diubah.
+            </li>
+            <li>
+              Gunakan <strong>Tuple</strong> jika ingin menyimpan kumpulan data
+              yang tidak perlu diubah.
+            </li>
+            <li>
+              Gunakan <strong>Set</strong> jika ingin menyimpan data unik atau
+              melakukan operasi himpunan.
+            </li>
+            <li>
+              Gunakan <strong>Dictionary</strong> jika ingin menyimpan data
+              dengan pasangan key dan value.
+            </li>
+          </ul>
+
+          <div class="info">
+            <strong>Ingat!</strong>
+            Pemilihan struktur data yang tepat akan memudahkan proses pengolahan
+            informasi. Tidak semua data harus disimpan dalam bentuk list atau
+            dictionary.
+          </div>
+        </section>
+
+        <!-- BAGIAN 7 -->
+        <section class="subsection">
+          <h3>7. Mengakses Data dengan Index dan Slicing</h3>
+
+          <p>
+            Selain mengakses satu elemen, kita juga dapat mengambil beberapa
+            elemen sekaligus menggunakan teknik <i>slicing</i>.
+          </p>
+
+          <p>
+            Slicing digunakan untuk mengambil bagian tertentu dari struktur data
+            yang memiliki urutan, seperti list dan tuple.
+          </p>
+
+          <h4>A. Menggunakan indeks negatif</h4>
+
+          <p>
+            Indeks negatif digunakan untuk mengakses elemen dari posisi paling
+            belakang.
+          </p>
+
+          <pre><code>buah = ["Apel", "Jeruk", "Mangga", "Pisang"]
+
+print(buah[-1])
+print(buah[-2])</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+Pisang
+Mangga</pre
+            >
+          </div>
+
+          <h4>B. Menggunakan slicing</h4>
+
+          <p>Sintaks dasar:</p>
+
+          <pre><code>data[start:stop]</code></pre>
+
+          <p>Contoh:</p>
+
+          <pre><code>angka = [10, 20, 30, 40, 50]
+
+print(angka[1:4])
+print(angka[:3])
+print(angka[2:])</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+[20, 30, 40]
+[10, 20, 30]
+[30, 40, 50]</pre
+            >
+          </div>
+
+          <p>Penjelasan:</p>
+
+          <ul>
+            <li>
+              <code>angka[1:4]</code> mengambil elemen indeks 1 sampai sebelum
+              indeks 4.
+            </li>
+            <li>
+              <code>angka[:3]</code> mengambil elemen dari awal sampai sebelum
+              indeks 3.
+            </li>
+            <li>
+              <code>angka[2:]</code> mengambil elemen mulai indeks 2 sampai
+              akhir.
+            </li>
+          </ul>
+
+          <h4>C. Menggunakan slicing dengan langkah</h4>
+
+          <pre><code>angka = [1, 2, 3, 4, 5, 6, 7, 8]
+
+print(angka[::2])
+print(angka[::-1])</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+[1, 3, 5, 7]
+[8, 7, 6, 5, 4, 3, 2, 1]</pre
+            >
+          </div>
+
+          <p>
+            Slicing juga dapat digunakan pada tuple dengan cara yang sama.
+            Sementara itu, set tidak mendukung indeks maupun slicing karena
+            tidak memiliki urutan elemen yang dapat diakses berdasarkan posisi.
+          </p>
+        </section>
+
+        <!-- BAGIAN 8 -->
+        <section class="subsection">
+          <h3>8. Fungsi dan Method yang Berguna untuk Struktur Data</h3>
+
+          <p>
+            Python menyediakan beberapa fungsi bawaan yang dapat digunakan untuk
+            mengolah data.
+          </p>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Fungsi</th>
+                  <th>Kegunaan</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>len()</code></td>
+                  <td>Menghitung jumlah elemen.</td>
+                </tr>
+                <tr>
+                  <td><code>max()</code></td>
+                  <td>Mengambil nilai terbesar.</td>
+                </tr>
+                <tr>
+                  <td><code>min()</code></td>
+                  <td>Mengambil nilai terkecil.</td>
+                </tr>
+                <tr>
+                  <td><code>sum()</code></td>
+                  <td>Menjumlahkan elemen numerik.</td>
+                </tr>
+                <tr>
+                  <td><code>sorted()</code></td>
+                  <td>Menghasilkan data yang sudah diurutkan.</td>
+                </tr>
+                <tr>
+                  <td><code>type()</code></td>
+                  <td>Mengetahui tipe data.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>Contoh penggunaan</h4>
+
+          <pre><code>angka = [10, 20, 30, 40, 50]
+
+print("Jumlah data:", len(angka))
+print("Nilai terbesar:", max(angka))
+print("Nilai terkecil:", min(angka))
+print("Total:", sum(angka))
+print("Urutan:", sorted(angka))</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+Jumlah data: 5
+Nilai terbesar: 50
+Nilai terkecil: 10
+Total: 150
+Urutan: [10, 20, 30, 40, 50]</pre
+            >
+          </div>
+
+          <p>
+            Perlu diingat, <code>sorted()</code> menghasilkan list baru yang
+            sudah diurutkan, sedangkan method <code>sort()</code> mengurutkan
+            list secara langsung.
+          </p>
+
+          <h4>Contoh menggunakan <code>sort()</code></h4>
+
+          <pre><code>angka = [5, 2, 8, 1, 3]
+
+angka.sort()
+
+print(angka)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>[1, 2, 3, 5, 8]</pre>
+          </div>
+        </section>
+
+        <!-- BAGIAN 9 -->
+        <section class="subsection">
+          <h3>9. Contoh Project: Program Daftar Nilai Siswa</h3>
+
+          <p>
+            Sekarang kita akan membuat program sederhana untuk menyimpan data
+            beberapa siswa menggunakan kombinasi dictionary dan list.
+          </p>
+
+          <h4>Kode Program</h4>
+
+          <pre><code>print("=== PROGRAM DAFTAR NILAI SISWA ===")
+
+data_siswa = []
+
+jumlah = int(input("Masukkan jumlah siswa: "))
+
+for i in range(jumlah):
+    print(f"\nData siswa ke-{i + 1}")
+
+    nama = input("Nama siswa: ")
+    nilai = int(input("Nilai siswa: "))
+
+    siswa = {
+        "nama": nama,
+        "nilai": nilai
+    }
+
+    data_siswa.append(siswa)
+
+print("\n=== DAFTAR NILAI SISWA ===")
+
+for siswa in data_siswa:
+    print(f"Nama: {siswa['nama']}")
+    print(f"Nilai: {siswa['nilai']}")
+
+if len(data_siswa) > 0:
+    total = sum(siswa["nilai"] for siswa in data_siswa)
+    rata_rata = total / len(data_siswa)
+
+    print("\nJumlah siswa:", len(data_siswa))
+    print("Total nilai:", total)
+    print("Rata-rata:", rata_rata)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+=== PROGRAM DAFTAR NILAI SISWA ===
+Masukkan jumlah siswa: 3
+
+Data siswa ke-1
+Nama siswa: Andi
+Nilai siswa: 85
+
+Data siswa ke-2
+Nama siswa: Budi
+Nilai siswa: 90
+
+Data siswa ke-3
+Nama siswa: Siti
+Nilai siswa: 80
+
+=== DAFTAR NILAI SISWA ===
+Nama: Andi
+Nilai: 85
+Nama: Budi
+Nilai: 90
+Nama: Siti
+Nilai: 80
+
+Jumlah siswa: 3
+Total nilai: 255
+Rata-rata: 85.0</pre
+            >
+          </div>
+
+          <h4>Penjelasan Program</h4>
+
+          <ol>
+            <li>
+              <code>data_siswa = []</code> membuat list kosong untuk menyimpan
+              data siswa.
+            </li>
+            <li>Program meminta jumlah siswa yang ingin dimasukkan.</li>
+            <li>
+              Perulangan <code>for</code> digunakan untuk memasukkan data setiap
+              siswa.
+            </li>
+            <li>Dictionary <code>siswa</code> menyimpan nama dan nilai.</li>
+            <li>
+              Method <code>append()</code> memasukkan dictionary siswa ke dalam
+              list.
+            </li>
+            <li>Perulangan berikutnya menampilkan seluruh data siswa.</li>
+            <li>Fungsi <code>sum()</code> menghitung total nilai.</li>
+            <li>Fungsi <code>len()</code> menghitung jumlah siswa.</li>
+            <li>Program menghitung rata-rata nilai seluruh siswa.</li>
+          </ol>
+
+          <a
+            class="colab-button"
+            href="https://colab.research.google.com/#create=true"
+            target="_blank"
+            rel="noopener"
+          >
+            Praktikkan di Google Colab ↗
+          </a>
+        </section>
+
+        <!-- BAGIAN 10 -->
+        <section class="subsection">
+          <h3>10. Contoh Project: Program Pengelolaan Daftar Belanja</h3>
+
+          <p>
+            Project berikut menggunakan list untuk menyimpan daftar belanja dan
+            beberapa method untuk mengelola datanya.
+          </p>
+
+          <h4>Kode Program</h4>
+
+          <pre><code>daftar_belanja = []
+
+print("=== PROGRAM DAFTAR BELANJA ===")
+
+jumlah = int(input("Berapa barang yang ingin ditambahkan? "))
+
+for i in range(jumlah):
+    barang = input(f"Masukkan barang ke-{i + 1}: ")
+    daftar_belanja.append(barang)
+
+print("\n=== DAFTAR BELANJA ===")
+
+for i, barang in enumerate(daftar_belanja, start=1):
+    print(f"{i}. {barang}")
+
+print("\nJumlah barang:", len(daftar_belanja))
+
+hapus = input("\nMasukkan nama barang yang ingin dihapus: ")
+
+if hapus in daftar_belanja:
+    daftar_belanja.remove(hapus)
+    print("Barang berhasil dihapus.")
+else:
+    print("Barang tidak ditemukan.")
+
+print("\nDaftar belanja terbaru:")
+
+for barang in daftar_belanja:
+    print("-", barang)</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>
+=== PROGRAM DAFTAR BELANJA ===
+Berapa barang yang ingin ditambahkan? 3
+Masukkan barang ke-1: Beras
+Masukkan barang ke-2: Telur
+Masukkan barang ke-3: Minyak
+
+=== DAFTAR BELANJA ===
+1. Beras
+2. Telur
+3. Minyak
+
+Jumlah barang: 3
+
+Masukkan nama barang yang ingin dihapus: Telur
+Barang berhasil dihapus.
+
+Daftar belanja terbaru:
+- Beras
+- Minyak</pre
+            >
+          </div>
+
+          <h4>Penjelasan Program</h4>
+
+          <ul>
+            <li>
+              List <code>daftar_belanja</code> digunakan untuk menyimpan nama
+              barang.
+            </li>
+            <li><code>append()</code> digunakan untuk menambahkan barang.</li>
+            <li>
+              <code>enumerate()</code> digunakan untuk mendapatkan nomor urut
+              dan isi elemen.
+            </li>
+            <li><code>len()</code> menghitung jumlah barang.</li>
+            <li>
+              Operator <code>in</code> memeriksa apakah barang tersedia dalam
+              list.
+            </li>
+            <li><code>remove()</code> menghapus barang yang dipilih.</li>
+          </ul>
+
+          <a
+            class="colab-button"
+            href="https://colab.research.google.com/#create=true"
+            target="_blank"
+            rel="noopener"
+          >
+            Praktikkan di Google Colab ↗
+          </a>
+        </section>
+
+        <!-- BAGIAN 11 -->
+        <section class="subsection">
+          <h3>11. Kesalahan yang Sering Terjadi</h3>
+
+          <p>
+            Saat menggunakan struktur data Python, pemula sering mengalami
+            beberapa kesalahan berikut.
+          </p>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Kesalahan</th>
+                  <th>Penyebab</th>
+                  <th>Solusi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>IndexError</code></td>
+                  <td>Mengakses indeks yang tidak tersedia.</td>
+                  <td>Periksa panjang list atau tuple.</td>
+                </tr>
+                <tr>
+                  <td><code>KeyError</code></td>
+                  <td>Mengakses key yang tidak tersedia dalam dictionary.</td>
+                  <td>Gunakan key yang benar atau <code>get()</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>TypeError</code></td>
+                  <td>Mengubah elemen tuple.</td>
+                  <td>Gunakan list jika data perlu diubah.</td>
+                </tr>
+                <tr>
+                  <td><code>AttributeError</code></td>
+                  <td>Menggunakan method yang tidak dimiliki tipe data.</td>
+                  <td>Periksa method sesuai struktur data.</td>
+                </tr>
+                <tr>
+                  <td><code>KeyError</code> pada set</td>
+                  <td>
+                    Menggunakan <code>remove()</code> untuk elemen yang tidak
+                    tersedia.
+                  </td>
+                  <td>
+                    Gunakan <code>discard()</code> jika elemen mungkin tidak
+                    ada.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>Contoh kesalahan indeks</h4>
+
+          <pre><code>buah = ["Apel", "Jeruk"]
+
+print(buah[5])</code></pre>
+
+          <p>
+            Kode tersebut menghasilkan <code>IndexError</code> karena list hanya
+            memiliki indeks 0 dan 1.
+          </p>
+
+          <p><strong>Perbaikannya:</strong></p>
+
+          <pre><code>buah = ["Apel", "Jeruk"]
+
+if len(buah) > 1:
+    print(buah[1])</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>Jeruk</pre>
+          </div>
+
+          <h4>Contoh kesalahan key dictionary</h4>
+
+          <pre><code>siswa = {
+    "nama": "Andi",
+    "kelas": "11A"
+}
+
+print(siswa["umur"])</code></pre>
+
+          <p>
+            Kode tersebut menghasilkan <code>KeyError</code> karena key
+            <code>umur</code> tidak tersedia.
+          </p>
+
+          <p><strong>Perbaikannya:</strong></p>
+
+          <pre><code>print(siswa.get("umur", "Data tidak tersedia"))</code></pre>
+
+          <div class="code-output">
+            <strong>Hasil Output:</strong>
+            <pre>Data tidak tersedia</pre>
+          </div>
+        </section>
+
+        <!-- BAGIAN 12 -->
+        <section class="subsection">
+          <h3>12. Latihan Mandiri</h3>
+
+          <p>
+            Setelah mempelajari struktur data Python, sekarang saatnya mencoba
+            membuat program sendiri!
+          </p>
+
+          <div class="info">
+            <span class="difficulty">Mudah</span>
+            <strong>Latihan 1: Membuat List Buah</strong>
+            <p>
+              Buat sebuah list yang berisi lima nama buah. Kemudian tampilkan
+              seluruh buah menggunakan perulangan <code>for</code>.
+            </p>
+          </div>
+
+          <div class="info">
+            <span class="difficulty">Mudah</span>
+            <strong>Latihan 2: Mengelola Data Nilai</strong>
+            <p>
+              Buat list yang berisi lima nilai siswa. Kemudian tampilkan nilai
+              tertinggi, nilai terendah, dan rata-rata menggunakan
+              <code>max()</code>, <code>min()</code>, dan <code>sum()</code>.
+            </p>
+          </div>
+
+          <div class="info">
+            <span class="difficulty">Menengah</span>
+            <strong>Latihan 3: Membuat Data Biodata</strong>
+            <p>
+              Buat dictionary yang menyimpan informasi nama, umur, alamat, dan
+              sekolah. Kemudian tampilkan seluruh data menggunakan perulangan
+              <code>for</code>.
+            </p>
+          </div>
+
+          <div class="info">
+            <span class="difficulty">Menengah</span>
+            <strong>Latihan 4: Menghilangkan Data Duplikat</strong>
+            <p>
+              Buat list yang berisi beberapa angka dengan nilai yang berulang.
+              Ubah list tersebut menjadi set agar elemen duplikat dihilangkan.
+            </p>
+          </div>
+
+          <div class="info">
+            <span class="difficulty">Menantang</span>
+            <strong>Latihan 5: Program Data Siswa</strong>
+            <p>
+              Buat program menggunakan list dan dictionary untuk menyimpan
+              minimal tiga data siswa. Setiap siswa memiliki nama, kelas, dan
+              nilai. Tampilkan seluruh data siswa beserta rata-rata nilainya.
+            </p>
+          </div>
+
+          <a
+            class="colab-button"
+            href="https://colab.research.google.com/#create=true"
+            target="_blank"
+            rel="noopener"
+          >
+            Praktikkan Latihan di Google Colab ↗
+          </a>
+        </section>
+
+        <!-- BAGIAN 13 -->
+        <section class="subsection">
+          <h3>13. Kuis Pemahaman</h3>
+
+          <p>
+            Uji pemahamanmu tentang struktur data Python melalui kuis berikut!
+            Pilih satu jawaban yang paling tepat untuk setiap pertanyaan,
+            kemudian klik tombol <strong>Periksa Jawaban</strong>.
+          </p>
+
+          <div class="quiz-container">
+            <div class="quiz-header">
+              <strong>Kuis Struktur Data Python</strong>
+              <span id="quiz-count">0/7 dijawab</span>
+            </div>
+
+            <div class="quiz-progress">
+              <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
+            </div>
+
+            <form id="quiz-form">
+              <div class="question-card">
+                <h4>
+                  1. Struktur data apa yang digunakan untuk menyimpan banyak
+                  elemen dan dapat diubah?
+                </h4>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q1" value="a" />
+                  Tuple
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q1" value="b" />
+                  List
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q1" value="c" />
+                  String
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q1" value="d" />
+                  Integer
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q1"></div>
+              </div>
+
+              <div class="question-card">
+                <h4>
+                  2. Struktur data mana yang tidak dapat diubah setelah dibuat?
+                </h4>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q2" value="a" />
+                  List
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q2" value="b" />
+                  Dictionary
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q2" value="c" />
+                  Tuple
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q2" value="d" />
+                  Set
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q2"></div>
+              </div>
+
+              <div class="question-card">
+                <h4>3. Apa fungsi utama dari set dalam Python?</h4>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q3" value="a" />
+                  Menyimpan pasangan key dan value
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q3" value="b" />
+                  Menyimpan data dengan indeks
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q3" value="c" />
+                  Menyimpan elemen unik tanpa duplikat
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q3" value="d" />
+                  Menyimpan data yang selalu berurutan
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q3"></div>
+              </div>
+
+              <div class="question-card">
+                <h4>
+                  4. Struktur data apa yang menyimpan data dalam pasangan key
+                  dan value?
+                </h4>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q4" value="a" />
+                  List
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q4" value="b" />
+                  Tuple
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q4" value="c" />
+                  Set
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q4" value="d" />
+                  Dictionary
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q4"></div>
+              </div>
+
+              <div class="question-card">
+                <h4>5. Apa hasil dari kode berikut?</h4>
+                <pre><code>buah = ["Apel", "Jeruk", "Mangga"]
+
+print(buah[1])</code></pre>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q5" value="a" />
+                  Apel
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q5" value="b" />
+                  Jeruk
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q5" value="c" />
+                  Mangga
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q5" value="d" />
+                  Error
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q5"></div>
+              </div>
+
+              <div class="question-card">
+                <h4>
+                  6. Method apa yang digunakan untuk menambahkan elemen ke
+                  bagian akhir list?
+                </h4>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q6" value="a" />
+                  remove()
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q6" value="b" />
+                  append()
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q6" value="c" />
+                  clear()
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q6" value="d" />
+                  pop()
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q6"></div>
+              </div>
+
+              <div class="question-card">
+                <h4>7. Apa fungsi <code>len()</code> dalam Python?</h4>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q7" value="a" />
+                  Mengurutkan data
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q7" value="b" />
+                  Menghapus data
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q7" value="c" />
+                  Menghitung jumlah elemen
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q7" value="d" />
+                  Mengubah tipe data
+                </label>
+
+                <div class="quiz-feedback" id="feedback-q7"></div>
+              </div>
+
+              <button type="button" class="quiz-button" id="check-quiz">
+                Periksa Jawaban
+              </button>
+
+              <button
+                type="button"
+                class="quiz-button"
+                id="reset-quiz"
+                style="background: #64748b; display: none"
+              >
+                Ulangi Kuis
+              </button>
+            </form>
+
+            <div class="quiz-result" id="quiz-result">
+              <h4>Hasil Kuis</h4>
+              <p id="quiz-score"></p>
+              <p id="quiz-message"></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- BAGIAN 14 -->
+        <section class="subsection">
+          <h3>14. Kesimpulan</h3>
+
+          <p>
+            Pada materi ini, kita telah mempelajari berbagai konsep penting
+            tentang struktur data Python:
+          </p>
+
+          <ol>
+            <li>Pengertian dan fungsi struktur data.</li>
+            <li>List untuk menyimpan kumpulan data yang dapat diubah.</li>
+            <li>
+              Tuple untuk menyimpan kumpulan data yang tidak dapat diubah.
+            </li>
+            <li>Set untuk menyimpan elemen unik tanpa duplikat.</li>
+            <li>Dictionary untuk menyimpan pasangan key dan value.</li>
+            <li>Mengakses data menggunakan indeks, key, dan slicing.</li>
+            <li>
+              Menggunakan method dan fungsi bawaan Python untuk mengelola data.
+            </li>
+            <li>
+              Menerapkan struktur data dalam program daftar nilai siswa dan
+              daftar belanja.
+            </li>
+          </ol>
+
+          <div class="info">
+            <strong>Poin Penting:</strong>
+            Struktur data membantu kita menyimpan dan mengelola banyak informasi
+            secara terorganisasi sehingga program menjadi lebih mudah dibuat,
+            dibaca, dan dikembangkan. Pilihlah struktur data yang tepat sesuai
+            kebutuhan program.
+          </div>
+        </section>
+
+        <!-- TUGAS MATERI -->
+        <div class="task">
+          <h3>Tugas 8: Program Pengelolaan Data Siswa</h3>
+
+          <p>
+            Buatlah sebuah program Python untuk mengelola data siswa menggunakan
+            kombinasi struktur data List dan Dictionary. Program harus dapat
+            menyimpan beberapa data siswa, menampilkan data, serta menghitung
+            statistik nilai.
+          </p>
+
+          <p><strong>Ketentuan Program:</strong></p>
+
+          <ol>
+            <li>
+              Program meminta pengguna memasukkan jumlah siswa yang akan didata.
+            </li>
+            <li>Gunakan list untuk menyimpan seluruh data siswa.</li>
+            <li>
+              Gunakan dictionary untuk menyimpan informasi setiap siswa, minimal
+              nama, kelas, dan nilai.
+            </li>
+            <li>Gunakan perulangan untuk memasukkan data setiap siswa.</li>
+            <li>Tampilkan seluruh data siswa yang sudah dimasukkan.</li>
+            <li>
+              Hitung dan tampilkan jumlah siswa, total nilai, rata-rata, nilai
+              tertinggi, dan nilai terendah.
+            </li>
+            <li>
+              Gunakan percabangan untuk memberikan keterangan nilai, misalnya
+              Lulus jika nilai minimal 75.
+            </li>
+          </ol>
+
+          <p><strong>Ketentuan Pengumpulan:</strong></p>
+
+          <ol>
+            <li>Buat program menggunakan Google Colab.</li>
+            <li>
+              Simpan notebook dengan nama <code>Tugas8_Nama_NIM.ipynb</code>.
+            </li>
+            <li>Simpan notebook di Google Drive.</li>
+            <li>
+              Atur akses berbagi notebook agar dapat diperiksa oleh dosen/guru.
+            </li>
+            <li>
+              Kumpulkan tautan notebook melalui tombol
+              <strong>Pengumpulan Tugas</strong> pada sidebar website.
+            </li>
+          </ol>
+
+          <a
+            href="https://colab.research.google.com/#create=true"
+            target="_blank"
+            class="colab-button"
+            rel="noopener"
+          >
+            Mulai Mengerjakan di Google Colab ↗
+          </a>
+        </div>
+
+        <!-- NAVIGASI MATERI -->
+        <div class="navigation" id="navigation"></div>
+      </main>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>Python Learn | Media Pembelajaran Python Dasar</footer>
+
+    <script src="assets/js/script.js"></script>
+
+    <script>
+      // Kunci jawaban & penjelasan kuis diselaraskan dengan standar format kuis
+      const jawabanBenar = {
+        q1: 'b',
+        q2: 'c',
+        q3: 'c',
+        q4: 'd',
+        q5: 'b',
+        q6: 'b',
+        q7: 'c',
+      };
+
+      const penjelasan = {
+        q1: 'List merupakan struktur data yang dapat menyimpan banyak elemen dan dapat diubah setelah dibuat.',
+        q2: 'Tuple bersifat immutable, artinya elemen di dalamnya tidak dapat diubah setelah tuple dibuat.',
+        q3: 'Set digunakan untuk menyimpan elemen unik. Jika terdapat elemen duplikat, hanya satu yang akan disimpan.',
+        q4: 'Dictionary menyimpan data dalam pasangan key dan value sehingga setiap nilai dapat diakses melalui key.',
+        q5: 'Indeks list dimulai dari 0. Dengan demikian, indeks 1 menunjukkan elemen kedua, yaitu Jeruk.',
+        q6: 'Method append() digunakan untuk menambahkan elemen baru pada bagian akhir list.',
+        q7: 'Fungsi len() digunakan untuk menghitung jumlah elemen dalam suatu struktur data.',
+      };
+
+      const form = document.getElementById('quiz-form');
+      const jumlahSoal = 7;
+
+      function perbaruiProgress() {
+        let terjawab = 0;
+
+        for (let i = 1; i <= jumlahSoal; i++) {
+          if (form.querySelector(`input[name="q${i}"]:checked`)) {
+            terjawab++;
+          }
+        }
+
+        document.getElementById(
+          'quiz-count'
+        ).textContent = `${terjawab}/${jumlahSoal} dijawab`;
+
+        document.getElementById('quiz-progress-bar').style.width = `${
+          (terjawab / jumlahSoal) * 100
+        }%`;
+      }
+
+      form.addEventListener('change', perbaruiProgress);
+
+      document
+        .getElementById('check-quiz')
+        .addEventListener('click', function () {
+          let skor = 0;
+          let belumDijawab = [];
+
+          for (let i = 1; i <= jumlahSoal; i++) {
+            const pilihan = form.querySelector(`input[name="q${i}"]:checked`);
+            const feedback = document.getElementById(`feedback-q${i}`);
+
+            feedback.className = 'quiz-feedback';
+
+            if (!pilihan) {
+              belumDijawab.push(i);
+              feedback.textContent = 'Belum dijawab.';
+              feedback.classList.add('wrong');
+              continue;
+            }
+
+            if (pilihan.value === jawabanBenar[`q${i}`]) {
+              skor++;
+              feedback.textContent = 'Benar! ' + penjelasan[`q${i}`];
+              feedback.classList.add('correct');
+            } else {
+              feedback.textContent = 'Belum tepat. ' + penjelasan[`q${i}`];
+              feedback.classList.add('wrong');
+            }
+          }
+
+          if (belumDijawab.length > 0) {
+            alert(
+              'Masih ada soal yang belum dijawab: ' +
+                belumDijawab.join(', ') +
+                '. Silakan lengkapi terlebih dahulu.'
+            );
+            return;
+          }
+
+          const nilai = Math.round((skor / jumlahSoal) * 100);
+
+          document.getElementById('quiz-result').style.display = 'block';
+
+          document.getElementById(
+            'quiz-score'
+          ).textContent = `Jawaban benar: ${skor} dari ${jumlahSoal} soal. Nilai: ${nilai}/100.`;
+
+          let pesan = '';
+
+          if (nilai === 100) {
+            pesan = 'Luar biasa! Semua jawabanmu benar. Pertahankan!';
+          } else if (nilai >= 80) {
+            pesan =
+              'Hebat! Kamu sudah memahami struktur data Python dengan baik.';
+          } else if (nilai >= 60) {
+            pesan = 'Bagus! Pelajari kembali bagian yang belum dikuasai.';
+          } else {
+            pesan = 'Tetap semangat! Pelajari kembali materi dan coba lagi.';
+          }
+
+          document.getElementById('quiz-message').textContent = pesan;
+
+          document.getElementById('check-quiz').style.display = 'none';
+          document.getElementById('reset-quiz').style.display = 'inline-block';
+
+          document.getElementById('quiz-result').scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+          });
+        });
+
+      document
+        .getElementById('reset-quiz')
+        .addEventListener('click', function () {
+          form.reset();
+
+          for (let i = 1; i <= jumlahSoal; i++) {
+            const feedback = document.getElementById(`feedback-q${i}`);
+            feedback.textContent = '';
+            feedback.className = 'quiz-feedback';
+          }
+
+          document.getElementById('quiz-result').style.display = 'none';
+          document.getElementById('check-quiz').style.display = 'inline-block';
+          document.getElementById('reset-quiz').style.display = 'none';
+
+          perbaruiProgress();
+
+          window.scrollTo({
+            top: document.querySelector('.quiz-container').offsetTop,
+            behavior: 'smooth',
+          });
+        });
+
+      perbaruiProgress();
+    </script>
+  </body>
+</html>
